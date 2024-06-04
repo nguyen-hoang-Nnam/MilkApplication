@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MilkApplication.BLL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8f18ceddba0a509e7e9dc49bd10f66cae19bc6da")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0ae5e5247604a0cbc6f74c8e988c2044f218c102")]
 [assembly: System.Reflection.AssemblyProductAttribute("MilkApplication.BLL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MilkApplication.BLL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

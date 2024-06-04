@@ -4,6 +4,7 @@ using MilkApplication.DAL.Repository.IRepositpry;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -40,7 +41,6 @@ namespace MilkApplication.DAL.Repository
         {
             _dbSet.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
         }
 
         public async Task Delete(int id)

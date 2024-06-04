@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using MilkApplication.BLL.Service.IService;
 using MilkApplication.DAL.Models;
+using MilkApplication.DAL.Models.DTO;
 
 namespace MilkApplication.Controllers
 {
@@ -17,45 +19,93 @@ namespace MilkApplication.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Product>> Get()
+        [Route("GetAllProducts")]
+        public async Task<IActionResult> GetAllProduct()
         {
-            return await _productService.GetAllProducts();
+            
+            try
+            {
+                var result = await _productService.GetAllProductsAsync();
+                if (result != null)
+                {
+                    return Ok(result);
+                }
+                return NotFound(result);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> Get(int id)
+        [HttpGet]
+        [Route("GetProductsById/{id:int}")]
+        public async Task<ActionResult<Product>> GetProductById(int id)
         {
-            var product = await _productService.GetProductById(id);
-            if (product == null)
+            
+            try
             {
+                var result = await _productService.GetProductByIdAsync(id);
+                if (result != null)
+                {
+                    return Ok(result);
+                }
                 return NotFound();
             }
-            return product;
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] Product product)
+        [Route("CreateProducts")]
+        public async Task<IActionResult> CreateProduct([FromBody] ProductDTO productDTO)
         {
-            await _productService.AddProduct(product);
-            return CreatedAtAction(nameof(Get), new { id = product.Id }, product);
-        }
-
-        [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int id, [FromBody] Product product)
-        {
-            if (id != product.Id)
+            var result = await _productService.AddProductAsync(productDTO);
+            if (result.IsSucceed)
             {
-                return BadRequest();
+                return Ok(result);
             }
-            await _productService.UpdateProduct(product);
-            return NoContent();
+            return BadRequest(result);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
+        [HttpPut]
+        [Route("UpdateProducts/{id:int}")]
+        public async Task<ActionResult> UpdateProduct(int id, [FromBody] ProductDTO productDTO)
         {
-            await _productService.DeleteProduct(id);
-            return NoContent();
+            var response = await _productService.UpdateProductAsync(id, productDTO);
+
+            if (response.IsSucceed)
+            {
+                return Ok(response);
+            }
+            else
+            {
+                return NotFound(response);
+            }
+        }
+
+        [HttpDelete]
+        [Route("DeleteProducts/{id:int}")]
+        public async Task<ActionResult> DeleteProduct(int id)
+        {
+            try
+            {
+                var result = await _productService.DeleteProductAsync(id);
+                if (result.IsSucceed == true)
+                {
+                    return Ok(result);
+                }
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
