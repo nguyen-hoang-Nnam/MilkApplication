@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SWD_PRJ\\SWD_PRJ_BE\\MilkApplication\\MilkApplication.BLL\\MilkApplication.BLL.csproj": {}
+    "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\MilkApplication.BLL.csproj": {}
   },
   "projects": {
-    "D:\\SWD_PRJ\\SWD_PRJ_BE\\MilkApplication\\MilkApplication.BLL\\MilkApplication.BLL.csproj": {
+    "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\MilkApplication.BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SWD_PRJ\\SWD_PRJ_BE\\MilkApplication\\MilkApplication.BLL\\MilkApplication.BLL.csproj",
+        "projectUniqueName": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\MilkApplication.BLL.csproj",
         "projectName": "MilkApplication.BLL",
-        "projectPath": "D:\\SWD_PRJ\\SWD_PRJ_BE\\MilkApplication\\MilkApplication.BLL\\MilkApplication.BLL.csproj",
+        "projectPath": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\MilkApplication.BLL.csproj",
         "packagesPath": "C:\\Users\\Hoang Nam\\.nuget\\packages\\",
-        "outputPath": "D:\\SWD_PRJ\\SWD_PRJ_BE\\MilkApplication\\MilkApplication.BLL\\obj\\",
+        "outputPath": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Hoang Nam\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\SWD_PRJ\\SWD_PRJ_BE\\MilkApplication\\MilkApplication.DAL\\MilkApplication.DAL.csproj": {
-                "projectPath": "D:\\SWD_PRJ\\SWD_PRJ_BE\\MilkApplication\\MilkApplication.DAL\\MilkApplication.DAL.csproj"
+              "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\MilkApplication.DAL.csproj": {
+                "projectPath": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\MilkApplication.DAL.csproj"
               }
             }
           }
@@ -86,14 +86,14 @@
         }
       }
     },
-    "D:\\SWD_PRJ\\SWD_PRJ_BE\\MilkApplication\\MilkApplication.DAL\\MilkApplication.DAL.csproj": {
+    "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\MilkApplication.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SWD_PRJ\\SWD_PRJ_BE\\MilkApplication\\MilkApplication.DAL\\MilkApplication.DAL.csproj",
+        "projectUniqueName": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\MilkApplication.DAL.csproj",
         "projectName": "MilkApplication.DAL",
-        "projectPath": "D:\\SWD_PRJ\\SWD_PRJ_BE\\MilkApplication\\MilkApplication.DAL\\MilkApplication.DAL.csproj",
+        "projectPath": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\MilkApplication.DAL.csproj",
         "packagesPath": "C:\\Users\\Hoang Nam\\.nuget\\packages\\",
-        "outputPath": "D:\\SWD_PRJ\\SWD_PRJ_BE\\MilkApplication\\MilkApplication.DAL\\obj\\",
+        "outputPath": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Hoang Nam\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -127,6 +127,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",

@@ -12,5 +12,26 @@ namespace MilkApplication.DAL.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Origin> Origins { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Configure Category - Product relationship
+            modelBuilder.Entity<Product>()
+                .HasOne(p => p.Category)
+                .WithMany(c => c.Products)
+                .HasForeignKey(p => p.categoryId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Configure Origin - Product relationship
+            modelBuilder.Entity<Product>()
+                .HasOne(p => p.Origin)
+                .WithMany(o => o.Products)
+                .HasForeignKey(p => p.originId)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
     }
 }

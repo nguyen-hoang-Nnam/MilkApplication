@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "HRNY6nqNj9sFArBr5EEYK4JH00xa+p8+Mx6RRLsDX7vtfnuqrzJQGiLFo6A9HuRwXp0iYh+J1LJoUoVRE9nRww==",
+  "dgSpecHash": "eEWpFcMXAbEDrYgF9tL9lPxZ3Ri0CTqeA/ECI4/rAE0uYDnjqmzLngyS5+OrnrWqfJQanJnaDRdECj1H5TOU1Q==",
   "success": true,
-  "projectFilePath": "D:\\SWD_PRJ\\SWD_PRJ_BE\\MilkApplication\\MilkApplication\\MilkApplication.csproj",
+  "projectFilePath": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\MilkApplication.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Hoang Nam\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Hoang Nam\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Hoang Nam\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\Hoang Nam\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
