@@ -263,7 +263,6 @@ D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication\obj\Debug
 D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication\obj\Debug\net8.0\MilkApplication.AssemblyInfoInputs.cache
 D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication\obj\Debug\net8.0\MilkApplication.AssemblyInfo.cs
 D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication\obj\Debug\net8.0\MilkApplication.csproj.CoreCompileInputs.cache
-D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication\obj\Debug\net8.0\MilkApplication.MvcApplicationPartsAssemblyInfo.cs
 D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication\obj\Debug\net8.0\MilkApplication.MvcApplicationPartsAssemblyInfo.cache
 D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication\obj\Debug\net8.0\MilkApplication.sourcelink.json
 D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication\obj\Debug\net8.0\staticwebassets.build.json
@@ -281,3 +280,11 @@ D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication\obj\Debug
 D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication\obj\Debug\net8.0\MilkApplication.genruntimeconfig.cache
 D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication\obj\Debug\net8.0\ref\MilkApplication.dll
 D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication\bin\Debug\net8.0\AutoMapper.dll
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication\obj\Debug\net8.0\MilkApplication.MvcApplicationPartsAssemblyInfo.cs
