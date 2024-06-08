@@ -10,5 +10,6 @@ namespace MilkApplication.DAL.Models.DTO
     {
         public bool IsSucceed { get; set; } = false;
         public string Message { get; set; } = "";
+        public object Data { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace MilkApplication.BLL.Service
 
         public async Task<List<ProductDTO>> GetAllProductsAsync()
         {
-            var productGetAll = await _unitOfWork.ProductRepository.GetAllProductsAsync();
+            var productGetAll = await _unitOfWork.ProductRepository.GetAll();
             var productMapper = _mapper.Map<List<ProductDTO>>(productGetAll);
             return productMapper;
         }
