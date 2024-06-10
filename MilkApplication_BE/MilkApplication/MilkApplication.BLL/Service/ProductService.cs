@@ -30,14 +30,14 @@ namespace MilkApplication.BLL.Service
             return productMapper;
         }
 
-        public async Task<Product> GetProductByIdAsync(int id)
+        public async Task<ProductDTO> GetProductByIdAsync(int id)
         {
             var productFound = await _unitOfWork.ProductRepository.GetById(id);
-            if (productFound != null)
+            if (productFound == null)
             {
-                return productFound;
+                return null;
             }
-            var productMapper = _mapper.Map<Product>(productFound);
+            var productMapper = _mapper.Map<ProductDTO>(productFound);
             return productMapper;
             
         }

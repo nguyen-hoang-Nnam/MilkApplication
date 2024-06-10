@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MilkApplication.DAL.enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace MilkApplication.DAL.Repository
 {
@@ -67,6 +68,14 @@ namespace MilkApplication.DAL.Repository
                 return new ResponseDTO { IsSucceed = true, Message = "User added to role successfully" };
             }
             return new ResponseDTO { IsSucceed = false, Message = "Failed to add user to role", Data = result.Errors };
+        }
+        public async Task UpdateUserAsync(ApplicationUser user)
+        {
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded)
+            {
+                throw new Exception(string.Join(", ", result.Errors.Select(e => e.Description)));
+            }
         }
     }
 

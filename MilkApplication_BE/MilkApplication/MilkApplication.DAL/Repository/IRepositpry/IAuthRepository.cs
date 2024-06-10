@@ -16,5 +16,6 @@ namespace MilkApplication.DAL.Repository.IRepositpry
         Task<ResponseDTO> CreateUserAsync(ApplicationUser user, string password);
         Task<ResponseDTO> CheckPasswordAsync(ApplicationUser user, string password);
         Task<ResponseDTO> AddUserToRoleAsync(ApplicationUser user, UserRole role);
+        Task UpdateUserAsync(ApplicationUser user);
     }
 }
