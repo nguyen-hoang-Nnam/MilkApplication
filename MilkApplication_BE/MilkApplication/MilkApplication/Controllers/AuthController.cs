@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using MilkApplication.BLL.Service;
 using MilkApplication.BLL.Service.IService;
 using MilkApplication.DAL.enums;
 using MilkApplication.DAL.Models;
@@ -67,8 +68,55 @@ namespace MilkApplication.Controllers
             }
 
             var token = _jwtHelper.GenerateJwtToken(user);
-            return Ok(new { Token = token });
+            var refreshToken = _jwtHelper.GenerateRefreshToken();
+
+            user.RefreshToken = refreshToken;
+            user.RefreshTokenExpiryTime = DateTime.Now.AddDays(7);
+            await _userService.UpdateUserAsync(user);
+
+            return Ok(new { Token = token, RefreshToken = refreshToken });
         }
+
+        [HttpPost("RefreshToken")]
+        public async Task<IActionResult> RefreshToken([FromBody] TokenDTO tokenDTO)
+        {
+            if (tokenDTO == null)
+            {
+                return BadRequest("Invalid client request");
+            }
+
+            var principal = _jwtHelper.GetPrincipalFromExpiredToken(tokenDTO.Token);
+            if (principal == null)
+            {
+                return BadRequest("Invalid token");
+            }
+
+            var userId = principal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            var userResponse = await _userService.GetUserByIdAsync(userId);
+
+            if (!userResponse.IsSucceed)
+            {
+                return Unauthorized(userResponse.Message);
+            }
+
+            var user = userResponse.Data as ApplicationUser;
+
+            if (user == null || user.RefreshToken != tokenDTO.RefreshToken || user.RefreshTokenExpiryTime <= DateTime.Now)
+            {
+                return Unauthorized("Invalid refresh token");
+            }
+
+            var newAccessToken = _jwtHelper.GenerateJwtToken(user);
+            var newRefreshToken = _jwtHelper.GenerateRefreshToken();
+
+            user.RefreshToken = newRefreshToken;
+            user.RefreshTokenExpiryTime = DateTime.Now.AddDays(7);
+            await _userService.UpdateUserAsync(user);
+
+            return Ok(new { Token = newAccessToken, RefreshToken = newRefreshToken });
+        }
+
+
     }
 
 }
