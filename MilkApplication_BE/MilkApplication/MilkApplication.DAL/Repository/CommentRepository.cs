@@ -1,4 +1,5 @@
-﻿using MilkApplication.DAL.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using MilkApplication.DAL.Data;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Repository.IRepositpry;
 using System;

@@ -17,6 +17,7 @@ namespace MilkApplication.DAL.Mapper
             CreateMap<Product, ProductDTO>().ReverseMap();
             CreateMap<Category, CategoryDTO>().ReverseMap();
             CreateMap<Origin, OriginDTO>().ReverseMap();
+            CreateMap<Comment, CommentDTO>().ReverseMap();  
         }
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MilkApplication.DAL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3b3313cd45b9a0eeb22c878a83e2146c0dcee0f9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2550df565b6d7c19a818a004de3e6957f5facf7a")]
 [assembly: System.Reflection.AssemblyProductAttribute("MilkApplication.DAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MilkApplication.DAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
