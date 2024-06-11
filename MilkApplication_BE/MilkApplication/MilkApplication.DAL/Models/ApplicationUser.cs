@@ -14,5 +14,6 @@ namespace MilkApplication.DAL.Models
         public UserStatus Status { get; set; }
         public string RefreshToken { get; set; }
         public DateTime RefreshTokenExpiryTime { get; set; }
+        public ICollection<Comment> Comments { get; set; } = new List<Comment>();
     }
 }
