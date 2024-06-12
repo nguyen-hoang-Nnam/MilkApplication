@@ -15,6 +15,7 @@ namespace MilkApplication.DAL.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Origin> Origins { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -32,6 +33,18 @@ namespace MilkApplication.DAL.Data
                 .HasOne(p => p.Origin)
                 .WithMany(o => o.Products)
                 .HasForeignKey(p => p.originId)
+                .OnDelete(DeleteBehavior.Cascade);
+            // Configure Comment - Product relationship
+            modelBuilder.Entity<Comment>()
+                .HasOne(c => c.Product)
+                .WithMany(p => p.Comment)
+                .HasForeignKey(c => c.productId)
+                .OnDelete(DeleteBehavior.Cascade);
+            // Configure Comment - User relationship
+            modelBuilder.Entity<Comment>()
+                .HasOne(c => c.User)
+                .WithMany(u => u.Comment)
+                .HasForeignKey(c => c.Id)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

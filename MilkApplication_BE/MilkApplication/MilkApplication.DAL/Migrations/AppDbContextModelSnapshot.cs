@@ -248,7 +248,40 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasKey("categoryId");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("MilkApplication.DAL.Models.Comment", b =>
+                {
+                    b.Property<int>("commentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("commentId"));
+
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("date");
+
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<string>("commentDetail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("productId")
+                        .HasColumnType("int");
+
+                    b.HasKey("commentId");
+
+                    b.HasIndex("Id");
+
+                    b.HasIndex("productId");
+
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Origin", b =>
@@ -265,7 +298,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasKey("originId");
 
-                    b.ToTable("Origins", (string)null);
+                    b.ToTable("Origins");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Product", b =>
@@ -303,7 +336,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasIndex("originId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -357,6 +390,23 @@ namespace MilkApplication.DAL.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MilkApplication.DAL.Models.Comment", b =>
+                {
+                    b.HasOne("MilkApplication.DAL.Models.ApplicationUser", "User")
+                        .WithMany("Comment")
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MilkApplication.DAL.Models.Product", "Product")
+                        .WithMany("Comment")
+                        .HasForeignKey("productId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MilkApplication.DAL.Models.Product", b =>
                 {
                     b.HasOne("MilkApplication.DAL.Models.Category", "Category")
@@ -376,6 +426,11 @@ namespace MilkApplication.DAL.Migrations
                     b.Navigation("Origin");
                 });
 
+            modelBuilder.Entity("MilkApplication.DAL.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("Comment");
+                });
+
             modelBuilder.Entity("MilkApplication.DAL.Models.Category", b =>
                 {
                     b.Navigation("Products");
@@ -384,6 +439,11 @@ namespace MilkApplication.DAL.Migrations
             modelBuilder.Entity("MilkApplication.DAL.Models.Origin", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("MilkApplication.DAL.Models.Product", b =>
+                {
+                    b.Navigation("Comment");
                 });
 #pragma warning restore 612, 618
         }

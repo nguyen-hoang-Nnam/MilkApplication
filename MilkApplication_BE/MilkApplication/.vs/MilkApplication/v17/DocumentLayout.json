@@ -3,92 +3,48 @@
   "WorkspaceRootPath": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\irepositpry\\icommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\irepositpry\\icommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.bll\\service\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|solutionrelative:milkapplication.bll\\service\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|solutionrelative:milkapplication\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|solutionrelative:milkapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|solutionrelative:milkapplication\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|solutionrelative:milkapplication\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\origin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\origin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\helper\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\helper\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|solutionrelative:milkapplication\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240610093412_test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MilkApplication.DAL\\Migrations\\20240610093412_test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.bll\\service\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|solutionrelative:milkapplication.bll\\service\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.bll\\service\\iservice\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|solutionrelative:milkapplication.bll\\service\\iservice\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240610092733_update_DB.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MilkApplication.DAL\\Migrations\\20240610092733_update_DB.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\dto\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\dto\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\dto\\responsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\dto\\responsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\irepositpry\\iauthrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\irepositpry\\iauthrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\dto\\tokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\dto\\tokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.bll\\service\\iservice\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|solutionrelative:milkapplication.bll\\service\\iservice\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.bll\\service\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|solutionrelative:milkapplication.bll\\service\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.bll\\service\\originservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|solutionrelative:milkapplication.bll\\service\\originservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\irepositpry\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\irepositpry\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\irepositpry\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\irepositpry\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|solutionrelative:milkapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\commentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\commentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -99,8 +55,160 @@
       "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\irepositpry\\uow\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\commentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\commentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|solutionrelative:milkapplication\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\migrations\\20240610152826_comment_db.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\migrations\\20240610152826_comment_db.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.bll\\service\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|solutionrelative:milkapplication.bll\\service\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.bll\\service\\iservice\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|solutionrelative:milkapplication.bll\\service\\iservice\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|solutionrelative:milkapplication\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.bll\\service\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|solutionrelative:milkapplication.bll\\service\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\dto\\createusermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\dto\\createusermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\dto\\addusertorolemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\dto\\addusertorolemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.bll\\service\\iservice\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|solutionrelative:milkapplication.bll\\service\\iservice\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\dto\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\dto\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\dto\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\dto\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.bll\\service\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|solutionrelative:milkapplication.bll\\service\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\dto\\commentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\dto\\commentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\dto\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\dto\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\dto\\origindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\dto\\origindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\dto\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\dto\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\dto\\responsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\dto\\responsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\dto\\tokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\dto\\tokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\originrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\originrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\irepositpry\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\irepositpry\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.bll\\service\\iservice\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|solutionrelative:milkapplication.bll\\service\\iservice\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|solutionrelative:milkapplication\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.bll\\service\\iservice\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|solutionrelative:milkapplication.bll\\service\\iservice\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\enums\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\enums\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\enums\\userstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\enums\\userstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\irepositpry\\iauthrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\irepositpry\\iauthrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\mapper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\mapper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.bll\\service\\originservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|solutionrelative:milkapplication.bll\\service\\originservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\irepositpry\\icommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\irepositpry\\icommentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\helper\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\helper\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240610093412_test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MilkApplication.DAL\\Migrations\\20240610093412_test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\irepositpry\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\irepositpry\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\irepositpry\\ioriginrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -111,100 +219,16 @@
       "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\irepositpry\\iproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\dto\\commentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\dto\\commentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\dto\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\dto\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\dto\\origindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\dto\\origindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\dto\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\dto\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\enums\\userstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\enums\\userstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|solutionrelative:milkapplication\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\enums\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\enums\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\dto\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\dto\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|solutionrelative:milkapplication\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.bll\\service\\iservice\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|solutionrelative:milkapplication.bll\\service\\iservice\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.bll\\service\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|solutionrelative:milkapplication.bll\\service\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.bll\\service\\iservice\\ioriginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{252CBAA2-EBE2-467F-84BB-B625CB752F14}|MilkApplication.BLL\\MilkApplication.BLL.csproj|solutionrelative:milkapplication.bll\\service\\iservice\\ioriginservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|solutionrelative:milkapplication\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\irepositpry\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\irepositpry\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\originrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\originrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\repository\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\repository\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication\\controllers\\origincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42601B38-D725-4D9A-AC04-DD6D80FEE010}|MilkApplication\\MilkApplication.csproj|solutionrelative:milkapplication\\controllers\\origincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\models\\origin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\models\\origin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\mapper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\mapper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\migrations\\20240530141642_data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -245,6 +269,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\migrations\\20240608043841_identity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\migrations\\20240608043841_identity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|d:\\milk_application\\milkapplication_be\\milkapplication\\milkapplication.dal\\migrations\\20240610092733_update_db.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E068ABA-566B-42E0-B7A0-750122218F08}|MilkApplication.DAL\\MilkApplication.DAL.csproj|solutionrelative:milkapplication.dal\\migrations\\20240610092733_update_db.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -254,7 +282,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 77,
+          "SelectedChildIndex": 79,
           "Children": [
             {
               "$type": "Bookmark",
@@ -530,6 +558,10 @@
             },
             {
               "$type": "Bookmark",
+              "Name": "ST:11:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:10:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
             },
             {
@@ -537,311 +569,16 @@
               "Name": "ST:4:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "MilkApplication\\Controllers\\AuthController.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "MilkApplication\\Controllers\\AuthController.cs",
-              "ViewState": "AQIAAD4AAAAAAAAAAAAwwBUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T04:22:41.765Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:9:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "JwtHelper.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Helper\\JwtHelper.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Helper\\JwtHelper.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Helper\\JwtHelper.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Helper\\JwtHelper.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAYwCkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T04:27:10.182Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ApplicationUser.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\ApplicationUser.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\ApplicationUser.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\ApplicationUser.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Models\\ApplicationUser.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwA8AAAA8AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T04:03:17.533Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\AuthService.cs",
-              "RelativeDocumentMoniker": "MilkApplication.BLL\\Service\\AuthService.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\AuthService.cs",
-              "RelativeToolTip": "MilkApplication.BLL\\Service\\AuthService.cs",
-              "ViewState": "AQIAAEQAAAAAAAAAAAAIwCAAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T04:22:16.031Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IAuthService.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\IService\\IAuthService.cs",
-              "RelativeDocumentMoniker": "MilkApplication.BLL\\Service\\IService\\IAuthService.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\IService\\IAuthService.cs",
-              "RelativeToolTip": "MilkApplication.BLL\\Service\\IService\\IAuthService.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAIwBEAAAAzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T04:21:48.649Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "IAuthRepository.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\IAuthRepository.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\IRepositpry\\IAuthRepository.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\IAuthRepository.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Repository\\IRepositpry\\IAuthRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAA+AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T04:18:14.484Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Product.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\Product.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\Product.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\Product.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Models\\Product.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAAwBEAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T09:04:25.475Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ICommentRepository.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\ICommentRepository.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\IRepositpry\\ICommentRepository.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\ICommentRepository.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Repository\\IRepositpry\\ICommentRepository.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAAAAA0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T03:23:50.425Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "20240610092733_update_DB.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240610092733_update_DB.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Migrations\\20240610092733_update_DB.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240610092733_update_DB.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Migrations\\20240610092733_update_DB.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T09:27:33.168Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "20240610093412_test.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240610093412_test.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Migrations\\20240610093412_test.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240610093412_test.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Migrations\\20240610093412_test.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T09:34:12.693Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "AuthRepository.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\AuthRepository.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\AuthRepository.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\AuthRepository.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Repository\\AuthRepository.cs",
-              "ViewState": "AQIAADEAAAAAAAAAAAAqwE4AAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T04:20:26.342Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "ResponseDTO.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\ResponseDTO.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\DTO\\ResponseDTO.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\ResponseDTO.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Models\\DTO\\ResponseDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T12:39:32.367Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:10:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "CategoryDTO.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\CategoryDTO.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\DTO\\CategoryDTO.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\CategoryDTO.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Models\\DTO\\CategoryDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T03:34:50.036Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "TokenDTO.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\TokenDTO.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\DTO\\TokenDTO.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\TokenDTO.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Models\\DTO\\TokenDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T09:06:09.037Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "IProductService.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\IService\\IProductService.cs",
-              "RelativeDocumentMoniker": "MilkApplication.BLL\\Service\\IService\\IProductService.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\IService\\IProductService.cs",
-              "RelativeToolTip": "MilkApplication.BLL\\Service\\IService\\IProductService.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA0AAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T09:09:18.492Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "UnitOfWork.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\UnitOfWork.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\UnitOfWork.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\UnitOfWork.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Repository\\UnitOfWork.cs",
-              "ViewState": "AQIAABwAAAAAAAAAAAAQwCcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-28T13:34:11.016Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\Program.cs",
-              "RelativeDocumentMoniker": "MilkApplication\\Program.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\Program.cs",
-              "RelativeToolTip": "MilkApplication\\Program.cs",
-              "ViewState": "AQIAAEEAAAAAAAAAAAAowFIAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T08:56:28.319Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "IUserRepository.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\IUserRepository.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\IRepositpry\\IUserRepository.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\IUserRepository.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Repository\\IRepositpry\\IUserRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAABJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T03:29:32.703Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "ProductService.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\ProductService.cs",
-              "RelativeDocumentMoniker": "MilkApplication.BLL\\Service\\ProductService.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\ProductService.cs",
-              "RelativeToolTip": "MilkApplication.BLL\\Service\\ProductService.cs",
-              "ViewState": "AQIAABcAAAAAAAAAAADgvw4AAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T09:09:59.522Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "UserRepository.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\UserRepository.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\UserRepository.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\UserRepository.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Repository\\UserRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T03:30:16.222Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "OriginService.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\OriginService.cs",
-              "RelativeDocumentMoniker": "MilkApplication.BLL\\Service\\OriginService.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\OriginService.cs",
-              "RelativeToolTip": "MilkApplication.BLL\\Service\\OriginService.cs",
-              "ViewState": "AQIAADwAAAAAAAAAAAAgwEkAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T14:23:47.321Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "ProductRepository.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\ProductRepository.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\ProductRepository.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\ProductRepository.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Repository\\ProductRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T12:34:40.793Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "IUnitOfWork.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\UoW\\IUnitOfWork.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\IRepositpry\\UoW\\IUnitOfWork.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\UoW\\IUnitOfWork.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Repository\\IRepositpry\\UoW\\IUnitOfWork.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAASwBEAAAA1AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-28T13:32:34.918Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "ICategoryRepository.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\ICategoryRepository.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\IRepositpry\\ICategoryRepository.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\ICategoryRepository.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Repository\\IRepositpry\\ICategoryRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T03:29:53.255Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
               "Title": "CommentRepository.cs",
               "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\CommentRepository.cs",
               "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\CommentRepository.cs",
@@ -853,127 +590,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "IProductRepository.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\IProductRepository.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\IRepositpry\\IProductRepository.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\IProductRepository.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Repository\\IRepositpry\\IProductRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAFAAAA",
+              "DocumentIndex": 11,
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\UnitOfWork.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\UnitOfWork.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Repository\\UnitOfWork.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAQwB0AAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T12:33:11.323Z"
+              "WhenOpened": "2024-05-28T13:34:11.016Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "CommentDTO.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\CommentDTO.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\DTO\\CommentDTO.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\CommentDTO.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Models\\DTO\\CommentDTO.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAxwA8AAAAmAAAA",
+              "DocumentIndex": 12,
+              "Title": "IUnitOfWork.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\UoW\\IUnitOfWork.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\IRepositpry\\UoW\\IUnitOfWork.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\UoW\\IUnitOfWork.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Repository\\IRepositpry\\UoW\\IUnitOfWork.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAASwBIAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T03:21:47.851Z"
+              "WhenOpened": "2024-05-28T13:32:34.918Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "IOriginRepository.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\IOriginRepository.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\IRepositpry\\IOriginRepository.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\IOriginRepository.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Repository\\IRepositpry\\IOriginRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T14:19:04.368Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "ProductDTO.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\ProductDTO.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\DTO\\ProductDTO.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\ProductDTO.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Models\\DTO\\ProductDTO.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAowBIAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-28T14:25:49.718Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "Comment.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\Comment.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\Comment.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\Comment.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Models\\Comment.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAzwBUAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T03:11:16.646Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "UserDTO.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\UserDTO.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\DTO\\UserDTO.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\UserDTO.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Models\\DTO\\UserDTO.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA4AAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T03:16:42.804Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "OriginDTO.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\OriginDTO.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\DTO\\OriginDTO.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\OriginDTO.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Models\\DTO\\OriginDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T03:38:03.054Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "LoginDTO.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\LoginDTO.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\DTO\\LoginDTO.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\LoginDTO.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Models\\DTO\\LoginDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T04:24:03.332Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "UserStatus.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\enums\\UserStatus.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\enums\\UserStatus.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\enums\\UserStatus.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\enums\\UserStatus.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T04:33:11.042Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "UserRole.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\enums\\UserRole.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\enums\\UserRole.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\enums\\UserRole.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\enums\\UserRole.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T04:07:03.631Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 3,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\appsettings.json",
               "RelativeDocumentMoniker": "MilkApplication\\appsettings.json",
@@ -985,7 +626,320 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\Program.cs",
+              "RelativeDocumentMoniker": "MilkApplication\\Program.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\Program.cs",
+              "RelativeToolTip": "MilkApplication\\Program.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAowHwAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T08:56:28.319Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Comment.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\Comment.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\Comment.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\Comment.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Models\\Comment.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-10T03:11:16.646Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\UserService.cs",
+              "RelativeDocumentMoniker": "MilkApplication.BLL\\Service\\UserService.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\UserService.cs",
+              "RelativeToolTip": "MilkApplication.BLL\\Service\\UserService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-10T14:58:34.383Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\ApplicationUser.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\ApplicationUser.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Models\\ApplicationUser.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T04:03:17.533Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Category.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\Category.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\Category.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Models\\Category.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwA4AAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T03:26:52.827Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "MilkApplication\\Controllers\\CategoryController.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "MilkApplication\\Controllers\\CategoryController.cs",
+              "ViewState": "AQIAAEYAAAAAAAAAAAAswBwAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T03:56:47.87Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "MilkApplication\\Controllers\\ProductController.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "MilkApplication\\Controllers\\ProductController.cs",
+              "ViewState": "AQIAADkAAAAAAAAAAADwv04AAABDAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T09:20:51.82Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Origin.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\Origin.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\Origin.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\Origin.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Models\\Origin.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T03:37:05.689Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Product.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\Product.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\Product.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Models\\Product.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAxwBkAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T09:04:25.475Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "MilkApplication\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\Controllers\\UserController.cs",
+              "RelativeToolTip": "MilkApplication\\Controllers\\UserController.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAcwCMAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-10T15:00:15.67Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "20240610152826_comment_DB.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240610152826_comment_DB.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Migrations\\20240610152826_comment_DB.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240610152826_comment_DB.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Migrations\\20240610152826_comment_DB.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-10T15:28:26.983Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\ProductService.cs",
+              "RelativeDocumentMoniker": "MilkApplication.BLL\\Service\\ProductService.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\ProductService.cs",
+              "RelativeToolTip": "MilkApplication.BLL\\Service\\ProductService.cs",
+              "ViewState": "AQIAADUAAAAAAAAAAAAIwGUAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T09:09:59.522Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\IService\\IUserService.cs",
+              "RelativeDocumentMoniker": "MilkApplication.BLL\\Service\\IService\\IUserService.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\IService\\IUserService.cs",
+              "RelativeToolTip": "MilkApplication.BLL\\Service\\IService\\IUserService.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAnwA0AAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-10T14:56:34.66Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "MilkApplication\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "MilkApplication\\Controllers\\AuthController.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAgwCoAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T04:22:41.765Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\AuthService.cs",
+              "RelativeDocumentMoniker": "MilkApplication.BLL\\Service\\AuthService.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\AuthService.cs",
+              "RelativeToolTip": "MilkApplication.BLL\\Service\\AuthService.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAIwBcAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T04:22:16.031Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "CreateUserModel.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\CreateUserModel.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\DTO\\CreateUserModel.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\CreateUserModel.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Models\\DTO\\CreateUserModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-10T15:04:39.075Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "UserDTO.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\UserDTO.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\DTO\\UserDTO.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\UserDTO.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Models\\DTO\\UserDTO.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAwAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-10T03:16:42.804Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "AddUserToRoleModel.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\AddUserToRoleModel.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\DTO\\AddUserToRoleModel.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\AddUserToRoleModel.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Models\\DTO\\AddUserToRoleModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-10T15:03:02.597Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\UserRepository.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\UserRepository.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\UserRepository.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Repository\\UserRepository.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAIcAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-10T03:30:16.222Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "IProductService.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\IService\\IProductService.cs",
+              "RelativeDocumentMoniker": "MilkApplication.BLL\\Service\\IService\\IProductService.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\IService\\IProductService.cs",
+              "RelativeToolTip": "MilkApplication.BLL\\Service\\IService\\IProductService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T09:09:18.492Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "ProductDTO.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\ProductDTO.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\DTO\\ProductDTO.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\ProductDTO.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Models\\DTO\\ProductDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-28T14:25:49.718Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "CategoryService.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\CategoryService.cs",
+              "RelativeDocumentMoniker": "MilkApplication.BLL\\Service\\CategoryService.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\CategoryService.cs",
+              "RelativeToolTip": "MilkApplication.BLL\\Service\\CategoryService.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAmwEAAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T03:45:06.993Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "CategoryDTO.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\CategoryDTO.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\DTO\\CategoryDTO.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\CategoryDTO.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Models\\DTO\\CategoryDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T03:34:50.036Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "CommentDTO.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\CommentDTO.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\DTO\\CommentDTO.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\CommentDTO.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Models\\DTO\\CommentDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwA8AAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-10T03:21:47.851Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "LoginDTO.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\LoginDTO.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\DTO\\LoginDTO.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\LoginDTO.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Models\\DTO\\LoginDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T04:24:03.332Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "OriginDTO.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\OriginDTO.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\DTO\\OriginDTO.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\OriginDTO.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Models\\DTO\\OriginDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T03:38:03.054Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
               "Title": "RegisterDTO.cs",
               "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\RegisterDTO.cs",
               "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\DTO\\RegisterDTO.cs",
@@ -997,111 +951,183 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
-              "Title": "20240608043841_identity.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240608043841_identity.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Migrations\\20240608043841_identity.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240608043841_identity.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Migrations\\20240608043841_identity.cs",
-              "ViewState": "AQIAAJEAAAAAAAAAAAAgwAAAAAAAAAAA",
+              "DocumentIndex": 32,
+              "Title": "TokenDTO.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\TokenDTO.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\DTO\\TokenDTO.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\TokenDTO.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Models\\DTO\\TokenDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T04:38:41.558Z"
+              "WhenOpened": "2024-06-10T09:06:09.037Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 31,
+              "Title": "ResponseDTO.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\ResponseDTO.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\DTO\\ResponseDTO.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\DTO\\ResponseDTO.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Models\\DTO\\ResponseDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T12:39:32.367Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "OriginRepository.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\OriginRepository.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\OriginRepository.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\OriginRepository.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Repository\\OriginRepository.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABcAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T14:19:44.466Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\ProductRepository.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\ProductRepository.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Repository\\ProductRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T12:34:40.793Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\IRepositpry\\IUserRepository.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\IUserRepository.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Repository\\IRepositpry\\IUserRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwBUAAABAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-10T03:29:32.703Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\IService\\IAuthService.cs",
+              "RelativeDocumentMoniker": "MilkApplication.BLL\\Service\\IService\\IAuthService.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\IService\\IAuthService.cs",
+              "RelativeToolTip": "MilkApplication.BLL\\Service\\IService\\IAuthService.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAIwBEAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T04:21:48.649Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "MilkApplication\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "MilkApplication\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-10T15:41:30.958Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
               "Title": "ICategoryService.cs",
               "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\IService\\ICategoryService.cs",
               "RelativeDocumentMoniker": "MilkApplication.BLL\\Service\\IService\\ICategoryService.cs",
               "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\IService\\ICategoryService.cs",
               "RelativeToolTip": "MilkApplication.BLL\\Service\\IService\\ICategoryService.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAIBJwBEAAAAFAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABEAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-30T03:42:18.108Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 39,
+              "Title": "UserRole.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\enums\\UserRole.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\enums\\UserRole.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\enums\\UserRole.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\enums\\UserRole.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T04:07:03.631Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "UserStatus.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\enums\\UserStatus.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\enums\\UserStatus.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\enums\\UserStatus.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\enums\\UserStatus.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T04:33:11.042Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "AuthRepository.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\AuthRepository.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\AuthRepository.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\AuthRepository.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Repository\\AuthRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T04:20:26.342Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Data\\AppDbContext.cs",
               "RelativeDocumentMoniker": "MilkApplication.DAL\\Data\\AppDbContext.cs",
               "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Data\\AppDbContext.cs",
               "RelativeToolTip": "MilkApplication.DAL\\Data\\AppDbContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAIBJwA8AAAA3AAAA",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAgwAsAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-26T09:05:01.383Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "CategoryController.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\Controllers\\CategoryController.cs",
-              "RelativeDocumentMoniker": "MilkApplication\\Controllers\\CategoryController.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\Controllers\\CategoryController.cs",
-              "RelativeToolTip": "MilkApplication\\Controllers\\CategoryController.cs",
-              "ViewState": "AQIAAFgAAAAAAAAAAADwvxwAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T03:56:47.87Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "CategoryRepository.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\CategoryRepository.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\CategoryRepository.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\CategoryRepository.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Repository\\CategoryRepository.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAIBZwBgAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T03:31:56.856Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "CategoryService.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\CategoryService.cs",
-              "RelativeDocumentMoniker": "MilkApplication.BLL\\Service\\CategoryService.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\CategoryService.cs",
-              "RelativeToolTip": "MilkApplication.BLL\\Service\\CategoryService.cs",
-              "ViewState": "AQIAADkAAAAAAAAAAAAmwEAAAABQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T03:45:06.993Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "IOriginService.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\IService\\IOriginService.cs",
-              "RelativeDocumentMoniker": "MilkApplication.BLL\\Service\\IService\\IOriginService.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\IService\\IOriginService.cs",
-              "RelativeToolTip": "MilkApplication.BLL\\Service\\IService\\IOriginService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAA6AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T14:22:24.422Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 43,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "MilkApplication\\Controllers\\ProductController.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "MilkApplication\\Controllers\\ProductController.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAUwBQAAAAIAAAA",
+              "Title": "IAuthRepository.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\IAuthRepository.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\IRepositpry\\IAuthRepository.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\IAuthRepository.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Repository\\IRepositpry\\IAuthRepository.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAjwBIAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T09:20:51.82Z"
+              "WhenOpened": "2024-06-08T04:18:14.484Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 44,
-              "Title": "IGenericRepository.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\IGenericRepository.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\IRepositpry\\IGenericRepository.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\IGenericRepository.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Repository\\IRepositpry\\IGenericRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAgAAAA",
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Mapper\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Mapper\\MappingProfile.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Mapper\\MappingProfile.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Mapper\\MappingProfile.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T09:06:09.514Z"
+              "WhenOpened": "2024-05-28T14:23:47.423Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "OriginService.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\OriginService.cs",
+              "RelativeDocumentMoniker": "MilkApplication.BLL\\Service\\OriginService.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\OriginService.cs",
+              "RelativeToolTip": "MilkApplication.BLL\\Service\\OriginService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEkAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T14:23:47.321Z"
             },
             {
               "$type": "Document",
@@ -1117,19 +1143,139 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
-              "Title": "OriginRepository.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\OriginRepository.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\OriginRepository.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\OriginRepository.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Repository\\OriginRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAIBJwBcAAAAwAAAA",
+              "DocumentIndex": 47,
+              "Title": "CategoryRepository.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\CategoryRepository.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\CategoryRepository.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\CategoryRepository.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Repository\\CategoryRepository.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAAABgAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T14:19:44.466Z"
+              "WhenOpened": "2024-05-30T03:31:56.856Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 67,
+              "Title": "20240610092733_update_DB.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240610092733_update_DB.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Migrations\\20240610092733_update_DB.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240610092733_update_DB.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Migrations\\20240610092733_update_DB.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-10T09:27:33.168Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "ICommentRepository.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\ICommentRepository.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\IRepositpry\\ICommentRepository.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\ICommentRepository.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Repository\\IRepositpry\\ICommentRepository.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-10T03:23:50.425Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "JwtHelper.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Helper\\JwtHelper.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Helper\\JwtHelper.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Helper\\JwtHelper.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Helper\\JwtHelper.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAYwCkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T04:27:10.182Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "20240610093412_test.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240610093412_test.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Migrations\\20240610093412_test.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240610093412_test.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Migrations\\20240610093412_test.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-10T09:34:12.693Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "ICategoryRepository.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\ICategoryRepository.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\IRepositpry\\ICategoryRepository.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\ICategoryRepository.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Repository\\IRepositpry\\ICategoryRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T03:29:53.255Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "IProductRepository.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\IProductRepository.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\IRepositpry\\IProductRepository.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\IProductRepository.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Repository\\IRepositpry\\IProductRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T12:33:11.323Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "IOriginRepository.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\IOriginRepository.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\IRepositpry\\IOriginRepository.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\IOriginRepository.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Repository\\IRepositpry\\IOriginRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T14:19:04.368Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "20240608043841_identity.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240608043841_identity.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Migrations\\20240608043841_identity.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240608043841_identity.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Migrations\\20240608043841_identity.cs",
+              "ViewState": "AQIAAJEAAAAAAAAAAAAgwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T04:38:41.558Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "IOriginService.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\IService\\IOriginService.cs",
+              "RelativeDocumentMoniker": "MilkApplication.BLL\\Service\\IService\\IOriginService.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.BLL\\Service\\IService\\IOriginService.cs",
+              "RelativeToolTip": "MilkApplication.BLL\\Service\\IService\\IOriginService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-30T14:22:24.422Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "IGenericRepository.cs",
+              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\IGenericRepository.cs",
+              "RelativeDocumentMoniker": "MilkApplication.DAL\\Repository\\IRepositpry\\IGenericRepository.cs",
+              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Repository\\IRepositpry\\IGenericRepository.cs",
+              "RelativeToolTip": "MilkApplication.DAL\\Repository\\IRepositpry\\IGenericRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T09:06:09.514Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
               "Title": "OriginController.cs",
               "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\Controllers\\OriginController.cs",
               "RelativeDocumentMoniker": "MilkApplication\\Controllers\\OriginController.cs",
@@ -1141,43 +1287,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
-              "Title": "Category.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\Category.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\Category.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\Category.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Models\\Category.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwA4AAAA6AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T03:26:52.827Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 49,
-              "Title": "Origin.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\Origin.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Models\\Origin.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Models\\Origin.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Models\\Origin.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T03:37:05.689Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 50,
-              "Title": "MappingProfile.cs",
-              "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Mapper\\MappingProfile.cs",
-              "RelativeDocumentMoniker": "MilkApplication.DAL\\Mapper\\MappingProfile.cs",
-              "ToolTip": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Mapper\\MappingProfile.cs",
-              "RelativeToolTip": "MilkApplication.DAL\\Mapper\\MappingProfile.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-28T14:23:47.423Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 57,
               "Title": "20240530141642_data.cs",
               "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240530141642_data.cs",
               "RelativeDocumentMoniker": "MilkApplication.DAL\\Migrations\\20240530141642_data.cs",
@@ -1189,7 +1299,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 64,
               "Title": "20240530151705_update.cs",
               "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240530151705_update.cs",
               "RelativeDocumentMoniker": "MilkApplication.DAL\\Migrations\\20240530151705_update.cs",
@@ -1201,7 +1311,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 58,
               "Title": "20240530151502_update.cs",
               "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240530151502_update.cs",
               "RelativeDocumentMoniker": "MilkApplication.DAL\\Migrations\\20240530151502_update.cs",
@@ -1212,7 +1322,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 65,
               "Title": "20240530150953_update-data.cs",
               "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240530150953_update-data.cs",
               "RelativeDocumentMoniker": "MilkApplication.DAL\\Migrations\\20240530150953_update-data.cs",
@@ -1224,7 +1334,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 59,
               "Title": "20240530141551_data.cs",
               "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240530141551_data.cs",
               "RelativeDocumentMoniker": "MilkApplication.DAL\\Migrations\\20240530141551_data.cs",
@@ -1235,7 +1345,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 60,
               "Title": "20240530141031_AlterIdentityColumn.cs",
               "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240530141031_AlterIdentityColumn.cs",
               "RelativeDocumentMoniker": "MilkApplication.DAL\\Migrations\\20240530141031_AlterIdentityColumn.cs",
@@ -1246,7 +1356,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 61,
               "Title": "20240530140808_update-data.cs",
               "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240530140808_update-data.cs",
               "RelativeDocumentMoniker": "MilkApplication.DAL\\Migrations\\20240530140808_update-data.cs",
@@ -1257,7 +1367,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 62,
               "Title": "20240526125031_Test_DB.cs",
               "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication.DAL\\Migrations\\20240526125031_Test_DB.cs",
               "RelativeDocumentMoniker": "MilkApplication.DAL\\Migrations\\20240526125031_Test_DB.cs",
@@ -1268,7 +1378,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 63,
               "Title": "MilkApplication.http",
               "DocumentMoniker": "D:\\Milk_Application\\MilkApplication_BE\\MilkApplication\\MilkApplication\\MilkApplication.http",
               "RelativeDocumentMoniker": "MilkApplication\\MilkApplication.http",

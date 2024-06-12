@@ -17,12 +17,12 @@ namespace MilkApplication.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly IAuthService _userService;
+        private readonly IAuthService _authService;
         private readonly JwtHelper _jwtHelper;
 
-        public AuthController(IAuthService userService, JwtHelper jwtHelper)
+        public AuthController(IAuthService authService, JwtHelper jwtHelper)
         {
-            _userService = userService;
+            _authService = authService;
             _jwtHelper = jwtHelper;
         }
 
@@ -37,7 +37,7 @@ namespace MilkApplication.Controllers
                 Status = UserStatus.IsActive
             };
 
-            var result = await _userService.RegisterUserAsync(user, model.Password, UserRole.User);
+            var result = await _authService.RegisterUserAsync(user, model.Password, UserRole.User);
             if (!result.IsSucceed)
             {
                 return BadRequest(result.Message);
@@ -49,7 +49,7 @@ namespace MilkApplication.Controllers
         [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] LoginDTO model)
         {
-            var userResponse = await _userService.GetUserByEmailAsync(model.Email);
+            var userResponse = await _authService.GetUserByEmailAsync(model.Email);
             if (!userResponse.IsSucceed)
             {
                 return Unauthorized(userResponse.Message);
@@ -61,7 +61,7 @@ namespace MilkApplication.Controllers
                 return Unauthorized("User account is disabled");
             }
 
-            var passwordResponse = await _userService.ValidateUserAsync(user, model.Password);
+            var passwordResponse = await _authService.ValidateUserAsync(user, model.Password);
             if (!passwordResponse.IsSucceed)
             {
                 return Unauthorized(passwordResponse.Message);
@@ -72,7 +72,7 @@ namespace MilkApplication.Controllers
 
             user.RefreshToken = refreshToken;
             user.RefreshTokenExpiryTime = DateTime.Now.AddDays(7);
-            await _userService.UpdateUserAsync(user);
+            await _authService.UpdateUserAsync(user);
 
             return Ok(new { Token = token, RefreshToken = refreshToken });
         }
@@ -92,7 +92,7 @@ namespace MilkApplication.Controllers
             }
 
             var userId = principal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-            var userResponse = await _userService.GetUserByIdAsync(userId);
+            var userResponse = await _authService.GetUserByIdAsync(userId);
 
             if (!userResponse.IsSucceed)
             {
@@ -111,7 +111,7 @@ namespace MilkApplication.Controllers
 
             user.RefreshToken = newRefreshToken;
             user.RefreshTokenExpiryTime = DateTime.Now.AddDays(7);
-            await _userService.UpdateUserAsync(user);
+            await _authService.UpdateUserAsync(user);
 
             return Ok(new { Token = newAccessToken, RefreshToken = newRefreshToken });
         }

@@ -1,0 +1,15 @@
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication.DAL\bin\Release\net8.0\MilkApplication.DAL.deps.json
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication.DAL\bin\Release\net8.0\MilkApplication.DAL.runtimeconfig.json
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication.DAL\bin\Release\net8.0\MilkApplication.DAL.dll
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication.DAL\bin\Release\net8.0\MilkApplication.DAL.pdb
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication.DAL\obj\Release\net8.0\MilkApplication.DAL.csproj.AssemblyReference.cache
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication.DAL\obj\Release\net8.0\MilkApplication.DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication.DAL\obj\Release\net8.0\MilkApplication.DAL.AssemblyInfoInputs.cache
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication.DAL\obj\Release\net8.0\MilkApplication.DAL.AssemblyInfo.cs
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication.DAL\obj\Release\net8.0\MilkApplication.DAL.csproj.CoreCompileInputs.cache
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication.DAL\obj\Release\net8.0\MilkApplication.DAL.sourcelink.json
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication.DAL\obj\Release\net8.0\MilkApplication.DAL.dll
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication.DAL\obj\Release\net8.0\refint\MilkApplication.DAL.dll
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication.DAL\obj\Release\net8.0\MilkApplication.DAL.pdb
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication.DAL\obj\Release\net8.0\MilkApplication.DAL.genruntimeconfig.cache
+D:\Milk_Application\MilkApplication_BE\MilkApplication\MilkApplication.DAL\obj\Release\net8.0\ref\MilkApplication.DAL.dll
