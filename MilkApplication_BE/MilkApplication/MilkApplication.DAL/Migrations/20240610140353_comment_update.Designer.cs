@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MilkApplication.DAL.Data;
 
@@ -11,9 +12,11 @@ using MilkApplication.DAL.Data;
 namespace MilkApplication.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240610140353_comment_update")]
+    partial class comment_update
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -281,7 +284,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasIndex("productId");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comment");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Origin", b =>
@@ -393,12 +396,12 @@ namespace MilkApplication.DAL.Migrations
             modelBuilder.Entity("MilkApplication.DAL.Models.Comment", b =>
                 {
                     b.HasOne("MilkApplication.DAL.Models.ApplicationUser", "User")
-                        .WithMany("Comments")
+                        .WithMany("Comment")
                         .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("MilkApplication.DAL.Models.Product", "Product")
-                        .WithMany("Comments")
+                        .WithMany("Comment")
                         .HasForeignKey("productId")
                         .OnDelete(DeleteBehavior.Cascade);
 
@@ -428,7 +431,7 @@ namespace MilkApplication.DAL.Migrations
 
             modelBuilder.Entity("MilkApplication.DAL.Models.ApplicationUser", b =>
                 {
-                    b.Navigation("Comments");
+                    b.Navigation("Comment");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Category", b =>
@@ -443,7 +446,7 @@ namespace MilkApplication.DAL.Migrations
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Product", b =>
                 {
-                    b.Navigation("Comments");
+                    b.Navigation("Comment");
                 });
 #pragma warning restore 612, 618
         }

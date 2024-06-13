@@ -37,13 +37,13 @@ namespace MilkApplication.DAL.Data
             // Configure Comment - Product relationship
             modelBuilder.Entity<Comment>()
                 .HasOne(c => c.Product)
-                .WithMany(p => p.Comment)
+                .WithMany(p => p.Comments)
                 .HasForeignKey(c => c.productId)
                 .OnDelete(DeleteBehavior.Cascade);
             // Configure Comment - User relationship
             modelBuilder.Entity<Comment>()
                 .HasOne(c => c.User)
-                .WithMany(u => u.Comment)
+                .WithMany(u => u.Comments)
                 .HasForeignKey(c => c.Id)
                 .OnDelete(DeleteBehavior.Cascade);
         }
