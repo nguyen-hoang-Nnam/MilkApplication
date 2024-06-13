@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\MilkApplication_BE",
+    "\\MilkApplication_BE\\MilkApplication"
   ],
-  "SelectedNode": "\\MilkApplication.sln",
+  "SelectedNode": "\\MilkApplication_BE\\MilkApplication\\MilkApplication.sln",
   "PreviewInSolutionExplorer": false
 }
