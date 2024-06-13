@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using MilkApplication.DAL.enums;
 using MilkApplication.DAL.Models;
 
 namespace MilkApplication.Helpers
@@ -18,15 +19,19 @@ namespace MilkApplication.Helpers
             _configuration = configuration;
         }
 
-        public string GenerateJwtToken(ApplicationUser user)
+        public string GenerateJwtToken(ApplicationUser user, string role)
         {
 
-            var claims = new[]
+            var userRole = (UserRole)Enum.Parse(typeof(UserRole), role, true);
+
+            var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.Id),
+                new Claim(JwtRegisteredClaimNames.NameId, user.Id),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim("role", role),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.NameIdentifier, user.Id)
+                new Claim(ClaimTypes.NameIdentifier, user.Id),
+                new Claim(ClaimTypes.Role, role.ToString()),
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"]));

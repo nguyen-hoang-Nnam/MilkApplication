@@ -1,12 +1,15 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using MilkApplication.BLL.Service;
 using MilkApplication.BLL.Service.IService;
 using MilkApplication.DAL.enums;
+using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Models.DTO;
 using MilkApplication.Helpers;
+using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -19,11 +22,13 @@ namespace MilkApplication.Controllers
     {
         private readonly IAuthService _authService;
         private readonly JwtHelper _jwtHelper;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public AuthController(IAuthService authService, JwtHelper jwtHelper)
+        public AuthController(IAuthService authService, JwtHelper jwtHelper, UserManager<ApplicationUser> userManager)
         {
             _authService = authService;
             _jwtHelper = jwtHelper;
+            _userManager = userManager;
         }
 
         [HttpPost("Register")]
@@ -66,8 +71,9 @@ namespace MilkApplication.Controllers
             {
                 return Unauthorized(passwordResponse.Message);
             }
-
-            var token = _jwtHelper.GenerateJwtToken(user);
+            var roles = await _userManager.GetRolesAsync(user);
+            var userRole = roles.FirstOrDefault();
+            var token = _jwtHelper.GenerateJwtToken(user, userRole);
             var refreshToken = _jwtHelper.GenerateRefreshToken();
 
             user.RefreshToken = refreshToken;
@@ -105,8 +111,9 @@ namespace MilkApplication.Controllers
             {
                 return Unauthorized("Invalid refresh token");
             }
-
-            var newAccessToken = _jwtHelper.GenerateJwtToken(user);
+            var roles = await _userManager.GetRolesAsync(user);
+            var userRole = roles.FirstOrDefault();
+            var newAccessToken = _jwtHelper.GenerateJwtToken(user, userRole);
             var newRefreshToken = _jwtHelper.GenerateRefreshToken();
 
             user.RefreshToken = newRefreshToken;
