@@ -107,5 +107,16 @@ namespace MilkApplication.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet("category/{categoryId}")]
+        public async Task<IActionResult> GetProductsByCategoryId(int categoryId)
+        {
+            var products = await _productService.GetProductsByCategoryIdAsync(categoryId);
+            if (products == null || !products.Any())
+            {
+                return NotFound();
+            }
+            return Ok(products);
+        }
     }
 }

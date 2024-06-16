@@ -25,14 +25,14 @@ namespace MilkApplication.BLL.Service
 
         public async Task<List<ProductDTO>> GetAllProductsAsync()
         {
-            var productGetAll = await _unitOfWork.ProductRepository.GetAll();
+            var productGetAll = await _unitOfWork.ProductRepository.GetAllAsync();
             var productMapper = _mapper.Map<List<ProductDTO>>(productGetAll);
             return productMapper;
         }
 
         public async Task<ProductDTO> GetProductByIdAsync(int id)
         {
-            var productFound = await _unitOfWork.ProductRepository.GetById(id);
+            var productFound = await _unitOfWork.ProductRepository.GetByIdAsync(id);
             if (productFound == null)
             {
                 return null;
@@ -70,7 +70,7 @@ namespace MilkApplication.BLL.Service
             productObj.Category = category;
             productObj.Origin = origin;
 
-            await _unitOfWork.ProductRepository.Add(productObj);
+            await _unitOfWork.ProductRepository.AddAsync(productObj);
             await _unitOfWork.SaveChangeAsync();
 
             var response = new ResponseDTO
@@ -83,10 +83,10 @@ namespace MilkApplication.BLL.Service
 
         public async Task<ResponseDTO> UpdateProductAsync(int id, ProductDTO productDTO)
         {
-            var productUpdate = await _unitOfWork.ProductRepository.GetById(id);
+            var productUpdate = await _unitOfWork.ProductRepository.GetByIdAsync(id);
             if (productUpdate != null) {
                 productUpdate = _mapper.Map(productDTO, productUpdate);
-                await _unitOfWork.ProductRepository.Update(productUpdate);
+                await _unitOfWork.ProductRepository.UpdateAsync(productUpdate);
                 var result = await _unitOfWork.SaveChangeAsync();
                 if (result > 0)
                 {
@@ -112,10 +112,10 @@ namespace MilkApplication.BLL.Service
 
         public async Task<ResponseDTO> DeleteProductAsync(int id)
         {
-            var deleteProduct = await _unitOfWork.ProductRepository.GetById(id);
+            var deleteProduct = await _unitOfWork.ProductRepository.GetByIdAsync(id);
             if (deleteProduct != null)
             {
-                await _unitOfWork.ProductRepository.Delete(id);
+                await _unitOfWork.ProductRepository.DeleteAsync(id);
                 await _unitOfWork.SaveChangeAsync();
 
                 return new ResponseDTO
@@ -133,6 +133,13 @@ namespace MilkApplication.BLL.Service
                 };
             }
             
+        }
+
+        public async Task<List<ProductDTO>> GetProductsByCategoryIdAsync(int categoryId)
+        {
+            var productsByCategory = await _unitOfWork.ProductRepository.GetProductsByCategoryIdAsync(categoryId);
+            var productMapper = _mapper.Map<List<ProductDTO>>(productsByCategory);
+            return productMapper;
         }
     }
 }

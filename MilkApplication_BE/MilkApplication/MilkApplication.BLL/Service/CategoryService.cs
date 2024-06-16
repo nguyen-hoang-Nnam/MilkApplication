@@ -24,7 +24,7 @@ namespace MilkApplication.BLL.Service
         public async Task<ResponseDTO> AddCategoryAsync(CategoryDTO categoryDTO)
         {
             var categoryObj = _mapper.Map<Category>(categoryDTO);
-            await _unitOfWork.CategoryRepository.Add(categoryObj);
+            await _unitOfWork.CategoryRepository.AddAsync(categoryObj);
             await _unitOfWork.SaveChangeAsync();
 
             var response = new ResponseDTO
@@ -37,10 +37,10 @@ namespace MilkApplication.BLL.Service
 
         public async Task<ResponseDTO> DeleteCategoryAsync(int id)
         {
-            var deleteCategory = await _unitOfWork.CategoryRepository.GetById(id);
+            var deleteCategory = await _unitOfWork.CategoryRepository.GetByIdAsync(id);
             if (deleteCategory != null)
             {
-                await _unitOfWork.CategoryRepository.Delete(id);
+                await _unitOfWork.CategoryRepository.DeleteAsync(id);
                 await _unitOfWork.SaveChangeAsync();
 
                 return new ResponseDTO
@@ -61,14 +61,14 @@ namespace MilkApplication.BLL.Service
 
         public async Task<List<CategoryDTO>> GetAllCategorysAsync()
         {
-            var categoryGetAll = await _unitOfWork.CategoryRepository.GetAll();
+            var categoryGetAll = await _unitOfWork.CategoryRepository.GetAllAsync();
             var categoryMapper = _mapper.Map<List<CategoryDTO>>(categoryGetAll);
             return categoryMapper;
         }
 
         public async Task<CategoryDTO> GetCategoryByIdAsync(int id)
         {
-            var categoryFound = await _unitOfWork.CategoryRepository.GetById(id);
+            var categoryFound = await _unitOfWork.CategoryRepository.GetByIdAsync(id);
             if (categoryFound == null)
             {
                 return null;
@@ -79,11 +79,11 @@ namespace MilkApplication.BLL.Service
 
         public async Task<ResponseDTO> UpdateCategoryAsync(int id, CategoryDTO categoryDTO)
         {
-            var categoryUpdate = await _unitOfWork.CategoryRepository.GetById(id);
+            var categoryUpdate = await _unitOfWork.CategoryRepository.GetByIdAsync(id);
             if (categoryUpdate != null)
             {
                 categoryUpdate = _mapper.Map(categoryDTO, categoryUpdate);
-                await _unitOfWork.CategoryRepository.Update(categoryUpdate);
+                await _unitOfWork.CategoryRepository.UpdateAsync(categoryUpdate);
                 var result = await _unitOfWork.SaveChangeAsync();
                 if (result > 0)
                 {

@@ -9,11 +9,12 @@ namespace MilkApplication.DAL.Repository.IRepositpry
 {
     public interface IGenericRepository<T> where T : class
     {
-        Task<IEnumerable<T>> GetAll();
+        Task<IEnumerable<T>> GetAllAsync();
 
-        Task<T> GetById(int id);
-        Task Add(T entity);
-        Task Update(T entity);
-        Task Delete(int id);
+        Task<T> GetByIdAsync(int id);
+        Task AddAsync(T entity);
+        Task<bool> UpdateAsync(T entity);
+        Task DeleteAsync(int id);
+        Task<T> GetById(string id);
     }
 }

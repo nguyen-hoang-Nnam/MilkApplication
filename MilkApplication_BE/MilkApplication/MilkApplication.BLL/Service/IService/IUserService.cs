@@ -11,13 +11,12 @@ namespace MilkApplication.BLL.Service.IService
 {
     public interface IUserService
     {
-        Task<ResponseDTO> CreateUserAsync(ApplicationUser user, string password, UserRole role);
+        Task<ResponseDTO> CreateUserAsync(UserDTO userDto, UserRole role);
         Task<ResponseDTO> GetUserByIdAsync(string userId);
         Task<ResponseDTO> GetUserByEmailAsync(string email);
         Task<ResponseDTO> GetAllUsersAsync();
-        Task<ResponseDTO> UpdateUserAsync(ApplicationUser user);
-        Task<ResponseDTO> CreateRoleAsync(string roleName);
-        Task<ResponseDTO> AddUserToRoleAsync(ApplicationUser user, UserRole role);
-        Task<ResponseDTO> DeleteUserAsync(ApplicationUser user);
+        Task<ResponseDTO> UpdateUserAsync(string userId,UserDTO userDto);
+        Task<ResponseDTO> DeleteUserAsync(string userId);
+        Task<ResponseDTO> UpdateUserPasswordAsync(string email, UpdatePasswordDTO updatePasswordDto);
     }
 }
