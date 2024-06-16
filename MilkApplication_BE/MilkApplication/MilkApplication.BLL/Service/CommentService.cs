@@ -25,14 +25,14 @@ namespace MilkApplication.BLL.Service
         }
         public async Task<List<CommentDTO>> GetAllCommentAsync()
         {
-            var commentGetAll = await _unitOfWork.CommentRepository.GetAll();
+            var commentGetAll = await _unitOfWork.CommentRepository.GetAllAsync();
             var commentMapper = _mapper.Map<List<CommentDTO>>(commentGetAll);
             return commentMapper;
         }
 
         public async Task<CommentDTO> GetCommentByIdAsync(int id)
         {
-            var commentFound = await _unitOfWork.CommentRepository.GetById(id);
+            var commentFound = await _unitOfWork.CommentRepository.GetByIdAsync(id);
             if (commentFound == null)
             {
                 return null;
@@ -44,7 +44,7 @@ namespace MilkApplication.BLL.Service
 
         public async Task<ResponseDTO> AddCommentAsync(CommentDTO commentDTO)
         {
-            var product = await _unitOfWork.ProductRepository.GetById(commentDTO.productId);
+            var product = await _unitOfWork.ProductRepository.GetByIdAsync(commentDTO.productId);
             if (product == null)
             {
                 // Handle scenario where product is not found
@@ -59,7 +59,7 @@ namespace MilkApplication.BLL.Service
 
             commentObj.Product = product;
 
-            await _unitOfWork.CommentRepository.Add(commentObj);
+            await _unitOfWork.CommentRepository.AddAsync(commentObj);
             await _unitOfWork.SaveChangeAsync();
 
             var response = new ResponseDTO
@@ -72,11 +72,11 @@ namespace MilkApplication.BLL.Service
 
         public async Task<ResponseDTO> UpdateCommentAsync(int id, CommentDTO commentDTO)
         {
-            var commentUpdate = await _unitOfWork.CommentRepository.GetById(id);
+            var commentUpdate = await _unitOfWork.CommentRepository.GetByIdAsync(id);
             if (commentUpdate != null)
             {
                 commentUpdate = _mapper.Map(commentDTO, commentUpdate);
-                await _unitOfWork.CommentRepository.Update(commentUpdate);
+                await _unitOfWork.CommentRepository.UpdateAsync(commentUpdate);
                 var result = await _unitOfWork.SaveChangeAsync();
                 if (result > 0)
                 {
@@ -101,10 +101,10 @@ namespace MilkApplication.BLL.Service
 
         public async Task<ResponseDTO> DeleteCommentAsync(int id)
         {
-            var deleteComment = await _unitOfWork.CommentRepository.GetById(id);
+            var deleteComment = await _unitOfWork.CommentRepository.GetByIdAsync(id);
             if (deleteComment != null)
             {
-                await _unitOfWork.CommentRepository.Delete(id);
+                await _unitOfWork.CommentRepository.DeleteAsync(id);
                 await _unitOfWork.SaveChangeAsync();
 
                 return new ResponseDTO

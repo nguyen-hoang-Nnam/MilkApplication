@@ -22,12 +22,14 @@ namespace MilkApplication.Controllers
             _mapper = mapper;
         }
         [HttpGet]
+        [Route("GetAllComment")]
         public async Task<IActionResult> GetAllComment()
         {
             var comments = await _commentService.GetAllCommentAsync();
             return Ok(comments);
         }
         [HttpPost]
+        [Route("CreateComment")]
         public async Task<IActionResult> CreateComment([FromBody] CommentDTO commentDTO)
         {
             var result = await _commentService.AddCommentAsync(commentDTO);
@@ -38,6 +40,7 @@ namespace MilkApplication.Controllers
             return BadRequest(result);
         }
         [HttpPut]
+        [Route("UpdateComment/{id}")]
         public async Task<IActionResult> UpdateComment(int id, [FromBody] CommentDTO comment)
         {
             var commentToUpdate = await _commentService.GetCommentByIdAsync(id);
@@ -48,7 +51,8 @@ namespace MilkApplication.Controllers
             await _commentService.UpdateCommentAsync(id, comment);
             return Ok();
         }
-        [HttpDelete("{id}")]
+        [HttpDelete]
+        [Route("DeleteComment/{id}")]
         public async Task<IActionResult> DeleteComment(int id)
         {
             try

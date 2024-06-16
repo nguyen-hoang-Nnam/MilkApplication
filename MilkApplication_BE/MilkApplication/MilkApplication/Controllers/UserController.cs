@@ -24,24 +24,19 @@ namespace MilkApplication.Controllers
         }
 
         [HttpPost("CreateUser")]
-        public async Task<IActionResult> CreateUser([FromBody] CreateUserModel model)
+        public async Task<IActionResult> CreateUser([FromBody] UserDTO userDto)
         {
-            var user = new ApplicationUser 
-            {   
-                FullName = model.FullName,
-                UserName = model.Email,
-                Email = model.Email,
-                Status = UserStatus.IsActive
-            };
-            var response = await _userService.CreateUserAsync(user, model.Password, UserRole.Staff);
-
-            if (!response.IsSucceed)
+            var response = await _userService.CreateUserAsync(userDto, UserRole.Staff);
+            if (response.IsSucceed)
             {
-                return BadRequest(response.Message);
+                return Ok(response);
             }
-
-            return Ok(response.Message);
+            else
+            {
+                return BadRequest(response);
+            }
         }
+
 
         [HttpGet("GetUserById/{id}")]
         public async Task<IActionResult> GetUserById(string id)
@@ -74,10 +69,10 @@ namespace MilkApplication.Controllers
             return Ok(response);
         }
 
-        [HttpPut("UpdateUser")]
-        public async Task<IActionResult> UpdateUser([FromBody] ApplicationUser user)
+        [HttpPut("UpdateUser/{userId}")]
+        public async Task<IActionResult> UpdateUser(string userId, [FromBody] UserDTO user)
         {
-            var response = await _userService.UpdateUserAsync(user);
+            var response = await _userService.UpdateUserAsync(userId, user);
             if (response.IsSucceed)
             {
                 return Ok(response);
@@ -86,10 +81,10 @@ namespace MilkApplication.Controllers
             return BadRequest(response);
         }
 
-        [HttpDelete("DeleteUser")]
-        public async Task<IActionResult> DeleteUser([FromBody] ApplicationUser user)
+        [HttpDelete("DeleteUser/{userId}")]
+        public async Task<IActionResult> DeleteUser(string userId)
         {
-            var response = await _userService.DeleteUserAsync(user);
+            var response = await _userService.DeleteUserAsync(userId);
             if (response.IsSucceed)
             {
                 return Ok(response);
@@ -98,34 +93,19 @@ namespace MilkApplication.Controllers
             return BadRequest(response);
         }
 
-        [HttpPost("CreateRole")]
-        public async Task<IActionResult> CreateRole([FromBody] string roleName)
+        [HttpPut("UpdatePassword/{email}")]
+        public async Task<IActionResult> UpdatePassword(string email, [FromBody] UpdatePasswordDTO updatePasswordDto)
         {
-            var response = await _userService.CreateRoleAsync(roleName);
-            if (response.IsSucceed)
+            var result = await _userService.UpdateUserPasswordAsync(email, updatePasswordDto);
+
+            if (result.IsSucceed)
             {
-                return Ok(response);
+                return Ok(result);
             }
-
-            return BadRequest(response);
-        }
-
-        [HttpPost("AddUserToRole")]
-        public async Task<IActionResult> AddUserToRole([FromBody] AddUserToRoleModel model)
-        {
-            var user = await _userService.GetUserByIdAsync(model.Id);
-            if (!user.IsSucceed)
+            else
             {
-                return NotFound(user);
+                return BadRequest(result);
             }
-
-            var response = await _userService.AddUserToRoleAsync((ApplicationUser)user.Data, model.Role);
-            if (response.IsSucceed)
-            {
-                return Ok(response);
-            }
-
-            return BadRequest(response);
         }
     }
 

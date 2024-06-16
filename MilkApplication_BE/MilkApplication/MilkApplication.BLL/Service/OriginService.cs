@@ -24,7 +24,7 @@ namespace MilkApplication.BLL.Service
         public async Task<ResponseDTO> AddOriginAsync(OriginDTO originDTO)
         {
             var originObj = _mapper.Map<Origin>(originDTO);
-            await _unitOfWork.OriginRepository.Add(originObj);
+            await _unitOfWork.OriginRepository.AddAsync(originObj);
             await _unitOfWork.SaveChangeAsync();
 
             var response = new ResponseDTO
@@ -37,10 +37,10 @@ namespace MilkApplication.BLL.Service
 
         public async Task<ResponseDTO> DeleteOriginAsync(int id)
         {
-            var deleteOrigin = await _unitOfWork.OriginRepository.GetById(id);
+            var deleteOrigin = await _unitOfWork.OriginRepository.GetByIdAsync(id);
             if (deleteOrigin != null)
             {
-                await _unitOfWork.OriginRepository.Delete(id);
+                await _unitOfWork.OriginRepository.DeleteAsync(id);
                 await _unitOfWork.SaveChangeAsync();
 
                 return new ResponseDTO
@@ -61,14 +61,14 @@ namespace MilkApplication.BLL.Service
 
         public async Task<List<OriginDTO>> GetAllOriginsAsync()
         {
-            var originGetAll = await _unitOfWork.OriginRepository.GetAll();
+            var originGetAll = await _unitOfWork.OriginRepository.GetAllAsync();
             var originMapper = _mapper.Map<List<OriginDTO>>(originGetAll);
             return originMapper;
         }
 
         public async Task<OriginDTO> GetOriginByIdAsync(int id)
         {
-            var originFound = await _unitOfWork.OriginRepository.GetById(id);
+            var originFound = await _unitOfWork.OriginRepository.GetByIdAsync(id);
             if (originFound == null)
             {
                 return null;
@@ -79,11 +79,11 @@ namespace MilkApplication.BLL.Service
 
         public async Task<ResponseDTO> UpdateOriginAsync(int id, OriginDTO originDTO)
         {
-            var originUpdate = await _unitOfWork.OriginRepository.GetById(id);
+            var originUpdate = await _unitOfWork.OriginRepository.GetByIdAsync(id);
             if (originUpdate != null)
             {
                 originUpdate = _mapper.Map(originDTO, originUpdate);
-                await _unitOfWork.OriginRepository.Update(originUpdate);
+                await _unitOfWork.OriginRepository.UpdateAsync(originUpdate);
                 var result = await _unitOfWork.SaveChangeAsync();
                 if (result > 0)
                 {

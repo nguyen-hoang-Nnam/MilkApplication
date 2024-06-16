@@ -25,5 +25,13 @@ namespace MilkApplication.DAL.Repository
                                  .Include(p => p.Origin)
                                  .ToListAsync();
         }
+        public async Task<IEnumerable<Product>> GetProductsByCategoryIdAsync(int categoryId)
+        {
+            return await _context.Products
+                                 .Include(p => p.Category)
+                                 .Include(p => p.Origin)
+                                 .Where(p => p.categoryId == categoryId)
+                                 .ToListAsync();
+        }
     }
 }

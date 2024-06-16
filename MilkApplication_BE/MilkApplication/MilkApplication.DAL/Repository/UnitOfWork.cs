@@ -17,12 +17,13 @@ namespace MilkApplication.DAL.Repository
         private readonly ICategoryRepository _categoryRepository;
         private readonly IOriginRepository _originRepository;
         private readonly ICommentRepository _commentRepository;
+        private readonly IUserRepository _userRepository;
         private readonly AppDbContext _dbContext;
 
 
         private bool disposed = false;
 
-        public UnitOfWork(AppDbContext context, IProductRepository productRepository, AppDbContext dbContext, ICategoryRepository categoryRepository, IOriginRepository originRepository, ICommentRepository commentRepository)
+        public UnitOfWork(AppDbContext context, IProductRepository productRepository, AppDbContext dbContext, ICategoryRepository categoryRepository, IOriginRepository originRepository, ICommentRepository commentRepository, IUserRepository userRepository)
         {
             _context = context;
             _productRepository = productRepository;
@@ -30,12 +31,14 @@ namespace MilkApplication.DAL.Repository
             _categoryRepository = categoryRepository;
             _originRepository = originRepository;
             _commentRepository = commentRepository;
+            _userRepository = userRepository;
         }
 
         public IProductRepository ProductRepository { get { return _productRepository; } }
         public ICategoryRepository CategoryRepository { get { return _categoryRepository; } }
         public IOriginRepository OriginRepository { get { return _originRepository; } }
         public ICommentRepository CommentRepository { get { return _commentRepository; } }
+        public IUserRepository UserRepository { get { return _userRepository; } }
         public AppDbContext dbContext { get { return _dbContext; } }
 
         public async Task<int> SaveChangeAsync()
