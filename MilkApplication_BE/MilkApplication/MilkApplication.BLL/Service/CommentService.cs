@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using MilkApplication.BLL.Service.IService;
-using MilkApplication.DAL.Migrations;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Models.DTO;
 using MilkApplication.DAL.Repository.IRepositpry;
@@ -47,7 +46,6 @@ namespace MilkApplication.BLL.Service
             var product = await _unitOfWork.ProductRepository.GetByIdAsync(commentDTO.productId);
             if (product == null)
             {
-                // Handle scenario where product is not found
                 return new ResponseDTO
                 {
                     IsSucceed = false,

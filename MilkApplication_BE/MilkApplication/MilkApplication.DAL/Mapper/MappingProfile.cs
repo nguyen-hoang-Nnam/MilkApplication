@@ -21,6 +21,8 @@ namespace MilkApplication.DAL.Mapper
             CreateMap<UserDTO, ApplicationUser>()
                 .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email));
             CreateMap<ApplicationUser, UserDTO>();
+            CreateMap<Vouchers, VouchersDTO>().ReverseMap();
+            CreateMap<Location, LocationDTO>().ReverseMap();
         }
     }
 }

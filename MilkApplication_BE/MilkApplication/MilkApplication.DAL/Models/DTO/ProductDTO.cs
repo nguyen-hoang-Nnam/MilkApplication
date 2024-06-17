@@ -15,6 +15,6 @@ namespace MilkApplication.DAL.Models.DTO
         public string Image { get; set; }
         public int categoryId { get; set; }
         public int originId { get; set; }
-
+        public int locationId { get; set; }
     }
 }
