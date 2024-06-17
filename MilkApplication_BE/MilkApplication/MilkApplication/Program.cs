@@ -78,6 +78,8 @@ builder.Services.AddScoped<IOriginRepository, OriginRepository>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IVouchersRepository, VouchersRepository>();
+builder.Services.AddScoped<ILocationRepository, LocationRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
@@ -89,6 +91,8 @@ builder.Services.AddScoped<IOriginService, OriginService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ICommentService, CommentService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IVouchersService, VouchersService>();
+builder.Services.AddScoped<ILocationService, LocationService>();
 
 // Add JwtHelper
 builder.Services.AddScoped<JwtHelper>();

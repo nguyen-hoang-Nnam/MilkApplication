@@ -24,5 +24,8 @@ namespace MilkApplication.DAL.Models
         [ForeignKey("originId")]
         public Origin? Origin { get; set; }
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();
+        public int locationId { get; set; }
+        [ForeignKey("locationId")]
+        public Location? Location { get; set; }
     }
 }

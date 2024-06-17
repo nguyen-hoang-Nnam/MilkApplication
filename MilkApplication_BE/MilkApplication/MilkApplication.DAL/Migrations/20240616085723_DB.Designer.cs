@@ -12,8 +12,8 @@ using MilkApplication.DAL.Data;
 namespace MilkApplication.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240610092733_update_DB")]
-    partial class update_DB
+    [Migration("20240616085723_DB")]
+    partial class DB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -254,6 +254,39 @@ namespace MilkApplication.DAL.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("MilkApplication.DAL.Models.Comment", b =>
+                {
+                    b.Property<int>("commentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("commentId"));
+
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("date");
+
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<string>("commentDetail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("productId")
+                        .HasColumnType("int");
+
+                    b.HasKey("commentId");
+
+                    b.HasIndex("Id");
+
+                    b.HasIndex("productId");
+
+                    b.ToTable("Comments");
+                });
+
             modelBuilder.Entity("MilkApplication.DAL.Models.Origin", b =>
                 {
                     b.Property<int>("originId")
@@ -309,6 +342,38 @@ namespace MilkApplication.DAL.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("MilkApplication.DAL.Models.Vouchers", b =>
+                {
+                    b.Property<int>("voucherId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("voucherId"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("discountPercent")
+                        .HasColumnType("int");
+
+                    b.Property<int>("quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("voucherId");
+
+                    b.HasIndex("Id");
+
+                    b.ToTable("Vouchers");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -360,6 +425,23 @@ namespace MilkApplication.DAL.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MilkApplication.DAL.Models.Comment", b =>
+                {
+                    b.HasOne("MilkApplication.DAL.Models.ApplicationUser", "User")
+                        .WithMany("Comments")
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MilkApplication.DAL.Models.Product", "Product")
+                        .WithMany("Comments")
+                        .HasForeignKey("productId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MilkApplication.DAL.Models.Product", b =>
                 {
                     b.HasOne("MilkApplication.DAL.Models.Category", "Category")
@@ -379,6 +461,24 @@ namespace MilkApplication.DAL.Migrations
                     b.Navigation("Origin");
                 });
 
+            modelBuilder.Entity("MilkApplication.DAL.Models.Vouchers", b =>
+                {
+                    b.HasOne("MilkApplication.DAL.Models.ApplicationUser", "User")
+                        .WithMany("Vouchers")
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MilkApplication.DAL.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("Vouchers");
+                });
+
             modelBuilder.Entity("MilkApplication.DAL.Models.Category", b =>
                 {
                     b.Navigation("Products");
@@ -387,6 +487,11 @@ namespace MilkApplication.DAL.Migrations
             modelBuilder.Entity("MilkApplication.DAL.Models.Origin", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("MilkApplication.DAL.Models.Product", b =>
+                {
+                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

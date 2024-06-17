@@ -16,6 +16,8 @@ namespace MilkApplication.DAL.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Origin> Origins { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Vouchers> Vouchers { get; set; }
+        public DbSet<Location> Locations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -45,6 +47,18 @@ namespace MilkApplication.DAL.Data
                 .HasOne(c => c.User)
                 .WithMany(u => u.Comments)
                 .HasForeignKey(c => c.Id)
+                .OnDelete(DeleteBehavior.Cascade);
+            // Configure Vouchers - User relationship
+            modelBuilder.Entity<Vouchers>()
+                .HasOne(c => c.User)
+                .WithMany(u => u.Vouchers)
+                .HasForeignKey(c => c.Id)
+                .OnDelete(DeleteBehavior.Cascade);
+            // Configure Product - Location relationship
+            modelBuilder.Entity<Product>()
+                .HasOne(l => l.Location)
+                .WithMany(p => p.Products)
+                .HasForeignKey(l => l.locationId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

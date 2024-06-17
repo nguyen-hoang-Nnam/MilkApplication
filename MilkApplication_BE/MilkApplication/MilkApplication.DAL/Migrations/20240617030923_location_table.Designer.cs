@@ -12,8 +12,8 @@ using MilkApplication.DAL.Data;
 namespace MilkApplication.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240608043841_identity")]
-    partial class identity
+    [Migration("20240617030923_location_table")]
+    partial class location_table
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -204,6 +204,13 @@ namespace MilkApplication.DAL.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("RefreshToken")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RefreshTokenExpiryTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -247,6 +254,60 @@ namespace MilkApplication.DAL.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("MilkApplication.DAL.Models.Comment", b =>
+                {
+                    b.Property<int>("commentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("commentId"));
+
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("date");
+
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<string>("commentDetail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("productId")
+                        .HasColumnType("int");
+
+                    b.HasKey("commentId");
+
+                    b.HasIndex("Id");
+
+                    b.HasIndex("productId");
+
+                    b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("MilkApplication.DAL.Models.Location", b =>
+                {
+                    b.Property<int>("locationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("locationId"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("locationName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("locationId");
+
+                    b.ToTable("Locations");
+                });
+
             modelBuilder.Entity("MilkApplication.DAL.Models.Origin", b =>
                 {
                     b.Property<int>("originId")
@@ -282,6 +343,9 @@ namespace MilkApplication.DAL.Migrations
                     b.Property<int>("categoryId")
                         .HasColumnType("int");
 
+                    b.Property<int>("locationId")
+                        .HasColumnType("int");
+
                     b.Property<int>("originId")
                         .HasColumnType("int");
 
@@ -297,9 +361,43 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasIndex("categoryId");
 
+                    b.HasIndex("locationId");
+
                     b.HasIndex("originId");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("MilkApplication.DAL.Models.Vouchers", b =>
+                {
+                    b.Property<int>("voucherId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("voucherId"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("discountPercent")
+                        .HasColumnType("int");
+
+                    b.Property<int>("quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("voucherId");
+
+                    b.HasIndex("Id");
+
+                    b.ToTable("Vouchers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -353,11 +451,34 @@ namespace MilkApplication.DAL.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MilkApplication.DAL.Models.Comment", b =>
+                {
+                    b.HasOne("MilkApplication.DAL.Models.ApplicationUser", "User")
+                        .WithMany("Comments")
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MilkApplication.DAL.Models.Product", "Product")
+                        .WithMany("Comments")
+                        .HasForeignKey("productId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MilkApplication.DAL.Models.Product", b =>
                 {
                     b.HasOne("MilkApplication.DAL.Models.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("categoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MilkApplication.DAL.Models.Location", "Location")
+                        .WithMany("Products")
+                        .HasForeignKey("locationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -369,7 +490,27 @@ namespace MilkApplication.DAL.Migrations
 
                     b.Navigation("Category");
 
+                    b.Navigation("Location");
+
                     b.Navigation("Origin");
+                });
+
+            modelBuilder.Entity("MilkApplication.DAL.Models.Vouchers", b =>
+                {
+                    b.HasOne("MilkApplication.DAL.Models.ApplicationUser", "User")
+                        .WithMany("Vouchers")
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MilkApplication.DAL.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("Vouchers");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Category", b =>
@@ -377,9 +518,19 @@ namespace MilkApplication.DAL.Migrations
                     b.Navigation("Products");
                 });
 
+            modelBuilder.Entity("MilkApplication.DAL.Models.Location", b =>
+                {
+                    b.Navigation("Products");
+                });
+
             modelBuilder.Entity("MilkApplication.DAL.Models.Origin", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("MilkApplication.DAL.Models.Product", b =>
+                {
+                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }
