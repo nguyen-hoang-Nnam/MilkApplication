@@ -8,7 +8,7 @@ namespace MilkApplication.DAL.Models.DTO
 {
     public class CategoryDTO
     {
-        /*public int categoryId { get; set; }*/
+        public int categoryId { get; set; }
         public string categoryName { get; set; }
     }
 }
