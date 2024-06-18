@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MilkApplication.DAL.enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -16,6 +17,7 @@ namespace MilkApplication.DAL.Models
         public int discountPercent { get; set; }
         public int quantity { get; set; }
         public DateTime date { get; set; }
+        public VouchersStatus vouchersStatus { get; set; }
         public string? Id { get; set; }
         [ForeignKey("Id")]
         public ApplicationUser? User { get; set; }

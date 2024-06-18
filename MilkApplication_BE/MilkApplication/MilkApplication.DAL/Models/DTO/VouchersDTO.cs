@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MilkApplication.DAL.enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace MilkApplication.DAL.Models.DTO
         public int discountPercent { get; set; }
         public int quantity { get; set; }
         public DateTime date { get; set; }
+        public VouchersStatus vouchersStatus { get; set; }
         public string Id { get; set; }
     }
 }

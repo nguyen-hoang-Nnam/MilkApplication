@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MilkApplication.BLL.Service.IService;
+using MilkApplication.DAL.enums;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Models.DTO;
 using MilkApplication.DAL.Repository.IRepositpry.UoW;
@@ -25,6 +26,7 @@ namespace MilkApplication.BLL.Service
         public async Task<ResponseDTO> AddVouchersAsync(VouchersDTO vouchersDTO)
         {
             var vouchersObj = _mapper.Map<Vouchers>(vouchersDTO);
+            vouchersObj.vouchersStatus = VouchersStatus.Active;
             await _unitOfWork.VouchersRepository.AddAsync(vouchersObj);
             await _unitOfWork.SaveChangeAsync();
 
