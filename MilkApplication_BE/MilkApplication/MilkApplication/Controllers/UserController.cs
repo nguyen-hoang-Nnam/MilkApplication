@@ -23,8 +23,8 @@ namespace MilkApplication.Controllers
             _jwtHelper = jwtHelper;
         }
 
-        [HttpPost("CreateUser")]
-        public async Task<IActionResult> CreateUser([FromBody] UserDTO userDto)
+        [HttpPost("CreateStaff")]
+        public async Task<IActionResult> CreateStaff([FromBody] UserDTO userDto)
         {
             var response = await _userService.CreateUserAsync(userDto, UserRole.Staff);
             if (response.IsSucceed)
@@ -37,6 +37,19 @@ namespace MilkApplication.Controllers
             }
         }
 
+        [HttpPost("CreateAdmin")]
+        public async Task<IActionResult> CreateAdmin([FromBody] UserDTO userDto)
+        {
+            var response = await _userService.CreateUserAsync(userDto, UserRole.Admin);
+            if (response.IsSucceed)
+            {
+                return Ok(response);
+            }
+            else
+            {
+                return BadRequest(response);
+            }
+        }
 
         [HttpGet("GetUserById/{id}")]
         public async Task<IActionResult> GetUserById(string id)
@@ -92,7 +105,17 @@ namespace MilkApplication.Controllers
 
             return BadRequest(response);
         }
+        [HttpDelete("UnbanUser/{userId}")]
+        public async Task<IActionResult> UnbanUser(string userId)
+        {
+            var response = await _userService.UnbanUserAsync(userId);
+            if (response.IsSucceed)
+            {
+                return Ok(response);
+            }
 
+            return BadRequest(response);
+        }
         [HttpPut("UpdatePassword/{email}")]
         public async Task<IActionResult> UpdatePassword(string email, [FromBody] UpdatePasswordDTO updatePasswordDto)
         {
