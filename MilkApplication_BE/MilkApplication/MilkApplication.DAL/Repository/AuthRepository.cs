@@ -40,6 +40,15 @@ namespace MilkApplication.DAL.Repository
             }
             return new ResponseDTO { IsSucceed = false, Message = "User not found" };
         }
+        public async Task<ResponseDTO> GetUserByUserNameAsync(string userName)
+        {
+            var user = await _userManager.FindByNameAsync(userName);
+            if (user != null)
+            {
+                return new ResponseDTO { IsSucceed = true, Message = "User found", Data = user };
+            }
+            return new ResponseDTO { IsSucceed = false, Message = "User not found" };
+        }
 
         public async Task<ResponseDTO> CreateUserAsync(ApplicationUser user, string password)
         {

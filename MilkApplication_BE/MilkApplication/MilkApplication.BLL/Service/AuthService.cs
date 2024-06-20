@@ -41,6 +41,10 @@ namespace MilkApplication.BLL.Service
         {
             return await _authRepository.GetUserByEmailAsync(email);
         }
+        public async Task<ResponseDTO> GetUserByUserNameAsync(string userName)
+        {
+            return await _authRepository.GetUserByUserNameAsync(userName);
+        }
 
         public async Task<ResponseDTO> RegisterUserAsync(ApplicationUser user, string password, UserRole role)
         {

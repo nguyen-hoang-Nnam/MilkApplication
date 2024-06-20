@@ -36,7 +36,7 @@ namespace MilkApplication.Controllers
         {
             var user = new ApplicationUser
             {
-                UserName = model.Email,
+                UserName = model.UserName,
                 Email = model.Email,
                 FullName = model.FullName,
                 Status = UserStatus.IsActive
@@ -54,7 +54,7 @@ namespace MilkApplication.Controllers
         [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] LoginDTO model)
         {
-            var userResponse = await _authService.GetUserByEmailAsync(model.Email);
+            var userResponse = await _authService.GetUserByUserNameAsync(model.UserName);
             if (!userResponse.IsSucceed)
             {
                 return Unauthorized(userResponse.Message);

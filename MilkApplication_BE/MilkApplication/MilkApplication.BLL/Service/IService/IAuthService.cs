@@ -13,6 +13,7 @@ namespace MilkApplication.BLL.Service.IService
     {
         Task<ResponseDTO> GetUserByIdAsync(string userId);
         Task<ResponseDTO> GetUserByEmailAsync(string email);
+        Task<ResponseDTO> GetUserByUserNameAsync(string userName);
         Task<ResponseDTO> RegisterUserAsync(ApplicationUser user, string password, UserRole role);
         Task<ResponseDTO> ValidateUserAsync(ApplicationUser user, string password);
         Task UpdateUserAsync(ApplicationUser user);
