@@ -33,5 +33,14 @@ namespace MilkApplication.DAL.Repository
                                  .Where(p => p.categoryId == categoryId)
                                  .ToListAsync();
         }
+        public async Task<Product> GetByIdAsync(int? productId)
+        {
+            if (productId == null)
+            {
+                throw new ArgumentNullException(nameof(productId), "ProductId cannot be null.");
+            }
+
+            return await _context.Products.FindAsync(productId);
+        }
     }
 }

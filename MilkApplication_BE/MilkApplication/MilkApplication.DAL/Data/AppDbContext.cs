@@ -18,6 +18,8 @@ namespace MilkApplication.DAL.Data
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Vouchers> Vouchers { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -59,6 +61,30 @@ namespace MilkApplication.DAL.Data
                 .HasOne(l => l.Location)
                 .WithMany(p => p.Products)
                 .HasForeignKey(l => l.locationId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Order>(entity =>
+            {
+                entity.Property(e => e.totalPrice)
+                    .HasColumnType("decimal(18, 2)");
+            });
+
+            modelBuilder.Entity<OrderItem>(entity =>
+            {
+                entity.Property(e => e.Price)
+                    .HasColumnType("decimal(18, 2)");
+            });
+
+            modelBuilder.Entity<Product>(entity =>
+            {
+                entity.Property(e => e.Price)
+                    .HasColumnType("decimal(18, 2)");
+            });
+
+            modelBuilder.Entity<Order>()
+                .HasMany(o => o.OrderItems)
+                .WithOne(oi => oi.Order)
+                .HasForeignKey(oi => oi.orderId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

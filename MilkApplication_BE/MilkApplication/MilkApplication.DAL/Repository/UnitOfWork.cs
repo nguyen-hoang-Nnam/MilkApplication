@@ -20,12 +20,14 @@ namespace MilkApplication.DAL.Repository
         private readonly IUserRepository _userRepository;
         private readonly IVouchersRepository _vouchersRepository;
         private readonly ILocationRepository _locationRepository;
+        private readonly IOrderRepository _orderRepository;
+        private readonly IOrderItemRepository _orderItemRepository;
         private readonly AppDbContext _dbContext;
 
 
         private bool disposed = false;
 
-        public UnitOfWork(AppDbContext context, IProductRepository productRepository, AppDbContext dbContext, ICategoryRepository categoryRepository, IOriginRepository originRepository, ICommentRepository commentRepository, IUserRepository userRepository, IVouchersRepository vouchersRepository, ILocationRepository locationRepository)
+        public UnitOfWork(AppDbContext context, IProductRepository productRepository, AppDbContext dbContext, ICategoryRepository categoryRepository, IOriginRepository originRepository, ICommentRepository commentRepository, IUserRepository userRepository, IVouchersRepository vouchersRepository, ILocationRepository locationRepository, IOrderRepository orderRepository, IOrderItemRepository orderItemRepository)
         {
             _context = context;
             _productRepository = productRepository;
@@ -36,6 +38,8 @@ namespace MilkApplication.DAL.Repository
             _userRepository = userRepository;
             _vouchersRepository = vouchersRepository;
             _locationRepository = locationRepository;
+            _orderRepository = orderRepository;
+            _orderItemRepository = orderItemRepository;
         }
 
         public IProductRepository ProductRepository { get { return _productRepository; } }
@@ -45,6 +49,8 @@ namespace MilkApplication.DAL.Repository
         public IUserRepository UserRepository { get { return _userRepository; } }
         public IVouchersRepository VouchersRepository { get { return _vouchersRepository; } }
         public ILocationRepository LocationRepository { get { return _locationRepository; } }
+        public IOrderRepository OrderRepository { get { return _orderRepository; } }
+        public IOrderItemRepository OrderItemRepository { get { return _orderItemRepository; } }
         public AppDbContext dbContext { get { return _dbContext; } }
 
         public async Task<int> SaveChangeAsync()
