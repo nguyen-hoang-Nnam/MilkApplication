@@ -152,6 +152,28 @@ namespace MilkApplication.BLL.Service
                 return new ResponseDTO { IsSucceed = false, Message = "Changing user status failed"};
             }
         }
+        public async Task<ResponseDTO> UnbanUserAsync(string userId)
+        {
+            var user = await _unitOfWork.UserRepository.GetById(userId);
+
+            if (user == null)
+            {
+                return new ResponseDTO { IsSucceed = false, Message = "User not found" };
+            }
+
+            user.Status = UserStatus.IsActive;
+
+            var result = await _unitOfWork.UserRepository.UpdateAsync(user);
+
+            if (result)
+            {
+                return new ResponseDTO { IsSucceed = true, Message = "User status changed to active successfully" };
+            }
+            else
+            {
+                return new ResponseDTO { IsSucceed = false, Message = "Changing user status failed" };
+            }
+        }
         public async Task<ResponseDTO> UpdateUserPasswordAsync(string email, UpdatePasswordDTO updatePasswordDto)
         {
             var existingUser = await _unitOfWork.UserRepository.GetByEmailAsync(email);
