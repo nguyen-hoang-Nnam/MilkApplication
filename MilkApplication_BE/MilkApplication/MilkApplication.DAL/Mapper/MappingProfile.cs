@@ -23,6 +23,11 @@ namespace MilkApplication.DAL.Mapper
             CreateMap<ApplicationUser, UserDTO>();
             CreateMap<Vouchers, VouchersDTO>().ReverseMap();
             CreateMap<Location, LocationDTO>().ReverseMap();
+            CreateMap<Order, OrderDTO>().ReverseMap();
+            CreateMap<OrderItem, OrderItemDTO>().ReverseMap();
+            CreateMap<Order, OrderRequestDTO>().ReverseMap();
+            CreateMap<OrderRequestDTO, Order>()
+                .ForMember(dest => dest.OrderItems, opt => opt.MapFrom(src => src.OrderItemDTOs));
         }
     }
 }
