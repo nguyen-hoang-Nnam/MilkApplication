@@ -13,6 +13,7 @@ namespace MilkApplication.DAL.Repository.IRepositpry
     {
         Task<ResponseDTO> GetUserByIdAsync(string userId);
         Task<ResponseDTO> GetUserByEmailAsync(string email);
+        Task<ResponseDTO> GetUserByUserNameAsync(string userName);
         Task<ResponseDTO> CreateUserAsync(ApplicationUser user, string password);
         Task<ResponseDTO> CheckPasswordAsync(ApplicationUser user, string password);
         Task<ResponseDTO> AddUserToRoleAsync(ApplicationUser user, UserRole role);
