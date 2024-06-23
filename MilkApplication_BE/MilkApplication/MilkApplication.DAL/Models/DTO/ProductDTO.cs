@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MilkApplication.DAL.enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,12 @@ namespace MilkApplication.DAL.Models.DTO
         public int productId { get; set; }
         public string productName { get; set; }
         public decimal Price { get; set; }
+        public decimal? discountPrice { get; set; }
+        public double? discountPercent { get; set; }
         public string productDescription { get; set; }
         public string Image { get; set; }
+        public int Quantity { get; set; }
+        public ProductStatus Status { get; set; }
         public int categoryId { get; set; }
         public int originId { get; set; }
         public int locationId { get; set; }

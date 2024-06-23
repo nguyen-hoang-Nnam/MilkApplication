@@ -44,7 +44,25 @@ namespace MilkApplication.BLL.Service
                         response.Message = $"Product with ID {item.productId} not found.";
                         return response;
                     }
-                    item.Price = product.Price; // Set Price from the product
+
+                    if (product.Quantity < item.Quantity)
+                    {
+                        response.Message = $"Insufficient stock for product with ID {item.productId}.";
+                        return response;
+                    }
+
+                    if (product.discountPrice.HasValue)
+                    {
+                        item.Price = product.discountPrice.Value;
+                    }
+                    else if (product.discountPercent.HasValue && product.discountPercent.Value > 0)
+                    {
+                        item.Price = product.Price * (1 - (decimal)(product.discountPercent.Value / 100));
+                    }
+                    else
+                    {
+                        item.Price = product.Price;
+                    }
                 }
 
                 decimal totalPrice = orderItems.Sum(oi => oi.Quantity * oi.Price);
@@ -59,6 +77,17 @@ namespace MilkApplication.BLL.Service
                 };
 
                 await _unitOfWork.OrderRepository.CreateOrderAsync(order, orderItems);
+
+                foreach (var item in orderItems)
+                {
+                    var product = await _unitOfWork.ProductRepository.GetByIdAsync(item.productId);
+                    if (product != null)
+                    {
+                        product.Quantity -= item.Quantity;
+                        await _unitOfWork.ProductRepository.UpdateAsync(product);
+                    }
+                }
+
                 await _unitOfWork.SaveChangeAsync();
 
                 var orderDto = _mapper.Map<OrderDTO>(order);
