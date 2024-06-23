@@ -28,6 +28,25 @@ namespace MilkApplication.DAL.Mapper
             CreateMap<Order, OrderRequestDTO>().ReverseMap();
             CreateMap<OrderRequestDTO, Order>()
                 .ForMember(dest => dest.OrderItems, opt => opt.MapFrom(src => src.OrderItemDTOs));
+            CreateMap<Combo, ComboDTO>().ReverseMap();
+            CreateMap<ComboProduct, ComboProductDTO>().ReverseMap();
+
+            CreateMap<ComboProduct, ComboProductDTO>()
+            .ForMember(dest => dest.ComboName, opt => opt.MapFrom(src => src.Combo.comboName))
+            .ForMember(dest => dest.ComboPrice, opt => opt.MapFrom(src => src.Combo.comboPrice))
+            .ForMember(dest => dest.ComboDiscountPrice, opt => opt.MapFrom(src => src.Combo.discountPrice))
+            .ForMember(dest => dest.ComboDiscountPercent, opt => opt.MapFrom(src => src.Combo.discountPercent))
+            .ForMember(dest => dest.ComboDescription, opt => opt.MapFrom(src => src.Combo.comboDescription))
+            .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.productName));
+
+            CreateMap<ComboProductCreateDTO, ComboProduct>().ReverseMap();
+            CreateMap<ComboProduct, ComboProductCreateDTO>()
+            .ForMember(dest => dest.ComboName, opt => opt.MapFrom(src => src.Combo.comboName))
+            .ForMember(dest => dest.ComboPrice, opt => opt.MapFrom(src => src.Combo.comboPrice))
+            .ForMember(dest => dest.ComboDiscountPrice, opt => opt.MapFrom(src => src.Combo.discountPrice))
+            .ForMember(dest => dest.ComboDiscountPercent, opt => opt.MapFrom(src => src.Combo.discountPercent))
+            .ForMember(dest => dest.ComboDescription, opt => opt.MapFrom(src => src.Combo.comboDescription))
+            .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.productName));
         }
     }
 }

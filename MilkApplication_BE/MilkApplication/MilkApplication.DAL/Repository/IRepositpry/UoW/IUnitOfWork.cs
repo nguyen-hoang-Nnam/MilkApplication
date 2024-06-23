@@ -21,6 +21,8 @@ namespace MilkApplication.DAL.Repository.IRepositpry.UoW
         ILocationRepository LocationRepository { get; }
         IOrderRepository OrderRepository { get; }
         IOrderItemRepository OrderItemRepository { get; }
+        IComboRepository ComboRepository { get; }
+        IComboProductRepository ComboProductRepository { get; }
         AppDbContext dbContext { get; }
 
 

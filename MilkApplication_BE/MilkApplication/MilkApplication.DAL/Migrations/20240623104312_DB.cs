@@ -68,6 +68,37 @@ namespace MilkApplication.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Combos",
+                columns: table => new
+                {
+                    comboId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    comboName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    comboPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    discountPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    discountPercent = table.Column<double>(type: "float", nullable: true),
+                    comboDescription = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Combos", x => x.comboId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Locations",
+                columns: table => new
+                {
+                    locationId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    locationName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Locations", x => x.locationId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Origins",
                 columns: table => new
                 {
@@ -187,6 +218,26 @@ namespace MilkApplication.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    orderId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    orderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    totalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.orderId);
+                    table.ForeignKey(
+                        name: "FK_Orders_AspNetUsers_Id",
+                        column: x => x.Id,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Vouchers",
                 columns: table => new
                 {
@@ -196,6 +247,7 @@ namespace MilkApplication.DAL.Migrations
                     discountPercent = table.Column<int>(type: "int", nullable: false),
                     quantity = table.Column<int>(type: "int", nullable: false),
                     date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    vouchersStatus = table.Column<int>(type: "int", nullable: false),
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
@@ -216,11 +268,16 @@ namespace MilkApplication.DAL.Migrations
                     productId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     productName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<int>(type: "int", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    discountPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    discountPercent = table.Column<double>(type: "float", nullable: true),
                     productDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
                     categoryId = table.Column<int>(type: "int", nullable: false),
-                    originId = table.Column<int>(type: "int", nullable: false)
+                    originId = table.Column<int>(type: "int", nullable: false),
+                    locationId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -232,10 +289,43 @@ namespace MilkApplication.DAL.Migrations
                         principalColumn: "categoryId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
+                        name: "FK_Products_Locations_locationId",
+                        column: x => x.locationId,
+                        principalTable: "Locations",
+                        principalColumn: "locationId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Products_Origins_originId",
                         column: x => x.originId,
                         principalTable: "Origins",
                         principalColumn: "originId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ComboProducts",
+                columns: table => new
+                {
+                    comboProductId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    comboId = table.Column<int>(type: "int", nullable: false),
+                    productId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ComboProducts", x => x.comboProductId);
+                    table.ForeignKey(
+                        name: "FK_ComboProducts_Combos_comboId",
+                        column: x => x.comboId,
+                        principalTable: "Combos",
+                        principalColumn: "comboId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ComboProducts_Products_productId",
+                        column: x => x.productId,
+                        principalTable: "Products",
+                        principalColumn: "productId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -266,6 +356,33 @@ namespace MilkApplication.DAL.Migrations
                         principalTable: "Products",
                         principalColumn: "productId",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OrderItems",
+                columns: table => new
+                {
+                    orderItemId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    productId = table.Column<int>(type: "int", nullable: true),
+                    orderId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderItems", x => x.orderItemId);
+                    table.ForeignKey(
+                        name: "FK_OrderItems_Orders_orderId",
+                        column: x => x.orderId,
+                        principalTable: "Orders",
+                        principalColumn: "orderId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrderItems_Products_productId",
+                        column: x => x.productId,
+                        principalTable: "Products",
+                        principalColumn: "productId");
                 });
 
             migrationBuilder.CreateIndex(
@@ -308,6 +425,16 @@ namespace MilkApplication.DAL.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ComboProducts_comboId",
+                table: "ComboProducts",
+                column: "comboId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ComboProducts_productId",
+                table: "ComboProducts",
+                column: "productId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Comments_Id",
                 table: "Comments",
                 column: "Id");
@@ -318,9 +445,29 @@ namespace MilkApplication.DAL.Migrations
                 column: "productId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_orderId",
+                table: "OrderItems",
+                column: "orderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_productId",
+                table: "OrderItems",
+                column: "productId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_Id",
+                table: "Orders",
+                column: "Id");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_categoryId",
                 table: "Products",
                 column: "categoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Products_locationId",
+                table: "Products",
+                column: "locationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_originId",
@@ -352,13 +499,25 @@ namespace MilkApplication.DAL.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "ComboProducts");
+
+            migrationBuilder.DropTable(
                 name: "Comments");
+
+            migrationBuilder.DropTable(
+                name: "OrderItems");
 
             migrationBuilder.DropTable(
                 name: "Vouchers");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Combos");
+
+            migrationBuilder.DropTable(
+                name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "Products");
@@ -368,6 +527,9 @@ namespace MilkApplication.DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Locations");
 
             migrationBuilder.DropTable(
                 name: "Origins");

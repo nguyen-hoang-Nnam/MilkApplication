@@ -42,5 +42,9 @@ namespace MilkApplication.DAL.Repository
 
             return await _context.Products.FindAsync(productId);
         }
+        public async Task<bool> ExistsAsync(int id)
+        {
+            return await _context.Products.AnyAsync(c => c.productId == id);
+        }
     }
 }
