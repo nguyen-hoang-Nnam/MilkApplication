@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MilkApplication.DAL.enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,8 +16,33 @@ namespace MilkApplication.DAL.Models
         public string productName { get; set; }
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Price { get; set; }
+        private decimal? _discountPrice;
+        [Column(TypeName = "decimal(18, 2)")]
+        public decimal? discountPrice 
+        { get => _discountPrice;
+            private set => _discountPrice = value;
+        }
+        private double? _discountPercent;
+        public double? discountPercent
+        {
+            get => _discountPercent;
+            set
+            {
+                _discountPercent = value;
+                if (_discountPercent.HasValue && _discountPercent > 0)
+                {
+                    discountPrice = Price * (1 - (decimal)(_discountPercent.Value / 100));
+                }
+                else
+                {
+                    discountPrice = null;
+                }
+            }
+        }
         public string productDescription { get; set; }
         public string Image { get; set; }
+        public int Quantity { get; set; }
+        public ProductStatus Status { get; set; }
         public int categoryId { get; set; }
         [ForeignKey("categoryId")]
         public Category? Category { get; set; }

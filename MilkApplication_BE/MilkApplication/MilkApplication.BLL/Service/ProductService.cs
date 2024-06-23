@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MilkApplication.BLL.Service.IService;
+using MilkApplication.DAL.enums;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Models.DTO;
 using MilkApplication.DAL.Repository.IRepositpry;
@@ -67,6 +68,7 @@ namespace MilkApplication.BLL.Service
 
             var productObj = _mapper.Map<Product>(productDTO);
 
+            productObj.Status = ProductStatus.Valiable;
             productObj.Category = category;
             productObj.Origin = origin;
 
