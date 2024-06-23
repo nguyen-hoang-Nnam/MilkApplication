@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace MilkApplication.DAL.Repository.IRepositpry
 {
-    public interface IProductRepository : IGenericRepository<Product>
+    public interface IComboRepository : IGenericRepository<Combo>
     {
-        Task<IEnumerable<Product>> GetAllProductsAsync();
-        Task<IEnumerable<Product>> GetProductsByCategoryIdAsync(int categoryId);
-        Task<Product> GetByIdAsync(int? productId);
         Task<bool> ExistsAsync(int id);
     }
 }

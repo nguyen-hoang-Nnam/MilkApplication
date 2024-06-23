@@ -22,12 +22,14 @@ namespace MilkApplication.DAL.Repository
         private readonly ILocationRepository _locationRepository;
         private readonly IOrderRepository _orderRepository;
         private readonly IOrderItemRepository _orderItemRepository;
+        private readonly IComboRepository _comboRepository;
+        private readonly IComboProductRepository _comboProductRepository;
         private readonly AppDbContext _dbContext;
 
 
         private bool disposed = false;
 
-        public UnitOfWork(AppDbContext context, IProductRepository productRepository, AppDbContext dbContext, ICategoryRepository categoryRepository, IOriginRepository originRepository, ICommentRepository commentRepository, IUserRepository userRepository, IVouchersRepository vouchersRepository, ILocationRepository locationRepository, IOrderRepository orderRepository, IOrderItemRepository orderItemRepository)
+        public UnitOfWork(AppDbContext context, IProductRepository productRepository, AppDbContext dbContext, ICategoryRepository categoryRepository, IOriginRepository originRepository, ICommentRepository commentRepository, IUserRepository userRepository, IVouchersRepository vouchersRepository, ILocationRepository locationRepository, IOrderRepository orderRepository, IOrderItemRepository orderItemRepository, IComboRepository comboRepository, IComboProductRepository comboProductRepository)
         {
             _context = context;
             _productRepository = productRepository;
@@ -40,6 +42,8 @@ namespace MilkApplication.DAL.Repository
             _locationRepository = locationRepository;
             _orderRepository = orderRepository;
             _orderItemRepository = orderItemRepository;
+            _comboRepository = comboRepository;
+            _comboProductRepository = comboProductRepository;
         }
 
         public IProductRepository ProductRepository { get { return _productRepository; } }
@@ -51,6 +55,8 @@ namespace MilkApplication.DAL.Repository
         public ILocationRepository LocationRepository { get { return _locationRepository; } }
         public IOrderRepository OrderRepository { get { return _orderRepository; } }
         public IOrderItemRepository OrderItemRepository { get { return _orderItemRepository; } }
+        public IComboRepository ComboRepository { get { return _comboRepository; } }
+        public IComboProductRepository ComboProductRepository { get { return _comboProductRepository; } }
         public AppDbContext dbContext { get { return _dbContext; } }
 
         public async Task<int> SaveChangeAsync()

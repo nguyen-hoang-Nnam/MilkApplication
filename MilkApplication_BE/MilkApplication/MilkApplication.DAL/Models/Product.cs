@@ -54,5 +54,6 @@ namespace MilkApplication.DAL.Models
         public int locationId { get; set; }
         [ForeignKey("locationId")]
         public Location? Location { get; set; }
+        public ICollection<ComboProduct> ComboProducts { get; set; } = new List<ComboProduct>();
     }
 }

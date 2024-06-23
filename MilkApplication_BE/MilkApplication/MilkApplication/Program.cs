@@ -82,6 +82,8 @@ builder.Services.AddScoped<IVouchersRepository, VouchersRepository>();
 builder.Services.AddScoped<ILocationRepository, LocationRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderItemRepository, OrderItemRepository>();
+builder.Services.AddScoped<IComboRepository, ComboRepository>();
+builder.Services.AddScoped<IComboProductRepository, ComboProductRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
@@ -97,6 +99,8 @@ builder.Services.AddScoped<IVouchersService, VouchersService>();
 builder.Services.AddScoped<ILocationService, LocationService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IOrderItemService, OrderItemService>();
+builder.Services.AddScoped<IComboService, ComboService>();
+builder.Services.AddScoped<IComboProductService, ComboProductService>();
 
 // Add JwtHelper
 builder.Services.AddScoped<JwtHelper>();

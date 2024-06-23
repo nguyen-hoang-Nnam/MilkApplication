@@ -20,6 +20,8 @@ namespace MilkApplication.DAL.Data
         public DbSet<Location> Locations { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<Combo> Combos { get; set; }
+        public DbSet<ComboProduct> ComboProducts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -86,6 +88,20 @@ namespace MilkApplication.DAL.Data
                 .WithOne(oi => oi.Order)
                 .HasForeignKey(oi => oi.orderId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            // Configure the many-to-many relationship
+            /*modelBuilder.Entity<ComboProduct>()
+            .HasKey(cp => new { cp.comboProductId});*/
+            
+            modelBuilder.Entity<ComboProduct>()
+                .HasOne(cp => cp.Combo)
+                .WithMany(c => c.ComboProducts)
+                .HasForeignKey(cp => cp.comboId);
+
+            modelBuilder.Entity<ComboProduct>()
+                .HasOne(cp => cp.Product)
+                .WithMany(p => p.ComboProducts)
+                .HasForeignKey(cp => cp.productId);
         }
     }
 }

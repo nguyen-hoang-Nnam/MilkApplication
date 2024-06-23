@@ -251,6 +251,62 @@ namespace MilkApplication.DAL.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("MilkApplication.DAL.Models.Combo", b =>
+                {
+                    b.Property<int>("comboId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("comboId"));
+
+                    b.Property<string>("comboDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("comboName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("comboPrice")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<double?>("discountPercent")
+                        .HasColumnType("float");
+
+                    b.Property<decimal?>("discountPrice")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.HasKey("comboId");
+
+                    b.ToTable("Combos");
+                });
+
+            modelBuilder.Entity("MilkApplication.DAL.Models.ComboProduct", b =>
+                {
+                    b.Property<int>("comboProductId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("comboProductId"));
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("comboId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("productId")
+                        .HasColumnType("int");
+
+                    b.HasKey("comboProductId");
+
+                    b.HasIndex("comboId");
+
+                    b.HasIndex("productId");
+
+                    b.ToTable("ComboProducts");
+                });
+
             modelBuilder.Entity("MilkApplication.DAL.Models.Comment", b =>
                 {
                     b.Property<int>("commentId")
@@ -516,6 +572,25 @@ namespace MilkApplication.DAL.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MilkApplication.DAL.Models.ComboProduct", b =>
+                {
+                    b.HasOne("MilkApplication.DAL.Models.Combo", "Combo")
+                        .WithMany("ComboProducts")
+                        .HasForeignKey("comboId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MilkApplication.DAL.Models.Product", "Product")
+                        .WithMany("ComboProducts")
+                        .HasForeignKey("productId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Combo");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("MilkApplication.DAL.Models.Comment", b =>
                 {
                     b.HasOne("MilkApplication.DAL.Models.ApplicationUser", "User")
@@ -608,6 +683,11 @@ namespace MilkApplication.DAL.Migrations
                     b.Navigation("Products");
                 });
 
+            modelBuilder.Entity("MilkApplication.DAL.Models.Combo", b =>
+                {
+                    b.Navigation("ComboProducts");
+                });
+
             modelBuilder.Entity("MilkApplication.DAL.Models.Location", b =>
                 {
                     b.Navigation("Products");
@@ -625,6 +705,8 @@ namespace MilkApplication.DAL.Migrations
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Product", b =>
                 {
+                    b.Navigation("ComboProducts");
+
                     b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
