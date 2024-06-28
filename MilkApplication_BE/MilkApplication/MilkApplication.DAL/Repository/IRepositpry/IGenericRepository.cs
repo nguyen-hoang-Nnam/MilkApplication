@@ -11,7 +11,7 @@ namespace MilkApplication.DAL.Repository.IRepositpry
     {
         Task<IEnumerable<T>> GetAllAsync();
 
-        Task<T> GetByIdAsync(int id);
+        Task<T?> GetByIdAsync(int id);
         Task AddAsync(T entity);
         Task<bool> UpdateAsync(T entity);
         Task DeleteAsync(int id);
