@@ -85,31 +85,47 @@ namespace MilkApplication.BLL.Service
 
         public async Task<ResponseDTO> UpdateProductAsync(int id, ProductDTO productDTO)
         {
-            var productUpdate = await _unitOfWork.ProductRepository.GetByIdAsync(id);
-            if (productUpdate != null) {
-                productUpdate = _mapper.Map(productDTO, productUpdate);
-                await _unitOfWork.ProductRepository.UpdateAsync(productUpdate);
-                var result = await _unitOfWork.SaveChangeAsync();
-                if (result > 0)
+            try
+            {
+                var productUpdate = await _unitOfWork.ProductRepository.GetByIdAsync(id);
+                if (productUpdate != null)
                 {
+                    var productId = productUpdate.productId;
+                    _mapper.Map(productDTO, productUpdate);
+                    productUpdate.productId = productId;
+                    await _unitOfWork.ProductRepository.UpdateAsync(productUpdate);
+                    var result = await _unitOfWork.SaveChangeAsync();
+                    if (result > 0)
+                    {
+                        return new ResponseDTO
+                        {
+                            IsSucceed = true,
+                            Message = "Product update successfully!",
+                            Data = result
+                        };
+                    }
                     return new ResponseDTO
                     {
-                        IsSucceed = true,
-                        Message = "Product update successfully!",
-                        Data = result
+                        IsSucceed = false,
+                        Message = "Product update failed!"
                     };
                 }
                 return new ResponseDTO
                 {
                     IsSucceed = false,
-                    Message = "Product update failed!"
+                    Message = "Product not found!"
                 };
             }
-            return new ResponseDTO
+            catch (Exception ex)
             {
-                IsSucceed = false,
-                Message = "Product not found!"
-            };
+                Console.WriteLine($"An error occurred: {ex.Message}");
+
+                return new ResponseDTO
+                {
+                    IsSucceed = false,
+                    Message = "An error occurred during the product update process."
+                };
+            }
         }
 
         public async Task<ResponseDTO> DeleteProductAsync(int id)

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MilkApplication.DAL.Data;
 
@@ -11,9 +12,11 @@ using MilkApplication.DAL.Data;
 namespace MilkApplication.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240627150603_test2")]
+    partial class test2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -248,7 +251,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasKey("categoryId");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Combo", b =>
@@ -278,7 +281,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasKey("comboId");
 
-                    b.ToTable("Combos", (string)null);
+                    b.ToTable("Combos");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.ComboProduct", b =>
@@ -304,7 +307,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasIndex("productId");
 
-                    b.ToTable("ComboProducts", (string)null);
+                    b.ToTable("ComboProducts");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Comment", b =>
@@ -337,7 +340,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasIndex("productId");
 
-                    b.ToTable("Comments", (string)null);
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Location", b =>
@@ -358,7 +361,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasKey("locationId");
 
-                    b.ToTable("Locations", (string)null);
+                    b.ToTable("Locations");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Order", b =>
@@ -382,7 +385,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasIndex("Id");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.OrderItem", b =>
@@ -411,7 +414,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasIndex("productId");
 
-                    b.ToTable("OrderItems", (string)null);
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Origin", b =>
@@ -428,7 +431,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasKey("originId");
 
-                    b.ToTable("Origins", (string)null);
+                    b.ToTable("Origins");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Product", b =>
@@ -483,7 +486,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasIndex("originId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Vouchers", b =>
@@ -518,7 +521,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasIndex("Id");
 
-                    b.ToTable("Vouchers", (string)null);
+                    b.ToTable("Vouchers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

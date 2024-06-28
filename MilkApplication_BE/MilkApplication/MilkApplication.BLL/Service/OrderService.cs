@@ -38,7 +38,7 @@ namespace MilkApplication.BLL.Service
                 var orderItems = _mapper.Map<List<OrderItem>>(orderItemsDto);
                 foreach (var item in orderItems)
                 {
-                    var product = await _unitOfWork.ProductRepository.GetByIdAsync(item.productId);
+                    var product = await _unitOfWork.ProductRepository.GetByIdAsync(item.productId.Value);
                     if (product == null)
                     {
                         response.Message = $"Product with ID {item.productId} not found.";
@@ -80,7 +80,7 @@ namespace MilkApplication.BLL.Service
 
                 foreach (var item in orderItems)
                 {
-                    var product = await _unitOfWork.ProductRepository.GetByIdAsync(item.productId);
+                    var product = await _unitOfWork.ProductRepository.GetByIdAsync(item.productId.Value);
                     if (product != null)
                     {
                         product.Quantity -= item.Quantity;

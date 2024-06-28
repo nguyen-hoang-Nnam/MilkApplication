@@ -11,7 +11,7 @@ namespace MilkApplication.DAL.Repository.IRepositpry
     {
         Task<IEnumerable<Product>> GetAllProductsAsync();
         Task<IEnumerable<Product>> GetProductsByCategoryIdAsync(int categoryId);
-        Task<Product> GetByIdAsync(int? productId);
+        /*Task<Product> GetByIdAsync(int? productId);*/
         Task<bool> ExistsAsync(int id);
     }
 }

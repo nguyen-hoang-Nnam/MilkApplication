@@ -28,6 +28,8 @@ namespace MilkApplication.Helpers
             {
                 new Claim(JwtRegisteredClaimNames.NameId, user.Id),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim(JwtRegisteredClaimNames.Name, user.FullName),
+                new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName),
                 new Claim("role", role),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.NameIdentifier, user.Id),
