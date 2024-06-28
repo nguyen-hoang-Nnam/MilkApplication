@@ -99,15 +99,15 @@ namespace MilkApplication.BLL.Service
                     {
                         return new ResponseDTO
                         {
-                            IsSucceed = true,
-                            Message = "Product update successfully!",
-                            Data = result
+                            IsSucceed = false,
+                            Message = "Product update failed!"
                         };
                     }
                     return new ResponseDTO
                     {
-                        IsSucceed = false,
-                        Message = "Product update failed!"
+                        
+                        IsSucceed = true,
+                        Message = "Product update successfully!",
                     };
                 }
                 return new ResponseDTO
