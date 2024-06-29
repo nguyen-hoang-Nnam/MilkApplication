@@ -60,5 +60,17 @@ namespace MilkApplication.DAL.Repository
                 return new ResponseDTO { IsSucceed = false, Message = "Failed to change user status" };
             }
         }
+        public async Task<List<ApplicationUser>> GetUsersByStaffRoleAsync()
+        {
+            var roleName = UserRole.Staff.ToString();
+            var usersInRole = await _userManager.GetUsersInRoleAsync(roleName);
+            return usersInRole.ToList();
+        }
+        public async Task<List<ApplicationUser>> GetUsersByAdminRoleAsync()
+        {
+            var roleName = UserRole.Admin.ToString();
+            var usersInRole = await _userManager.GetUsersInRoleAsync(roleName);
+            return usersInRole.ToList();
+        }
     }
 }

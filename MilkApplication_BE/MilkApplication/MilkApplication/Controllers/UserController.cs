@@ -81,6 +81,18 @@ namespace MilkApplication.Controllers
             var response = await _userService.GetAllUsersAsync();
             return Ok(response);
         }
+        [HttpGet("GetAllStaff")]
+        public async Task<IActionResult> GetAllStaffs()
+        {
+            var response = await _userService.GetUsersByStaffRoleAsync();
+            return Ok(response);
+        }
+        [HttpGet("GetAllAdmin")]
+        public async Task<IActionResult> GetAllAdmins()
+        {
+            var response = await _userService.GetUsersByAdminRoleAsync();
+            return Ok(response);
+        }
 
         [HttpPut("UpdateUser/{userId}")]
         public async Task<IActionResult> UpdateUser(string userId, [FromBody] UserDTO user)

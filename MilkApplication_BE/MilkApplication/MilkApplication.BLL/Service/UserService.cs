@@ -214,6 +214,26 @@ namespace MilkApplication.BLL.Service
                 return new ResponseDTO { IsSucceed = false, Message = "An error occurred while updating password" };
             }
         }
+        public async Task<ResponseDTO> GetUsersByStaffRoleAsync()
+        {
+            var staffResponse = await _unitOfWork.UserRepository.GetUsersByStaffRoleAsync();
+            if (staffResponse != null && staffResponse.Any())
+            {
+                var staffDto = _mapper.Map<List<UserDTO>>(staffResponse);
+                return new ResponseDTO { IsSucceed = true, Message = "Staff retrives successfully", Data = staffDto };
+            }
+            return new ResponseDTO { IsSucceed = false, Message = "Staff not found" };
+        }
+        public async Task<ResponseDTO> GetUsersByAdminRoleAsync()
+        {
+            var adminResponse = await _unitOfWork.UserRepository.GetUsersByAdminRoleAsync();
+            if (adminResponse != null && adminResponse.Any())
+            {
+                var adminDto = _mapper.Map<List<UserDTO>>(adminResponse);
+                return new ResponseDTO { IsSucceed = true, Message = "Admin retrives successfully", Data = adminDto };
+            }
+            return new ResponseDTO { IsSucceed = false, Message = "Admin not found" };
+        }
 
     }
 
