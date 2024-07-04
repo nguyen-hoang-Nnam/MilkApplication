@@ -1,5 +1,8 @@
-﻿using MilkApplication.DAL.Models;
+﻿using MilkApplication.DAL.Commons;
+using MilkApplication.DAL.Helper;
+using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Models.DTO;
+using MilkApplication.DAL.Models.PaginationDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +19,6 @@ namespace MilkApplication.BLL.Service.IService
         public Task<ResponseDTO> UpdateProductAsync(int id, ProductDTO productDTO);
         public Task<ResponseDTO> DeleteProductAsync(int id);
         public Task<List<ProductDTO>> GetProductsByCategoryIdAsync(int categoryId);
+        public Task<Pagination<ProductDTO>> GetProductByFilterAsync(PaginationParameter paginationParameter, ProductFilterDTO productFilterDTO);
     }
 }

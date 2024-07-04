@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MilkApplication.DAL.Commons;
 using MilkApplication.DAL.Data;
+using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.Models;
+using MilkApplication.DAL.Models.PaginationDTO;
 using MilkApplication.DAL.Repository.IRepositpry;
 using System;
 using System.Collections.Generic;
@@ -62,6 +65,55 @@ namespace MilkApplication.DAL.Repository
             return await _context.Orders
                                  .Include(o => o.OrderItems) // Include related entities as needed
                                  .FirstOrDefaultAsync(o => o.orderId == orderId);
+        }
+        public async Task<Pagination<Order>>GetOrderByFilterAsync(PaginationParameter paginationParameter, OrderFilterDTO orderFilterDTO)
+        {
+            try
+            {
+                var ordersQuery = _context.Orders.AsQueryable();
+                ordersQuery = await ApplyFilterSortAndSearch(ordersQuery, orderFilterDTO);
+                if (ordersQuery != null)
+                {
+                    var orderQuery = ApplySorting(ordersQuery, orderFilterDTO);
+                    var totalCount = await orderQuery.CountAsync();
+
+                    var orderPagination = await orderQuery
+                        .Skip((paginationParameter.PageIndex - 1) * paginationParameter.PageSize)
+                        .Take(paginationParameter.PageSize)
+                        .ToListAsync();
+                    return new Pagination<Order>(orderPagination, totalCount, paginationParameter.PageIndex, paginationParameter.PageSize);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        private async Task<IQueryable<Order>> ApplyFilterSortAndSearch(IQueryable<Order> Query, OrderFilterDTO orderFilterDTO)
+        {
+            if (orderFilterDTO == null)
+            {
+                return Query;
+            }
+            if (!string.IsNullOrEmpty(orderFilterDTO.Search))
+            {
+                Query = Query.Where(x => x.Id.Contains(orderFilterDTO.Search));
+            }
+            return Query;
+        }
+        private IQueryable<Order> ApplySorting(IQueryable<Order> query, OrderFilterDTO orderFilterDTO)
+        {
+            switch (orderFilterDTO.Sort.ToLower())
+            {
+                case "Id":
+                    query = (orderFilterDTO.SortDirection.ToLower() == "desc") ? query.OrderByDescending(x => x.Id) : query.OrderBy(x => x.Id);
+                    break;
+                default:
+                    query = (orderFilterDTO.SortDirection.ToLower() == "desc") ? query.OrderByDescending(a => a.orderId) : query.OrderBy(a => a.orderId);
+                    break;
+            }
+            return query;
         }
     }
 }

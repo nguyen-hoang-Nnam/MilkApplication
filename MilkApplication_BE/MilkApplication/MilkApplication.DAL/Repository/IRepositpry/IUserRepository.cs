@@ -1,6 +1,9 @@
-﻿using MilkApplication.DAL.enums;
+﻿using MilkApplication.DAL.Commons;
+using MilkApplication.DAL.enums;
+using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Models.DTO;
+using MilkApplication.DAL.Models.PaginationDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +19,6 @@ namespace MilkApplication.DAL.Repository.IRepositpry
         Task<ResponseDTO> DeleteUserAsync(string userId, UserStatus status);
         Task<List<ApplicationUser>> GetUsersByStaffRoleAsync();
         Task<List<ApplicationUser>> GetUsersByAdminRoleAsync();
+        public Task<Pagination<ApplicationUser>> GetAccountByFilterAsync(PaginationParameter paginationParameter, AccountFilterDTO accountFilterDTO);
     }
 }

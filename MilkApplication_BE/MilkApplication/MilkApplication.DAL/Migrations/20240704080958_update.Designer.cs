@@ -12,8 +12,8 @@ using MilkApplication.DAL.Data;
 namespace MilkApplication.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240703084523_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240704080958_update")]
+    partial class update
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

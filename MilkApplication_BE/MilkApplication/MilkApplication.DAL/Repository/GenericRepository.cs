@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MilkApplication.DAL.Commons;
 using MilkApplication.DAL.Data;
+using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.Repository.IRepositpry;
 using System;
 using System.Collections.Generic;
@@ -65,5 +67,17 @@ namespace MilkApplication.DAL.Repository
         {
             return await _dbSet.FindAsync(id);
         }
+        public async Task<Pagination<T>> ToPagination(PaginationParameter paginationParameter)
+        {
+            var itemCount = await _dbSet.CountAsync();
+            var items = await _dbSet.Skip((paginationParameter.PageIndex - 1) * paginationParameter.PageSize)
+                                    .Take(paginationParameter.PageSize)
+                                    .AsNoTracking()
+                                    .ToListAsync();
+            var result = new Pagination<T>(items, itemCount, paginationParameter.PageIndex, paginationParameter.PageSize);
+
+            return result;
+        }
+
     }
 }

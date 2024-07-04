@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
 using MilkApplication.BLL.Service.IService;
+using MilkApplication.DAL.Commons;
+using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Models.DTO;
+using MilkApplication.DAL.Models.PaginationDTO;
 using MilkApplication.DAL.Repository.IRepositpry;
 using MilkApplication.DAL.Repository.IRepositpry.UoW;
 using System;
@@ -120,6 +123,23 @@ namespace MilkApplication.BLL.Service
                 };
             }
 
+        }
+        public async Task<Pagination<CommentDTO>> GetCommentByFilterAsync(PaginationParameter paginationParameter, CommentFilterDTO commentFilterDTO)
+        {
+            try
+            {
+                var comments = await _unitOfWork.CommentRepository.GetCommentByFilterAsync(paginationParameter, commentFilterDTO);
+                if (comments != null)
+                {
+                    var mapperResult = _mapper.Map<List<CommentDTO>>(comments);
+                    return new Pagination<CommentDTO>(mapperResult, comments.TotalCount, comments.CurrentPage, comments.PageSize);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

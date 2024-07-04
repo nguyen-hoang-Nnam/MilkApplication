@@ -1,6 +1,9 @@
-﻿using MilkApplication.DAL.enums;
+﻿using MilkApplication.DAL.Commons;
+using MilkApplication.DAL.enums;
+using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Models.DTO;
+using MilkApplication.DAL.Models.PaginationDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +24,6 @@ namespace MilkApplication.BLL.Service.IService
         Task<ResponseDTO> UpdateUserPasswordAsync(string email, UpdatePasswordDTO updatePasswordDto);
         Task<ResponseDTO> GetUsersByStaffRoleAsync();
         Task<ResponseDTO> GetUsersByAdminRoleAsync();
+        public Task<Pagination<UserDTO>> GetAccountByFilterAsync(PaginationParameter paginationParameter, AccountFilterDTO accountFilterDTO);
     }
 }
