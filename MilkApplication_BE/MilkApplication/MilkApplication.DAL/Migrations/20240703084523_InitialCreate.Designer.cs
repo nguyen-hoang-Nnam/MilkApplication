@@ -12,8 +12,8 @@ using MilkApplication.DAL.Data;
 namespace MilkApplication.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240623104312_DB")]
-    partial class DB
+    [Migration("20240703084523_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -434,6 +434,69 @@ namespace MilkApplication.DAL.Migrations
                     b.ToTable("Origins");
                 });
 
+            modelBuilder.Entity("MilkApplication.DAL.Models.Payment", b =>
+                {
+                    b.Property<int>("paymentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("paymentId"));
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<DateTime>("PaymentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PaymentUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TransactionId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("orderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("paymentMethodId")
+                        .HasColumnType("int");
+
+                    b.HasKey("paymentId");
+
+                    b.HasIndex("orderId");
+
+                    b.HasIndex("paymentMethodId");
+
+                    b.ToTable("Payments");
+                });
+
+            modelBuilder.Entity("MilkApplication.DAL.Models.PaymentMethod", b =>
+                {
+                    b.Property<int>("paymentMethodId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("paymentMethodId"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("paymentMethodId");
+
+                    b.ToTable("PaymentMethods");
+                });
+
             modelBuilder.Entity("MilkApplication.DAL.Models.Product", b =>
                 {
                     b.Property<int>("productId")
@@ -634,6 +697,25 @@ namespace MilkApplication.DAL.Migrations
                     b.Navigation("Order");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("MilkApplication.DAL.Models.Payment", b =>
+                {
+                    b.HasOne("MilkApplication.DAL.Models.Order", "Order")
+                        .WithMany()
+                        .HasForeignKey("orderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MilkApplication.DAL.Models.PaymentMethod", "PaymentMethod")
+                        .WithMany()
+                        .HasForeignKey("paymentMethodId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("PaymentMethod");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Product", b =>

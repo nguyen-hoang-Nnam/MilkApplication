@@ -129,5 +129,10 @@ namespace MilkApplication.BLL.Service
             var orders = await _unitOfWork.OrderRepository.GetAllOrdersAsync();
             return _mapper.Map<IEnumerable<OrderDTO>>(orders);
         }
+        public async Task<Order> GetOrderEntityByIdAsync(int orderId)
+        {
+            var order = await _unitOfWork.OrderRepository.GetOrderByIdAsync(orderId);
+            return order;
+        }
     }
 }

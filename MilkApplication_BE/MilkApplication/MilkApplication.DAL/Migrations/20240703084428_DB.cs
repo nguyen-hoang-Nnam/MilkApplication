@@ -112,6 +112,20 @@ namespace MilkApplication.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PaymentMethods",
+                columns: table => new
+                {
+                    paymentMethodId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PaymentMethods", x => x.paymentMethodId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -303,6 +317,37 @@ namespace MilkApplication.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Payments",
+                columns: table => new
+                {
+                    paymentId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    orderId = table.Column<int>(type: "int", nullable: false),
+                    PaymentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    paymentMethodId = table.Column<int>(type: "int", nullable: false),
+                    TransactionId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PaymentUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Payments", x => x.paymentId);
+                    table.ForeignKey(
+                        name: "FK_Payments_Orders_orderId",
+                        column: x => x.orderId,
+                        principalTable: "Orders",
+                        principalColumn: "orderId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Payments_PaymentMethods_paymentMethodId",
+                        column: x => x.paymentMethodId,
+                        principalTable: "PaymentMethods",
+                        principalColumn: "paymentMethodId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ComboProducts",
                 columns: table => new
                 {
@@ -460,6 +505,16 @@ namespace MilkApplication.DAL.Migrations
                 column: "Id");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Payments_orderId",
+                table: "Payments",
+                column: "orderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Payments_paymentMethodId",
+                table: "Payments",
+                column: "paymentMethodId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_categoryId",
                 table: "Products",
                 column: "categoryId");
@@ -508,6 +563,9 @@ namespace MilkApplication.DAL.Migrations
                 name: "OrderItems");
 
             migrationBuilder.DropTable(
+                name: "Payments");
+
+            migrationBuilder.DropTable(
                 name: "Vouchers");
 
             migrationBuilder.DropTable(
@@ -517,13 +575,13 @@ namespace MilkApplication.DAL.Migrations
                 name: "Combos");
 
             migrationBuilder.DropTable(
-                name: "Orders");
-
-            migrationBuilder.DropTable(
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "PaymentMethods");
 
             migrationBuilder.DropTable(
                 name: "Categories");
@@ -533,6 +591,9 @@ namespace MilkApplication.DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "Origins");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
         }
     }
 }
