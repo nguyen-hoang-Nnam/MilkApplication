@@ -57,5 +57,11 @@ namespace MilkApplication.DAL.Repository
                 .ThenInclude(oi => oi.Product)
                 .ToListAsync();
         }
+        public async Task<Order> GetOrderByIdAsync(int orderId)
+        {
+            return await _context.Orders
+                                 .Include(o => o.OrderItems) // Include related entities as needed
+                                 .FirstOrDefaultAsync(o => o.orderId == orderId);
+        }
     }
 }

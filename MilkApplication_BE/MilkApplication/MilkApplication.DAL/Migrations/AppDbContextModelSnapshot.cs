@@ -248,7 +248,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasKey("categoryId");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Combo", b =>
@@ -278,7 +278,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasKey("comboId");
 
-                    b.ToTable("Combos", (string)null);
+                    b.ToTable("Combos");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.ComboProduct", b =>
@@ -304,7 +304,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasIndex("productId");
 
-                    b.ToTable("ComboProducts", (string)null);
+                    b.ToTable("ComboProducts");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Comment", b =>
@@ -337,7 +337,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasIndex("productId");
 
-                    b.ToTable("Comments", (string)null);
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Location", b =>
@@ -358,7 +358,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasKey("locationId");
 
-                    b.ToTable("Locations", (string)null);
+                    b.ToTable("Locations");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Order", b =>
@@ -382,7 +382,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasIndex("Id");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.OrderItem", b =>
@@ -411,7 +411,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasIndex("productId");
 
-                    b.ToTable("OrderItems", (string)null);
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Origin", b =>
@@ -428,7 +428,70 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasKey("originId");
 
-                    b.ToTable("Origins", (string)null);
+                    b.ToTable("Origins");
+                });
+
+            modelBuilder.Entity("MilkApplication.DAL.Models.Payment", b =>
+                {
+                    b.Property<int>("paymentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("paymentId"));
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<DateTime>("PaymentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PaymentUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TransactionId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("orderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("paymentMethodId")
+                        .HasColumnType("int");
+
+                    b.HasKey("paymentId");
+
+                    b.HasIndex("orderId");
+
+                    b.HasIndex("paymentMethodId");
+
+                    b.ToTable("Payments");
+                });
+
+            modelBuilder.Entity("MilkApplication.DAL.Models.PaymentMethod", b =>
+                {
+                    b.Property<int>("paymentMethodId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("paymentMethodId"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("paymentMethodId");
+
+                    b.ToTable("PaymentMethods");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Product", b =>
@@ -483,7 +546,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasIndex("originId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Vouchers", b =>
@@ -518,7 +581,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasIndex("Id");
 
-                    b.ToTable("Vouchers", (string)null);
+                    b.ToTable("Vouchers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -631,6 +694,25 @@ namespace MilkApplication.DAL.Migrations
                     b.Navigation("Order");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("MilkApplication.DAL.Models.Payment", b =>
+                {
+                    b.HasOne("MilkApplication.DAL.Models.Order", "Order")
+                        .WithMany()
+                        .HasForeignKey("orderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MilkApplication.DAL.Models.PaymentMethod", "PaymentMethod")
+                        .WithMany()
+                        .HasForeignKey("paymentMethodId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("PaymentMethod");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Product", b =>

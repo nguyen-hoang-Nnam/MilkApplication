@@ -13,5 +13,6 @@ namespace MilkApplication.DAL.Repository.IRepositpry
         Task DeleteOrderAsync(int orderId);
         Task<Order> GetOrderByIdWithItemAsync(int orderId);
         Task<IEnumerable<Order>> GetAllOrdersAsync();
+        Task<Order> GetOrderByIdAsync(int orderId);
     }
 }

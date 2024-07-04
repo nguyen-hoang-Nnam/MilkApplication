@@ -24,12 +24,52 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 // Add DB
 builder.Services.AddDbContext<AppDbContext>(option =>
 {
     var connectionString = builder.Configuration.GetConnectionString("DB");
     option.UseSqlServer(connectionString);
+});
+// Add configuration for PayOS
+
+/*builder.Services.AddScoped<IPaymentService>(sp =>
+{
+    var context = sp.GetRequiredService<AppDbContext>();
+    var configuration = sp.GetRequiredService<IConfiguration>();
+    var clientId = builder.Configuration["PayOS:ClientId"];
+    var apiKey = builder.Configuration["PayOS:ApiKey"];
+    var checksumKey = builder.Configuration["PayOS:ChecksumKey"];
+    if (string.IsNullOrEmpty(clientId) || string.IsNullOrEmpty(apiKey) || string.IsNullOrEmpty(checksumKey))
+    {
+        throw new InvalidOperationException($"Configuration values: ClientId={clientId}, ApiKey={apiKey}, ChecksumKey={checksumKey}");
+    }
+    var payOS = new Net.payOS.PayOS(clientId, apiKey, checksumKey);
+    return new PaymentService(configuration, context, payOS);
+});*/
+// Register Net.payOS.PayOS as a singleton
+builder.Services.AddSingleton(sp =>
+{
+    var configuration = sp.GetRequiredService<IConfiguration>();
+    var clientId = configuration["PayOS:ClientId"];
+    var apiKey = configuration["PayOS:ApiKey"];
+    var checksumKey = configuration["PayOS:ChecksumKey"];
+
+    if (string.IsNullOrEmpty(clientId) || string.IsNullOrEmpty(apiKey) || string.IsNullOrEmpty(checksumKey))
+    {
+        throw new InvalidOperationException($"Configuration values: ClientId={clientId}, ApiKey={apiKey}, ChecksumKey={checksumKey}");
+    }
+
+    return new Net.payOS.PayOS(clientId, apiKey, checksumKey);
+});
+// Register PaymentService
+builder.Services.AddScoped<IPaymentService>(sp =>
+{
+    var context = sp.GetRequiredService<AppDbContext>();
+    var payOS = sp.GetRequiredService<Net.payOS.PayOS>();
+    var configuration = sp.GetRequiredService<IConfiguration>();
+
+    return new PaymentService(configuration, context, payOS);
 });
 
 // Add Identity
@@ -70,7 +110,11 @@ builder.Services
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
         };
     });
+
+
+
 // Inject app Dependency Injection
+builder.Services.AddScoped<AppDbContext>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -101,9 +145,12 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IOrderItemService, OrderItemService>();
 builder.Services.AddScoped<IComboService, ComboService>();
 builder.Services.AddScoped<IComboProductService, ComboProductService>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
 
 // Add JwtHelper
 builder.Services.AddScoped<JwtHelper>();
+
+
 
 // Add CORS
 builder.Services.AddCors(options =>
@@ -163,6 +210,8 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.UseRouting();
 
 app.MapControllers();
 

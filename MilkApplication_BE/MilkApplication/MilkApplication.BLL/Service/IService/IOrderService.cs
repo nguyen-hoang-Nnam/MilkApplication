@@ -1,4 +1,5 @@
-﻿using MilkApplication.DAL.Models.DTO;
+﻿using MilkApplication.DAL.Models;
+using MilkApplication.DAL.Models.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace MilkApplication.BLL.Service.IService
         Task<ResponseDTO> CreateOrderAsync(string userId, List<OrderItemDTO> orderItemDTO);
         Task<ResponseDTO> DeleteOrderAsync(int orderId);
         Task<IEnumerable<OrderDTO>> GetAllOrdersAsync();
+        Task<Order> GetOrderEntityByIdAsync(int orderId);
     }
 }
