@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MilkApplication.DAL.Commons;
 using MilkApplication.DAL.Data;
+using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.Models;
+using MilkApplication.DAL.Models.PaginationDTO;
 using MilkApplication.DAL.Repository.IRepositpry;
 using System;
 using System.Collections.Generic;
@@ -32,6 +35,59 @@ namespace MilkApplication.DAL.Repository
                 .Include(cp => cp.Combo)
                 .Include(cp => cp.Product)
                 .FirstOrDefaultAsync(cp => cp.comboProductId == id);
+        }
+        public async Task<Pagination<ComboProduct>> GetComboProductByFilterAsync(PaginationParameter paginationParameter, ComboProductFilterDTO comboProductFilterDTO)
+        {
+            try
+            {
+                var productsQuery = _context.ComboProducts.AsQueryable();
+                productsQuery = await ApplyFilterSortAndSearch(productsQuery, comboProductFilterDTO);
+                if (productsQuery != null)
+                {
+                    var productQuery = ApplySorting(productsQuery, comboProductFilterDTO);
+                    var totalCount = await productQuery.CountAsync();
+
+                    var productPagination = await productQuery
+                        .Skip((paginationParameter.PageIndex - 1) * paginationParameter.PageSize)
+                        .Take(paginationParameter.PageSize)
+                        .ToListAsync();
+                    return new Pagination<ComboProduct>(productPagination, totalCount, paginationParameter.PageIndex, paginationParameter.PageSize);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        private async Task<IQueryable<ComboProduct>> ApplyFilterSortAndSearch(IQueryable<ComboProduct> Query, ComboProductFilterDTO comboProductFilterDTO)
+        {
+            if (comboProductFilterDTO == null)
+            {
+                return Query;
+            }
+            if (comboProductFilterDTO.productId != null)
+            {
+                Query = Query.Where(less => less.productId == comboProductFilterDTO.productId);
+            }
+            if (comboProductFilterDTO.Status != null)
+            {
+                Query = Query.Where(x => x.Status == comboProductFilterDTO.Status);
+            }
+            return Query;
+        }
+        private IQueryable<ComboProduct> ApplySorting(IQueryable<ComboProduct> query, ComboProductFilterDTO comboProductFilterDTO)
+        {
+            switch (comboProductFilterDTO.Sort.ToLower())
+            {
+                case "comboId":
+                    query = (comboProductFilterDTO.SortDirection.ToLower() == "desc") ? query.OrderByDescending(x => x.Combo.comboName) : query.OrderBy(x => x.Combo.comboName);
+                    break;
+                default:
+                    query = (comboProductFilterDTO.SortDirection.ToLower() == "desc") ? query.OrderByDescending(a => a.productId) : query.OrderBy(a => a.productId);
+                    break;
+            }
+            return query;
         }
     }
 }

@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
 using MilkApplication.BLL.Service.IService;
+using MilkApplication.DAL.Commons;
 using MilkApplication.DAL.enums;
+using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Models.DTO;
+using MilkApplication.DAL.Models.PaginationDTO;
 using MilkApplication.DAL.Repository.IRepositpry;
 using MilkApplication.DAL.Repository.IRepositpry.UoW;
 using System;
@@ -158,6 +161,23 @@ namespace MilkApplication.BLL.Service
             var productsByCategory = await _unitOfWork.ProductRepository.GetProductsByCategoryIdAsync(categoryId);
             var productMapper = _mapper.Map<List<ProductDTO>>(productsByCategory);
             return productMapper;
+        }
+        public async Task<Pagination<ProductDTO>> GetProductByFilterAsync(PaginationParameter paginationParameter, ProductFilterDTO productFilterDTO)
+        {
+            try
+            {
+                var products = await _unitOfWork.ProductRepository.GetProductByFilterAsync(paginationParameter, productFilterDTO);
+                if (products != null)
+                {
+                    var mapperResult = _mapper.Map<List<ProductDTO>>(products);
+                    return new Pagination<ProductDTO>(mapperResult, products.TotalCount, products.CurrentPage, products.PageSize);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

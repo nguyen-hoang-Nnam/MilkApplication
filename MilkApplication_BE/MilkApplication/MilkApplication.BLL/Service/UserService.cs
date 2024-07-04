@@ -13,6 +13,9 @@ using Microsoft.AspNetCore.Identity;
 using MilkApplication.Helpers;
 using AutoMapper;
 using MilkApplication.DAL.Repository.IRepositpry.UoW;
+using MilkApplication.DAL.Commons;
+using MilkApplication.DAL.Helper;
+using MilkApplication.DAL.Models.PaginationDTO;
 
 namespace MilkApplication.BLL.Service
 {
@@ -234,7 +237,23 @@ namespace MilkApplication.BLL.Service
             }
             return new ResponseDTO { IsSucceed = false, Message = "Admin not found" };
         }
-
+        public async Task<Pagination<UserDTO>> GetAccountByFilterAsync(PaginationParameter paginationParameter, AccountFilterDTO accountFilterDTO)
+        {
+            try
+            {
+                var Accounts = await _unitOfWork.UserRepository.GetAccountByFilterAsync(paginationParameter, accountFilterDTO);
+                if (Accounts != null)
+                {
+                    var mapperResult = _mapper.Map<List<UserDTO>>(Accounts);
+                    return new Pagination<UserDTO>(mapperResult, Accounts.TotalCount, Accounts.CurrentPage, Accounts.PageSize);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 
 }

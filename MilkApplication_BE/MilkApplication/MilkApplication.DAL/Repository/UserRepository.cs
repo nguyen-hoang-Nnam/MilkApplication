@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using MilkApplication.DAL.Commons;
 using MilkApplication.DAL.Data;
 using MilkApplication.DAL.enums;
+using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Models.DTO;
+using MilkApplication.DAL.Models.PaginationDTO;
 using MilkApplication.DAL.Repository.IRepositpry;
 using MilkApplication.DAL.Repository.IRepositpry.UoW;
 using System;
@@ -18,12 +21,14 @@ namespace MilkApplication.DAL.Repository
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly AppDbContext _context;
 
         public UserRepository(AppDbContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         : base(context)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _context = context; 
         }
 
         public async Task<ResponseDTO> CreateUserAsync(ApplicationUser user, string password)
@@ -71,6 +76,59 @@ namespace MilkApplication.DAL.Repository
             var roleName = UserRole.Admin.ToString();
             var usersInRole = await _userManager.GetUsersInRoleAsync(roleName);
             return usersInRole.ToList();
+        }
+        public async Task<Pagination<ApplicationUser>> GetAccountByFilterAsync(PaginationParameter paginationParameter, AccountFilterDTO accountFilterDTO)
+        {
+            try
+            {
+                var AccountsQuery = _context.Users.AsQueryable();
+                AccountsQuery = await ApplyFilterSortAndSearch(AccountsQuery, accountFilterDTO);
+                if (AccountsQuery != null)
+                {
+                    var AccountQuery = ApplySorting(AccountsQuery, accountFilterDTO);
+                    var totalCount = await AccountQuery.CountAsync();
+
+                    var AccountPagination = await AccountQuery
+                        .Skip((paginationParameter.PageIndex - 1) * paginationParameter.PageSize)
+                        .Take(paginationParameter.PageSize)
+                        .ToListAsync();
+                    return new Pagination<ApplicationUser>(AccountPagination, totalCount, paginationParameter.PageIndex, paginationParameter.PageSize);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        private async Task<IQueryable<ApplicationUser>> ApplyFilterSortAndSearch(IQueryable<ApplicationUser> Query, AccountFilterDTO accountFilterDTO)
+        {
+            if (accountFilterDTO == null)
+            {
+                return Query;
+            }
+            if (!string.IsNullOrEmpty(accountFilterDTO.Search))
+            {
+                Query = Query.Where(x => x.Id.Contains(accountFilterDTO.Search));
+            }
+            if (accountFilterDTO.Status != null)
+            {
+                Query = Query.Where(less => less.Status == accountFilterDTO.Status);
+            }
+            return Query;
+        }
+        private IQueryable<ApplicationUser> ApplySorting(IQueryable<ApplicationUser> query, AccountFilterDTO accountFilterDTO)
+        {
+            switch (accountFilterDTO.Sort.ToLower())
+            {
+                case "FullName":
+                    query = (accountFilterDTO.SortDirection.ToLower() == "desc") ? query.OrderByDescending(x => x.UserName) : query.OrderBy(x => x.UserName);
+                    break;
+                default:
+                    query = (accountFilterDTO.SortDirection.ToLower() == "desc") ? query.OrderByDescending(a => a.Id) : query.OrderBy(a => a.Id);
+                    break;
+            }
+            return query;
         }
     }
 }

@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
 using MilkApplication.BLL.Service.IService;
+using MilkApplication.DAL.Commons;
+using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Models.DTO;
+using MilkApplication.DAL.Models.PaginationDTO;
 using MilkApplication.DAL.Repository.IRepositpry.UoW;
 using System;
 using System.Collections.Generic;
@@ -133,6 +136,23 @@ namespace MilkApplication.BLL.Service
         {
             var order = await _unitOfWork.OrderRepository.GetOrderByIdAsync(orderId);
             return order;
+        }
+        public async Task<Pagination<OrderDTO>> GetOrderByFilterAsync(PaginationParameter paginationParameter, OrderFilterDTO orderFilterDTO)
+        {
+            try
+            {
+                var orders = await _unitOfWork.OrderRepository.GetOrderByFilterAsync(paginationParameter, orderFilterDTO);
+                if (orders != null)
+                {
+                    var mapperResult = _mapper.Map<List<OrderDTO>>(orders);
+                    return new Pagination<OrderDTO>(mapperResult, orders.TotalCount, orders.CurrentPage, orders.PageSize);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

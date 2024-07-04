@@ -3,9 +3,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MilkApplication.BLL.Service.IService;
+using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Models.DTO;
+using MilkApplication.DAL.Models.PaginationDTO;
 using MilkApplication.DAL.Repository.IRepositpry;
+using Newtonsoft.Json;
 using System.Security.Claims;
 
 namespace MilkApplication.Controllers
@@ -68,6 +71,30 @@ namespace MilkApplication.Controllers
             {
                 return BadRequest(ex.Message);
             }   
-        }       
+        }
+        [HttpGet("filter")]
+        public async Task<IActionResult> GetCommentByFilter([FromQuery] PaginationParameter paginationParameter, [FromQuery] CommentFilterDTO commentFilterDTO)
+        {
+            try
+            {
+                var result = await _commentService.GetCommentByFilterAsync(paginationParameter, commentFilterDTO);
+
+                var metadata = new
+                {
+                    result.TotalCount,
+                    result.PageSize,
+                    result.CurrentPage,
+                    result.TotalPages,
+                    result.HasNext,
+                    result.HasPrevious
+                };
+                Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MilkApplication.DAL.Commons;
+using MilkApplication.DAL.Helper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -16,5 +18,6 @@ namespace MilkApplication.DAL.Repository.IRepositpry
         Task<bool> UpdateAsync(T entity);
         Task DeleteAsync(int id);
         Task<T> GetById(string id);
+        Task<Pagination<T>> ToPagination(PaginationParameter paginationParameter);
     }
 }

@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MilkApplication.DAL.Commons;
 using MilkApplication.DAL.Data;
+using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.Models;
+using MilkApplication.DAL.Models.PaginationDTO;
 using MilkApplication.DAL.Repository.IRepositpry;
 using System;
 using System.Collections.Generic;
@@ -45,6 +48,71 @@ namespace MilkApplication.DAL.Repository
         public async Task<bool> ExistsAsync(int id)
         {
             return await _context.Products.AnyAsync(c => c.productId == id);
+        }
+        public async Task<Pagination<Product>> GetProductByFilterAsync(PaginationParameter paginationParameter, ProductFilterDTO productFilterDTO)
+        {
+            try
+            {
+                var productsQuery = _context.Products.AsQueryable();
+                productsQuery = await ApplyFilterSortAndSearch(productsQuery, productFilterDTO);
+                if (productsQuery != null)
+                {
+                    var productQuery = ApplySorting(productsQuery, productFilterDTO);
+                    var totalCount = await productQuery.CountAsync();
+
+                    var productPagination = await productQuery
+                        .Skip((paginationParameter.PageIndex - 1) * paginationParameter.PageSize)
+                        .Take(paginationParameter.PageSize)
+                        .ToListAsync();
+                    return new Pagination<Product>(productPagination, totalCount, paginationParameter.PageIndex, paginationParameter.PageSize);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        private async Task<IQueryable<Product>> ApplyFilterSortAndSearch(IQueryable<Product> Query, ProductFilterDTO productFilterDTO)
+        {
+            if (productFilterDTO == null)
+            {
+                return Query;
+            }
+            if (!string.IsNullOrEmpty(productFilterDTO.Search))
+            {
+                Query = Query.Where(x => x.productName.Contains(productFilterDTO.Search));
+            }
+            if (productFilterDTO.CategoryId != null)
+            {
+                Query = Query.Where(less => less.categoryId == productFilterDTO.CategoryId);
+            }
+            if (productFilterDTO.OriginId != null)
+            {
+                Query = Query.Where(less => less.originId == productFilterDTO.OriginId);
+            }
+            if (productFilterDTO.LocationId != null)
+            {
+                Query = Query.Where(less => less.locationId == productFilterDTO.LocationId);
+            }
+            if (productFilterDTO.Status != null)
+            {
+                Query = Query.Where(x => x.Status == productFilterDTO.Status);
+            }
+            return Query;
+        }
+        private IQueryable<Product> ApplySorting(IQueryable<Product> query, ProductFilterDTO productFilterDTO)
+        {
+            switch (productFilterDTO.Sort.ToLower())
+            {
+                case "productName":
+                    query = (productFilterDTO.SortDirection.ToLower() == "desc") ? query.OrderByDescending(x => x.productName) : query.OrderBy(x => x.productName);
+                    break;
+                default:
+                    query = (productFilterDTO.SortDirection.ToLower() == "desc") ? query.OrderByDescending(a => a.productId) : query.OrderBy(a => a.productId);
+                    break;
+            }
+            return query;
         }
     }
 }

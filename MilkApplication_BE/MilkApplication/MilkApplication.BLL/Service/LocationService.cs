@@ -8,6 +8,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MilkApplication.DAL.Commons;
+using MilkApplication.DAL.Helper;
+using MilkApplication.DAL.Models.PaginationDTO;
 
 namespace MilkApplication.BLL.Service
 {
@@ -104,6 +107,23 @@ namespace MilkApplication.BLL.Service
                 IsSucceed = false,
                 Message = "Location not found!"
             };
+        }
+        public async Task<Pagination<LocationDTO>> GetLocationByFilterAsync(PaginationParameter paginationParameter, LocationFilterDTO locationFilterDTO)
+        {
+            try
+            {
+                var locations = await _unitOfWork.LocationRepository.GetLocationByFilterAsync(paginationParameter, locationFilterDTO);
+                if (locations != null)
+                {
+                    var mapperResult = _mapper.Map<List<LocationDTO>>(locations);
+                    return new Pagination<LocationDTO>(mapperResult, locations.TotalCount, locations.CurrentPage, locations.PageSize);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
