@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using MilkApplication.BLL.Service.IService;
 using MilkApplication.DAL.Data;
 using MilkApplication.DAL.enums;
@@ -32,6 +33,19 @@ namespace MilkApplication.BLL.Service
         }
         public async Task<AppCreatePaymentResult> CreatePaymentLink(Order order, string cancelUrl, string returnUrl)
         {
+            var existingPayment = await _context.Payments
+                    .FirstOrDefaultAsync(p => p.orderId == order.orderId && p.Status == PaymentStatus.Pending);
+
+            if (existingPayment != null)
+            {
+                // If payment exists, return the existing payment link
+                return new AppCreatePaymentResult
+                {
+                    PaymentUrl = existingPayment.PaymentUrl,
+                    TransactionId = existingPayment.TransactionId,
+                    Success = true
+                };
+            }
             var items = new List<ItemData>();
 
             foreach (var orderItem in order.OrderItems)
@@ -48,7 +62,7 @@ namespace MilkApplication.BLL.Service
                 var payment = new Payment
                 {
                     orderId = order.orderId,
-                    PaymentDate = DateTime.UtcNow,
+                    PaymentDate = DateTime.Now,
                     Amount = order.totalPrice,
                     Status = PaymentStatus.Pending,
                     paymentMethodId = 1, 
