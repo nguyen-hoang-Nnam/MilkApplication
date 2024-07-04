@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MilkApplication.DAL.enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,6 +16,7 @@ namespace MilkApplication.DAL.Models
         public DateTime orderDate { get; set; }
         [Column(TypeName = "decimal(18, 2)")]
         public decimal totalPrice { get; set; }
+        public OrderStatus Status { get; set; }
         public string? Id { get; set; }
         [ForeignKey("Id")]
         public ApplicationUser? User { get; set; }
