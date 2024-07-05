@@ -239,6 +239,7 @@ namespace MilkApplication.DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     orderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     totalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>

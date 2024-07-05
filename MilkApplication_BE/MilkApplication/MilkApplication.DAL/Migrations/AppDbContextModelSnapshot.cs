@@ -372,6 +372,9 @@ namespace MilkApplication.DAL.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("orderDate")
                         .HasColumnType("datetime2");
 

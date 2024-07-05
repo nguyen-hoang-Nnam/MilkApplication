@@ -12,7 +12,7 @@ using MilkApplication.DAL.Data;
 namespace MilkApplication.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240704080958_update")]
+    [Migration("20240704203607_update")]
     partial class update
     {
         /// <inheritdoc />
@@ -374,6 +374,9 @@ namespace MilkApplication.DAL.Migrations
 
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("orderDate")
                         .HasColumnType("datetime2");

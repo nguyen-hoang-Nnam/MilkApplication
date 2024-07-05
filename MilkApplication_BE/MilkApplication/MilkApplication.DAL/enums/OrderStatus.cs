@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace MilkApplication.DAL.enums
 {
-    public enum OrderStatus
-    {
-        Pending,
-        Completed,
-        Failed,
+        public enum OrderStatus
+        {
+        Delivered,
+        Processing,
+        Delivering,
+        Refunded,
         Cancelled
-    }
+        }
 }

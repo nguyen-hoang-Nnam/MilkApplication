@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MilkApplication.DAL.Design
 {
-    /*public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
+    public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
     {
         public AppDbContext CreateDbContext(string[] args)
         {
@@ -18,5 +18,5 @@ namespace MilkApplication.DAL.Design
 
             return new AppDbContext(optionsBuilder.Options);
         }
-    }*/
+    }
 }
