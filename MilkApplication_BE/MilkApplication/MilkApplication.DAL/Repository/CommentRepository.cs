@@ -32,10 +32,10 @@ namespace MilkApplication.DAL.Repository
                     var totalCount = await commentQuery.CountAsync();
 
                     var commentPagination = await commentQuery
-                        .Skip((paginationParameter.PageIndex - 1) * paginationParameter.PageSize)
-                        .Take(paginationParameter.PageSize)
+                        .Skip((paginationParameter.Page - 1) * paginationParameter.Limit)
+                        .Take(paginationParameter.Limit)
                         .ToListAsync();
-                    return new Pagination<Comment>(commentPagination, totalCount, paginationParameter.PageIndex, paginationParameter.PageSize);
+                    return new Pagination<Comment>(commentPagination, totalCount, paginationParameter.Page, paginationParameter.Limit);
                 }
                 return null;
             }
@@ -54,9 +54,9 @@ namespace MilkApplication.DAL.Repository
             {
                 Query = Query.Where(x => x.Id.Contains(commentFilterDTO.Search));
             }
-            if (commentFilterDTO.ProductId != null)
+            if (commentFilterDTO.productId != null)
             {
-                Query = Query.Where(less => less.productId == commentFilterDTO.ProductId);
+                Query = Query.Where(less => less.productId == commentFilterDTO.productId);
             }
             return Query;
         }

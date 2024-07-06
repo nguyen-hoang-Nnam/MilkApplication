@@ -70,11 +70,11 @@ namespace MilkApplication.DAL.Repository
         public async Task<Pagination<T>> ToPagination(PaginationParameter paginationParameter)
         {
             var itemCount = await _dbSet.CountAsync();
-            var items = await _dbSet.Skip((paginationParameter.PageIndex - 1) * paginationParameter.PageSize)
-                                    .Take(paginationParameter.PageSize)
+            var items = await _dbSet.Skip((paginationParameter.Page - 1) * paginationParameter.Limit)
+                                    .Take(paginationParameter.Limit)
                                     .AsNoTracking()
                                     .ToListAsync();
-            var result = new Pagination<T>(items, itemCount, paginationParameter.PageIndex, paginationParameter.PageSize);
+            var result = new Pagination<T>(items, itemCount, paginationParameter.Page, paginationParameter.Limit);
 
             return result;
         }
