@@ -12,8 +12,8 @@ using MilkApplication.DAL.Data;
 namespace MilkApplication.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240704200109_test")]
-    partial class test
+    [Migration("20240706082002_update")]
+    partial class update
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -327,6 +327,10 @@ namespace MilkApplication.DAL.Migrations
                     b.Property<int>("Rating")
                         .HasColumnType("int");
 
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("commentDetail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -377,6 +381,10 @@ namespace MilkApplication.DAL.Migrations
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("orderDate")
                         .HasColumnType("datetime2");

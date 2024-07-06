@@ -24,7 +24,6 @@ namespace MilkApplication.BLL.Service
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-
         public async Task<ResponseDTO> CreateOrderAsync(string userId, List<OrderItemDTO> orderItemsDto)
         {
             var response = new ResponseDTO();
@@ -74,6 +73,7 @@ namespace MilkApplication.BLL.Service
                 {
                     orderDate = DateTime.UtcNow,
                     Id = userId,
+                    UserName = user.UserName,
                     User = user,
                     OrderItems = orderItems, // Assign order items
                     totalPrice = totalPrice

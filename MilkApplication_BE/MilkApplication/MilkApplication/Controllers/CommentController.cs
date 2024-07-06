@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MilkApplication.BLL.Service;
 using MilkApplication.BLL.Service.IService;
 using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.Models;
@@ -24,6 +25,17 @@ namespace MilkApplication.Controllers
             _commentService = commentService;
             _mapper = mapper;
         }
+        [HttpPost]
+        [Route("CreateComment")]
+        public async Task<IActionResult> CreateComment([FromBody] CommentDTO commentDTO)
+        {
+            var result = await _commentService.AddCommentAsync(commentDTO.Id, commentDTO);
+            if (result.IsSucceed)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
         [HttpGet]
         [Route("GetAllComment")]
         public async Task<IActionResult> GetAllComment()
@@ -31,28 +43,20 @@ namespace MilkApplication.Controllers
             var comments = await _commentService.GetAllCommentAsync();
             return Ok(comments);
         }
-        [HttpPost]
-        [Route("CreateComment")]
-        public async Task<IActionResult> CreateComment([FromBody] CommentDTO commentDTO)
-        {
-            var result = await _commentService.AddCommentAsync(commentDTO);
-            if (result.IsSucceed)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
         [HttpPut]
         [Route("UpdateComment/{id}")]
         public async Task<IActionResult> UpdateComment(int id, [FromBody] CommentDTO comment)
         {
-            var commentToUpdate = await _commentService.GetCommentByIdAsync(id);
-            if (commentToUpdate == null)
+            var response = await _commentService.UpdateCommentAsync(id, comment);
+
+            if (response.IsSucceed)
             {
-                return BadRequest("Comment not found");
+                return Ok(response);
             }
-            await _commentService.UpdateCommentAsync(id, comment);
-            return Ok();
+            else
+            {
+                return NotFound(response);
+            }
         }
         [HttpDelete]
         [Route("DeleteComment/{id}")]

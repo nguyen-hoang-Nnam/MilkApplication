@@ -324,6 +324,10 @@ namespace MilkApplication.DAL.Migrations
                     b.Property<int>("Rating")
                         .HasColumnType("int");
 
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("commentDetail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -374,6 +378,10 @@ namespace MilkApplication.DAL.Migrations
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("orderDate")
                         .HasColumnType("datetime2");
