@@ -14,6 +14,7 @@ namespace MilkApplication.DAL.Models.DTO
         public DateTime orderDate { get; set; }
         public OrderStatus Status { get; set; }
         public decimal totalPrice { get; set; }
+        public int voucherId { get; set; }
         public string Id { get; set; }
     }
 }

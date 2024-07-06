@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MilkApplication.BLL.Service.IService;
 using MilkApplication.DAL.Commons;
+using MilkApplication.DAL.enums;
 using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Models.DTO;
@@ -24,7 +25,8 @@ namespace MilkApplication.BLL.Service
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<ResponseDTO> CreateOrderAsync(string userId, List<OrderItemDTO> orderItemsDto)
+
+        public async Task<ResponseDTO> CreateOrderAsync(string userId, List<OrderItemDTO> orderItemsDto, string? voucherCode = null)
         {
             var response = new ResponseDTO();
 
@@ -67,6 +69,25 @@ namespace MilkApplication.BLL.Service
                     }
                 }
 
+                Vouchers voucher = null;
+                if (!string.IsNullOrEmpty(voucherCode))
+                {
+                    voucher = await _unitOfWork.VouchersRepository.GetByCodeAsync(voucherCode);
+                    if (voucher == null || voucher.vouchersStatus == VouchersStatus.Expired || voucher.quantity < 1)
+                    {
+                        response.Message = "Invalid or expired voucher.";
+                        return response;
+                    }
+
+                    foreach (var item in orderItems)
+                    {
+                        item.Price = item.Price * (1 - (decimal)(voucher.discountPercent / 100));
+                    }
+
+                    voucher.quantity -= 1;
+                    voucher.vouchersStatus = (voucher.quantity > 0) ? voucher.vouchersStatus : VouchersStatus.Expired;
+                }
+
                 decimal totalPrice = orderItems.Sum(oi => oi.Quantity * oi.Price);
 
                 var order = new Order
@@ -75,8 +96,9 @@ namespace MilkApplication.BLL.Service
                     Id = userId,
                     UserName = user.UserName,
                     User = user,
-                    OrderItems = orderItems, // Assign order items
-                    totalPrice = totalPrice
+                    OrderItems = orderItems,
+                    totalPrice = totalPrice,
+                    voucherId = voucher.voucherId
                 };
 
                 await _unitOfWork.OrderRepository.CreateOrderAsync(order, orderItems);
@@ -89,6 +111,11 @@ namespace MilkApplication.BLL.Service
                         product.Quantity -= item.Quantity;
                         await _unitOfWork.ProductRepository.UpdateAsync(product);
                     }
+                }
+
+                if (voucher != null)
+                {
+                    await _unitOfWork.VouchersRepository.UpdateAsync(voucher);
                 }
 
                 await _unitOfWork.SaveChangeAsync();
@@ -132,11 +159,13 @@ namespace MilkApplication.BLL.Service
             var orders = await _unitOfWork.OrderRepository.GetAllOrdersAsync();
             return _mapper.Map<IEnumerable<OrderDTO>>(orders);
         }
+
         public async Task<Order> GetOrderEntityByIdAsync(int orderId)
         {
             var order = await _unitOfWork.OrderRepository.GetOrderByIdAsync(orderId);
             return order;
         }
+
         public async Task<Pagination<OrderDTO>> GetOrderByFilterAsync(PaginationParameter paginationParameter, OrderFilterDTO orderFilterDTO)
         {
             try

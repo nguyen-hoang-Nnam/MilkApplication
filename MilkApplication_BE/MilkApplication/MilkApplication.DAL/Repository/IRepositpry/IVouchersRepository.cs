@@ -9,5 +9,7 @@ namespace MilkApplication.DAL.Repository.IRepositpry
 {
     public interface IVouchersRepository : IGenericRepository<Vouchers>
     {
+        Task<Vouchers> GetByCodeAsync(string code);
+        Task UpdateAsync(Vouchers voucher);
     }
 }
