@@ -48,10 +48,10 @@ namespace MilkApplication.DAL.Repository
                     var totalCount = await productQuery.CountAsync();
 
                     var productPagination = await productQuery
-                        .Skip((paginationParameter.PageIndex - 1) * paginationParameter.PageSize)
-                        .Take(paginationParameter.PageSize)
+                        .Skip((paginationParameter.Page - 1) * paginationParameter.Limit)
+                        .Take(paginationParameter.Limit)
                         .ToListAsync();
-                    return new Pagination<ComboProduct>(productPagination, totalCount, paginationParameter.PageIndex, paginationParameter.PageSize);
+                    return new Pagination<ComboProduct>(productPagination, totalCount, paginationParameter.Page, paginationParameter.Limit);
                 }
                 return null;
             }
@@ -69,10 +69,6 @@ namespace MilkApplication.DAL.Repository
             if (comboProductFilterDTO.productId != null)
             {
                 Query = Query.Where(less => less.productId == comboProductFilterDTO.productId);
-            }
-            if (comboProductFilterDTO.Status != null)
-            {
-                Query = Query.Where(x => x.Status == comboProductFilterDTO.Status);
             }
             return Query;
         }

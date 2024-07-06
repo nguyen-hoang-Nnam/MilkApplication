@@ -42,10 +42,10 @@ namespace MilkApplication.DAL.Repository
                     var totalCount = await originQuery.CountAsync();
 
                     var originPagination = await originQuery
-                        .Skip((paginationParameter.PageIndex - 1) * paginationParameter.PageSize)
-                        .Take(paginationParameter.PageSize)
+                        .Skip((paginationParameter.Page - 1) * paginationParameter.Limit)
+                        .Take(paginationParameter.Limit)
                         .ToListAsync();
-                    return new Pagination<Origin>(originPagination, totalCount, paginationParameter.PageIndex, paginationParameter.PageSize);
+                    return new Pagination<Origin>(originPagination, totalCount, paginationParameter.Page, paginationParameter.Limit);
                 }
                 return null;
             }

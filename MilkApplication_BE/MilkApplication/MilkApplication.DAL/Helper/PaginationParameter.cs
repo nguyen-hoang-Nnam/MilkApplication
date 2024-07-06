@@ -10,11 +10,11 @@ namespace MilkApplication.DAL.Helper
     public class PaginationParameter
     {
         const int maxPageSize = 50;
-        public int PageIndex { get; set; } = 1;
+        public int Page { get; set; } = 1;
         private int _pageSize = 10;
         [JsonIgnore]
 
-        public int PageSize
+        public int Limit
         {
             get
             {

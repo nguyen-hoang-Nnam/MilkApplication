@@ -11,6 +11,6 @@ namespace MilkApplication.DAL.Models.PaginationDTO
         public string Sort { get; set; } = "id";
         public string SortDirection { get; set; } = "desc";
         public string? Search { get; set; }
-        public int? ProductId { get; set; }
+        public int? productId { get; set; }
     }
 }

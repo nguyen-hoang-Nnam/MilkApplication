@@ -61,10 +61,10 @@ namespace MilkApplication.DAL.Repository
                     var totalCount = await productQuery.CountAsync();
 
                     var productPagination = await productQuery
-                        .Skip((paginationParameter.PageIndex - 1) * paginationParameter.PageSize)
-                        .Take(paginationParameter.PageSize)
+                        .Skip((paginationParameter.Page - 1) * paginationParameter.Limit)
+                        .Take(paginationParameter.Limit)
                         .ToListAsync();
-                    return new Pagination<Product>(productPagination, totalCount, paginationParameter.PageIndex, paginationParameter.PageSize);
+                    return new Pagination<Product>(productPagination, totalCount, paginationParameter.Page, paginationParameter.Limit);
                 }
                 return null;
             }
@@ -82,22 +82,6 @@ namespace MilkApplication.DAL.Repository
             if (!string.IsNullOrEmpty(productFilterDTO.Search))
             {
                 Query = Query.Where(x => x.productName.Contains(productFilterDTO.Search));
-            }
-            if (productFilterDTO.CategoryId != null)
-            {
-                Query = Query.Where(less => less.categoryId == productFilterDTO.CategoryId);
-            }
-            if (productFilterDTO.OriginId != null)
-            {
-                Query = Query.Where(less => less.originId == productFilterDTO.OriginId);
-            }
-            if (productFilterDTO.LocationId != null)
-            {
-                Query = Query.Where(less => less.locationId == productFilterDTO.LocationId);
-            }
-            if (productFilterDTO.Status != null)
-            {
-                Query = Query.Where(x => x.Status == productFilterDTO.Status);
             }
             return Query;
         }

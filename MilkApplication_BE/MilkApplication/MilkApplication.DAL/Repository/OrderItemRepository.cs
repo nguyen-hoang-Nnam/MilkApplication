@@ -40,10 +40,10 @@ namespace MilkApplication.DAL.Repository
                     var totalCount = await orderItemQuery.CountAsync();
 
                     var orderItemPagination = await orderItemQuery
-                        .Skip((paginationParameter.PageIndex - 1) * paginationParameter.PageSize)
-                        .Take(paginationParameter.PageSize)
+                        .Skip((paginationParameter.Page - 1) * paginationParameter.Limit)
+                        .Take(paginationParameter.Limit)
                         .ToListAsync();
-                    return new Pagination<OrderItem>(orderItemPagination, totalCount, paginationParameter.PageIndex, paginationParameter.PageSize);
+                    return new Pagination<OrderItem>(orderItemPagination, totalCount, paginationParameter.Page, paginationParameter.Limit);
                 }
                 return null;
             }

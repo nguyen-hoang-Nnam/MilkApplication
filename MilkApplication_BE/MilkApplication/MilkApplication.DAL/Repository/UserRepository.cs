@@ -89,10 +89,10 @@ namespace MilkApplication.DAL.Repository
                     var totalCount = await AccountQuery.CountAsync();
 
                     var AccountPagination = await AccountQuery
-                        .Skip((paginationParameter.PageIndex - 1) * paginationParameter.PageSize)
-                        .Take(paginationParameter.PageSize)
+                        .Skip((paginationParameter.Page - 1) * paginationParameter.Limit)
+                        .Take(paginationParameter.Limit)
                         .ToListAsync();
-                    return new Pagination<ApplicationUser>(AccountPagination, totalCount, paginationParameter.PageIndex, paginationParameter.PageSize);
+                    return new Pagination<ApplicationUser>(AccountPagination, totalCount, paginationParameter.Page, paginationParameter.Limit);
                 }
                 return null;
             }
@@ -110,10 +110,6 @@ namespace MilkApplication.DAL.Repository
             if (!string.IsNullOrEmpty(accountFilterDTO.Search))
             {
                 Query = Query.Where(x => x.Id.Contains(accountFilterDTO.Search));
-            }
-            if (accountFilterDTO.Status != null)
-            {
-                Query = Query.Where(less => less.Status == accountFilterDTO.Status);
             }
             return Query;
         }
