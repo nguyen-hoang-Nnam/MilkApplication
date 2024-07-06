@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using MilkApplication.BLL.Service;
+﻿using Microsoft.AspNetCore.Mvc;
 using MilkApplication.BLL.Service.IService;
-using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.Models.DTO;
-using MilkApplication.DAL.Models.PaginationDTO;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
+using MilkApplication.DAL.Helper;
+using MilkApplication.DAL.Models.PaginationDTO;
 
 namespace MilkApplication.Controllers
 {
@@ -35,7 +35,7 @@ namespace MilkApplication.Controllers
                 return BadRequest(ModelState);
             }
 
-            var response = await _orderService.CreateOrderAsync(request.Id, request.OrderItemDTOs);
+            var response = await _orderService.CreateOrderAsync(request.Id, request.OrderItemDTOs, request.VoucherCode);
 
             if (!response.IsSucceed)
             {
@@ -44,6 +44,7 @@ namespace MilkApplication.Controllers
 
             return Ok(response);
         }
+
         [HttpDelete("DeleteOrder/{orderId}")]
         public async Task<IActionResult> DeleteOrder(int orderId)
         {
@@ -56,6 +57,7 @@ namespace MilkApplication.Controllers
 
             return Ok(response);
         }
+
         [HttpGet("filter")]
         public async Task<IActionResult> GetOrderByFilter([FromQuery] PaginationParameter paginationParameter, [FromQuery] OrderFilterDTO orderFilterDTO)
         {

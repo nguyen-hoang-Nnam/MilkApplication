@@ -1,4 +1,5 @@
-﻿using MilkApplication.DAL.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using MilkApplication.DAL.Data;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Repository.IRepositpry;
 using System;
@@ -15,6 +16,15 @@ namespace MilkApplication.DAL.Repository
         public VouchersRepository(AppDbContext context) : base(context)
         {
             _context = context;
+        }
+        public async Task<Vouchers> GetByCodeAsync(string code)
+        {
+            return await _context.Vouchers.FirstOrDefaultAsync(v => v.Code == code);
+        }
+        public async Task UpdateAsync(Vouchers voucher)
+        {
+            _context.Vouchers.Update(voucher);
+            await _context.SaveChangesAsync();
         }
     }
 }
