@@ -25,26 +25,7 @@ namespace MilkApplication.BLL.Service
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<List<CommentDTO>> GetAllCommentAsync()
-        {
-            var commentGetAll = await _unitOfWork.CommentRepository.GetAllAsync();
-            var commentMapper = _mapper.Map<List<CommentDTO>>(commentGetAll);
-            return commentMapper;
-        }
-
-        public async Task<CommentDTO> GetCommentByIdAsync(int id)
-        {
-            var commentFound = await _unitOfWork.CommentRepository.GetByIdAsync(id);
-            if (commentFound == null)
-            {
-                return null;
-            }
-            var commentMapper = _mapper.Map<CommentDTO>(commentFound);
-            return commentMapper;
-
-        }
-
-        public async Task<ResponseDTO> AddCommentAsync(CommentDTO commentDTO)
+        public async Task<ResponseDTO> AddCommentAsync(string userId, CommentDTO commentDTO)
         {
             var product = await _unitOfWork.ProductRepository.GetByIdAsync(commentDTO.productId);
             if (product == null)
@@ -55,9 +36,19 @@ namespace MilkApplication.BLL.Service
                     Message = "Product not found",
                 };
             }
+            var user = await _unitOfWork.UserRepository.GetById(userId);
+            if (user == null)
+            {
+                return new ResponseDTO
+                {
+                    IsSucceed = false,
+                    Message = "User not found",
+                };
+            }
 
             var commentObj = _mapper.Map<Comment>(commentDTO);
 
+            commentObj.UserName = user.UserName;
             commentObj.Product = product;
 
             await _unitOfWork.CommentRepository.AddAsync(commentObj);
@@ -70,7 +61,12 @@ namespace MilkApplication.BLL.Service
             };
             return response;
         }
-
+        public async Task<List<CommentDTO>> GetAllCommentAsync()
+        {
+            var commentGetAll = await _unitOfWork.CommentRepository.GetAllAsync();
+            var commentMapper = _mapper.Map<List<CommentDTO>>(commentGetAll);
+            return commentMapper;
+        }
         public async Task<ResponseDTO> UpdateCommentAsync(int id, CommentDTO commentDTO)
         {
             var commentUpdate = await _unitOfWork.CommentRepository.GetByIdAsync(id);

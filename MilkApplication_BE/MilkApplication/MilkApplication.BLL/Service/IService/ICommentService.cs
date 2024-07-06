@@ -12,8 +12,7 @@ namespace MilkApplication.BLL.Service.IService
 {
     public interface ICommentService
     {
-        public Task<ResponseDTO> AddCommentAsync(CommentDTO commentDTO);
-        public Task<CommentDTO> GetCommentByIdAsync(int id);
+        public Task<ResponseDTO> AddCommentAsync(string userId, CommentDTO commentDTO);
         public Task<List<CommentDTO>> GetAllCommentAsync();
         public Task<ResponseDTO> UpdateCommentAsync(int id, CommentDTO commentDTO);
         public Task<ResponseDTO> DeleteCommentAsync(int id);

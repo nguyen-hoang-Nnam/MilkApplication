@@ -13,6 +13,7 @@ namespace MilkApplication.DAL.Models
     {
         [Key]
         public int orderId { get; set; }
+        public string UserName { get; set; }
         public DateTime orderDate { get; set; }
         [Column(TypeName = "decimal(18, 2)")]
         public decimal totalPrice { get; set; }

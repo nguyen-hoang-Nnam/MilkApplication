@@ -9,6 +9,7 @@ namespace MilkApplication.DAL.Models.DTO
 {
     public class OrderDTO
     {
+        public string UserName { get; set; }
         public int orderId { get; set; }
         public DateTime orderDate { get; set; }
         public OrderStatus Status { get; set; }
