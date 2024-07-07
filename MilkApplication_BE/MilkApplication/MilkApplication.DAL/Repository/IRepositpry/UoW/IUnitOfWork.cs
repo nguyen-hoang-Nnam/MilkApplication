@@ -15,6 +15,14 @@ namespace MilkApplication.DAL.Repository.IRepositpry.UoW
         IProductRepository ProductRepository { get; }
         ICategoryRepository CategoryRepository { get; }
         IOriginRepository OriginRepository { get; }
+        ICommentRepository CommentRepository { get; }
+        IUserRepository UserRepository { get; }
+        IVouchersRepository VouchersRepository { get; }
+        ILocationRepository LocationRepository { get; }
+        IOrderRepository OrderRepository { get; }
+        IOrderItemRepository OrderItemRepository { get; }
+        IComboRepository ComboRepository { get; }
+        IComboProductRepository ComboProductRepository { get; }
         AppDbContext dbContext { get; }
 
 

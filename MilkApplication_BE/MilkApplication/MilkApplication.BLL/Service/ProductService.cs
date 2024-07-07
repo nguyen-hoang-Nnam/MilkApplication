@@ -1,7 +1,11 @@
 ﻿using AutoMapper;
 using MilkApplication.BLL.Service.IService;
+using MilkApplication.DAL.Commons;
+using MilkApplication.DAL.enums;
+using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Models.DTO;
+using MilkApplication.DAL.Models.PaginationDTO;
 using MilkApplication.DAL.Repository.IRepositpry;
 using MilkApplication.DAL.Repository.IRepositpry.UoW;
 using System;
@@ -25,19 +29,19 @@ namespace MilkApplication.BLL.Service
 
         public async Task<List<ProductDTO>> GetAllProductsAsync()
         {
-            var productGetAll = await _unitOfWork.ProductRepository.GetAllProductsAsync();
+            var productGetAll = await _unitOfWork.ProductRepository.GetAllAsync();
             var productMapper = _mapper.Map<List<ProductDTO>>(productGetAll);
             return productMapper;
         }
 
-        public async Task<Product> GetProductByIdAsync(int id)
+        public async Task<ProductDTO> GetProductByIdAsync(int id)
         {
-            var productFound = await _unitOfWork.ProductRepository.GetById(id);
-            if (productFound != null)
+            var productFound = await _unitOfWork.ProductRepository.GetByIdAsync(id);
+            if (productFound == null)
             {
-                return productFound;
+                return null;
             }
-            var productMapper = _mapper.Map<Product>(productFound);
+            var productMapper = _mapper.Map<ProductDTO>(productFound);
             return productMapper;
             
         }
@@ -67,10 +71,11 @@ namespace MilkApplication.BLL.Service
 
             var productObj = _mapper.Map<Product>(productDTO);
 
+            productObj.Status = ProductStatus.Valiable;
             productObj.Category = category;
             productObj.Origin = origin;
 
-            await _unitOfWork.ProductRepository.Add(productObj);
+            await _unitOfWork.ProductRepository.AddAsync(productObj);
             await _unitOfWork.SaveChangeAsync();
 
             var response = new ResponseDTO
@@ -83,38 +88,55 @@ namespace MilkApplication.BLL.Service
 
         public async Task<ResponseDTO> UpdateProductAsync(int id, ProductDTO productDTO)
         {
-            var productUpdate = await _unitOfWork.ProductRepository.GetById(id);
-            if (productUpdate != null) {
-                productUpdate = _mapper.Map(productDTO, productUpdate);
-                await _unitOfWork.ProductRepository.Update(productUpdate);
-                var result = await _unitOfWork.SaveChangeAsync();
-                if (result > 0)
+            try
+            {
+                var productUpdate = await _unitOfWork.ProductRepository.GetByIdAsync(id);
+                if (productUpdate != null)
                 {
+                    var productId = productUpdate.productId;
+                    _mapper.Map(productDTO, productUpdate);
+                    productUpdate.productId = productId;
+                    await _unitOfWork.ProductRepository.UpdateAsync(productUpdate);
+                    var result = await _unitOfWork.SaveChangeAsync();
+                    if (result > 0)
+                    {
+                        return new ResponseDTO
+                        {
+                            IsSucceed = false,
+                            Message = "Product update failed!"
+                        };
+                    }
                     return new ResponseDTO
                     {
+                        
                         IsSucceed = true,
-                        Message = "Product update successfully!"
+                        Message = "Product update successfully!",
                     };
                 }
                 return new ResponseDTO
                 {
                     IsSucceed = false,
-                    Message = "Product update failed!"
+                    Message = "Product not found!"
                 };
             }
-            return new ResponseDTO
+            catch (Exception ex)
             {
-                IsSucceed = false,
-                Message = "Product not found!"
-            };
+                Console.WriteLine($"An error occurred: {ex.Message}");
+
+                return new ResponseDTO
+                {
+                    IsSucceed = false,
+                    Message = "An error occurred during the product update process."
+                };
+            }
         }
 
         public async Task<ResponseDTO> DeleteProductAsync(int id)
         {
-            var deleteProduct = await _unitOfWork.ProductRepository.GetById(id);
+            var deleteProduct = await _unitOfWork.ProductRepository.GetByIdAsync(id);
             if (deleteProduct != null)
             {
-                await _unitOfWork.ProductRepository.Delete(id);
+                await _unitOfWork.ProductRepository.DeleteAsync(id);
                 await _unitOfWork.SaveChangeAsync();
 
                 return new ResponseDTO
@@ -132,6 +154,30 @@ namespace MilkApplication.BLL.Service
                 };
             }
             
+        }
+
+        public async Task<List<ProductDTO>> GetProductsByCategoryIdAsync(int categoryId)
+        {
+            var productsByCategory = await _unitOfWork.ProductRepository.GetProductsByCategoryIdAsync(categoryId);
+            var productMapper = _mapper.Map<List<ProductDTO>>(productsByCategory);
+            return productMapper;
+        }
+        public async Task<Pagination<ProductDTO>> GetProductByFilterAsync(PaginationParameter paginationParameter, ProductFilterDTO productFilterDTO)
+        {
+            try
+            {
+                var products = await _unitOfWork.ProductRepository.GetProductByFilterAsync(paginationParameter, productFilterDTO);
+                if (products != null)
+                {
+                    var mapperResult = _mapper.Map<List<ProductDTO>>(products);
+                    return new Pagination<ProductDTO>(mapperResult, products.TotalCount, products.CurrentPage, products.PageSize);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

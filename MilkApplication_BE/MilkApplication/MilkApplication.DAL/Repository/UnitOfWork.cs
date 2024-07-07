@@ -12,32 +12,56 @@ namespace MilkApplication.DAL.Repository
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        private readonly AppDbContext _context;
+        private readonly AppDbContext _milkDBContext;
         private readonly IProductRepository _productRepository;
         private readonly ICategoryRepository _categoryRepository;
         private readonly IOriginRepository _originRepository;
+        private readonly ICommentRepository _commentRepository;
+        private readonly IUserRepository _userRepository;
+        private readonly IVouchersRepository _vouchersRepository;
+        private readonly ILocationRepository _locationRepository;
+        private readonly IOrderRepository _orderRepository;
+        private readonly IOrderItemRepository _orderItemRepository;
+        private readonly IComboRepository _comboRepository;
+        private readonly IComboProductRepository _comboProductRepository;
         private readonly AppDbContext _dbContext;
 
 
         private bool disposed = false;
 
-        public UnitOfWork(AppDbContext context, IProductRepository productRepository, AppDbContext dbContext, ICategoryRepository categoryRepository, IOriginRepository originRepository)
+        public UnitOfWork(AppDbContext milkDBContext, IProductRepository productRepository, AppDbContext dbContext, ICategoryRepository categoryRepository, IOriginRepository originRepository, ICommentRepository commentRepository, IUserRepository userRepository, IVouchersRepository vouchersRepository, ILocationRepository locationRepository, IOrderRepository orderRepository, IOrderItemRepository orderItemRepository, IComboRepository comboRepository, IComboProductRepository comboProductRepository)
         {
-            _context = context;
-            _productRepository = productRepository;
-            _dbContext = dbContext;
-            _categoryRepository = categoryRepository;
-            _originRepository = originRepository;
+            this._milkDBContext = milkDBContext;
+            this._productRepository = productRepository;
+            this._dbContext = dbContext;
+            this._categoryRepository = categoryRepository;
+            this._originRepository = originRepository;
+            this._commentRepository = commentRepository;
+            this._userRepository = userRepository;
+            this._vouchersRepository = vouchersRepository;
+            this._locationRepository = locationRepository;
+            this._orderRepository = orderRepository;
+            this._orderItemRepository = orderItemRepository;
+            this._comboRepository = comboRepository;
+            this._comboProductRepository = comboProductRepository;
         }
 
         public IProductRepository ProductRepository { get { return _productRepository; } }
         public ICategoryRepository CategoryRepository { get { return _categoryRepository; } }
         public IOriginRepository OriginRepository { get { return _originRepository; } }
+        public ICommentRepository CommentRepository { get { return _commentRepository; } }
+        public IUserRepository UserRepository { get { return _userRepository; } }
+        public IVouchersRepository VouchersRepository { get { return _vouchersRepository; } }
+        public ILocationRepository LocationRepository { get { return _locationRepository; } }
+        public IOrderRepository OrderRepository { get { return _orderRepository; } }
+        public IOrderItemRepository OrderItemRepository { get { return _orderItemRepository; } }
+        public IComboRepository ComboRepository { get { return _comboRepository; } }
+        public IComboProductRepository ComboProductRepository { get { return _comboProductRepository; } }
         public AppDbContext dbContext { get { return _dbContext; } }
 
         public async Task<int> SaveChangeAsync()
         {
-            return await _context.SaveChangesAsync();
+            return await _milkDBContext.SaveChangesAsync();
 
         }
 
@@ -47,7 +71,7 @@ namespace MilkApplication.DAL.Repository
             {
                 if (disposing)
                 {
-                    _context.Dispose();
+                    _milkDBContext.Dispose();
                 }
                 disposed = true;
             }
