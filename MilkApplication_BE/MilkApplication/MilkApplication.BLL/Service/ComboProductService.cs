@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MilkApplication.DAL.enums;
+using MilkApplication.DAL.Commons;
+using MilkApplication.DAL.Helper;
+using MilkApplication.DAL.Models.PaginationDTO;
 
 namespace MilkApplication.BLL.Service
 {
@@ -118,6 +121,23 @@ namespace MilkApplication.BLL.Service
                 IsSucceed = false,
                 Message = "Combo Product not found!"
             };
+        }
+        public async Task<Pagination<ComboProductDTO>> GetComboProductByFilterAsync(PaginationParameter paginationParameter, ComboProductFilterDTO comboProductFilterDTO)
+        {
+            try
+            {
+                var comboProducts = await _unitOfWork.ComboProductRepository.GetComboProductByFilterAsync(paginationParameter, comboProductFilterDTO);
+                if (comboProducts != null)
+                {
+                    var mapperResult = _mapper.Map<List<ComboProductDTO>>(comboProducts);
+                    return new Pagination<ComboProductDTO>(mapperResult, comboProducts.TotalCount, comboProducts.CurrentPage, comboProducts.PageSize);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

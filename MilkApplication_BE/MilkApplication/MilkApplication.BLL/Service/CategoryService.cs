@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
 using MilkApplication.BLL.Service.IService;
+using MilkApplication.DAL.Commons;
+using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Models.DTO;
+using MilkApplication.DAL.Models.PaginationDTO;
 using MilkApplication.DAL.Repository.IRepositpry.UoW;
 using System;
 using System.Collections.Generic;
@@ -104,6 +107,23 @@ namespace MilkApplication.BLL.Service
                 IsSucceed = false,
                 Message = "Category not found!"
             };
+        }
+        public async Task<Pagination<CategoryDTO>> GetCategoryByFilterAsync(PaginationParameter paginationParameter, CategoryFilterDTO categoryFilterDTO)
+        {
+            try
+            {
+                var categories = await _unitOfWork.CategoryRepository.GetCategoryByFilterAsync(paginationParameter, categoryFilterDTO);
+                if (categories != null)
+                {
+                    var mapperResult = _mapper.Map<List<CategoryDTO>>(categories);
+                    return new Pagination<CategoryDTO>(mapperResult, categories.TotalCount, categories.CurrentPage, categories.PageSize);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

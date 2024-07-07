@@ -7,6 +7,9 @@ using MilkApplication.DAL.Models;
 using MilkApplication.BLL.Service.IService;
 using MilkApplication.Helpers;
 using Microsoft.AspNetCore.Http.HttpResults;
+using MilkApplication.DAL.Helper;
+using MilkApplication.DAL.Models.PaginationDTO;
+using Newtonsoft.Json;
 
 namespace MilkApplication.Controllers
 {
@@ -140,6 +143,30 @@ namespace MilkApplication.Controllers
             else
             {
                 return BadRequest(result);
+            }
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAccountByFilter([FromQuery] PaginationParameter paginationParameter, [FromQuery] AccountFilterDTO accountFilterDTO)
+        {
+            try
+            {
+                var result = await _userService.GetAccountByFilterAsync(paginationParameter, accountFilterDTO);
+
+                var metadata = new
+                {
+                    result.TotalCount,
+                    result.PageSize,
+                    result.CurrentPage,
+                    result.TotalPages,
+                    result.HasNext,
+                    result.HasPrevious
+                };
+                Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }

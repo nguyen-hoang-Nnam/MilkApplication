@@ -8,6 +8,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MilkApplication.DAL.Commons;
+using MilkApplication.DAL.Helper;
+using MilkApplication.DAL.Models.PaginationDTO;
 
 namespace MilkApplication.BLL.Service
 {
@@ -104,6 +107,23 @@ namespace MilkApplication.BLL.Service
                 IsSucceed = false,
                 Message = "Origin not found!"
             };
+        }
+        public async Task<Pagination<OriginDTO>> GetOriginByFilterAsync(PaginationParameter paginationParameter, OriginFilterDTO originFilterDTO)
+        {
+            try
+            {
+                var origins = await _unitOfWork.OriginRepository.GetOriginByFilterAsync(paginationParameter, originFilterDTO);
+                if (origins != null)
+                {
+                    var mapperResult = _mapper.Map<List<OriginDTO>>(origins);
+                    return new Pagination<OriginDTO>(mapperResult, origins.TotalCount, origins.CurrentPage, origins.PageSize);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

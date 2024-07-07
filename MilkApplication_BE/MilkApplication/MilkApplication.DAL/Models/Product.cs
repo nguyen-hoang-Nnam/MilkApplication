@@ -41,6 +41,7 @@ namespace MilkApplication.DAL.Models
         }
         public string productDescription { get; set; }
         public string Image { get; set; }
+        public List<string> ImagesCarousel { get; set; } = new List<string>();
         public int Quantity { get; set; }
         public ProductStatus Status { get; set; }
         public int categoryId { get; set; }

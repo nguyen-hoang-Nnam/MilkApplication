@@ -13,13 +13,17 @@ namespace MilkApplication.DAL.Models
     {
         [Key]
         public int orderId { get; set; }
+        public string UserName { get; set; }
         public DateTime orderDate { get; set; }
         [Column(TypeName = "decimal(18, 2)")]
         public decimal totalPrice { get; set; }
         public OrderStatus Status { get; set; }
+        public int voucherId { get; set; }
         public string? Id { get; set; }
         [ForeignKey("Id")]
         public ApplicationUser? User { get; set; }
+        [ForeignKey("voucherId")]
+        public Vouchers? Voucher { get; set; }
         public ICollection<OrderItem> OrderItems { get; set; }
         public string? PaymentUrl { get; set; }
     }

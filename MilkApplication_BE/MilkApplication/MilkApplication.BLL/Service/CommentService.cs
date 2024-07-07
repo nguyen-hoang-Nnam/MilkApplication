@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
 using MilkApplication.BLL.Service.IService;
+using MilkApplication.DAL.Commons;
+using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Models.DTO;
+using MilkApplication.DAL.Models.PaginationDTO;
 using MilkApplication.DAL.Repository.IRepositpry;
 using MilkApplication.DAL.Repository.IRepositpry.UoW;
 using System;
@@ -22,25 +25,6 @@ namespace MilkApplication.BLL.Service
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<List<CommentDTO>> GetAllCommentAsync()
-        {
-            var commentGetAll = await _unitOfWork.CommentRepository.GetAllAsync();
-            var commentMapper = _mapper.Map<List<CommentDTO>>(commentGetAll);
-            return commentMapper;
-        }
-
-        public async Task<CommentDTO> GetCommentByIdAsync(int id)
-        {
-            var commentFound = await _unitOfWork.CommentRepository.GetByIdAsync(id);
-            if (commentFound == null)
-            {
-                return null;
-            }
-            var commentMapper = _mapper.Map<CommentDTO>(commentFound);
-            return commentMapper;
-
-        }
-
         public async Task<ResponseDTO> AddCommentAsync(CommentDTO commentDTO)
         {
             var product = await _unitOfWork.ProductRepository.GetByIdAsync(commentDTO.productId);
@@ -52,7 +36,6 @@ namespace MilkApplication.BLL.Service
                     Message = "Product not found",
                 };
             }
-
             var commentObj = _mapper.Map<Comment>(commentDTO);
 
             commentObj.Product = product;
@@ -67,7 +50,12 @@ namespace MilkApplication.BLL.Service
             };
             return response;
         }
-
+        public async Task<List<CommentDTO>> GetAllCommentAsync()
+        {
+            var commentGetAll = await _unitOfWork.CommentRepository.GetAllAsync();
+            var commentMapper = _mapper.Map<List<CommentDTO>>(commentGetAll);
+            return commentMapper;
+        }
         public async Task<ResponseDTO> UpdateCommentAsync(int id, CommentDTO commentDTO)
         {
             var commentUpdate = await _unitOfWork.CommentRepository.GetByIdAsync(id);
@@ -120,6 +108,23 @@ namespace MilkApplication.BLL.Service
                 };
             }
 
+        }
+        public async Task<Pagination<CommentDTO>> GetCommentByFilterAsync(PaginationParameter paginationParameter, CommentFilterDTO commentFilterDTO)
+        {
+            try
+            {
+                var comments = await _unitOfWork.CommentRepository.GetCommentByFilterAsync(paginationParameter, commentFilterDTO);
+                if (comments != null)
+                {
+                    var mapperResult = _mapper.Map<List<CommentDTO>>(comments);
+                    return new Pagination<CommentDTO>(mapperResult, comments.TotalCount, comments.CurrentPage, comments.PageSize);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

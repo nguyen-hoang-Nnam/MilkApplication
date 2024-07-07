@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace MilkApplication.DAL.Design
 {
-    /*public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
+    public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
     {
         public AppDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            optionsBuilder.UseSqlServer("server=LAPTOP-85FP4RE8\\SQLEXPRESS;database=MilkApplication_DB;uid=sa;pwd=123456;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("server=(local);database=MilkApplication_DB;uid=sa;pwd=123456;TrustServerCertificate=True;");
 
             return new AppDbContext(optionsBuilder.Options);
         }
-    }*/
+    }
 }

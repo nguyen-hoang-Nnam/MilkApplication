@@ -1,9 +1,13 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using MilkApplication.BLL.Service.IService;
+using MilkApplication.DAL.Commons;
+using MilkApplication.DAL.enums;
+using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.enums;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Models.DTO;
+using MilkApplication.DAL.Models.PaginationDTO;
 using MilkApplication.DAL.Repository.IRepositpry.UoW;
 using System;
 using System.Collections.Generic;
@@ -26,7 +30,7 @@ namespace MilkApplication.BLL.Service
             _paymentService = paymentService;
         }
 
-        public async Task<ResponseDTO> CreateOrderAsync(string userId, List<OrderItemDTO> orderItemsDto)
+        public async Task<ResponseDTO> CreateOrderAsync(string userId, List<OrderItemDTO> orderItemsDto, string? voucherCode = null)
         {
             var response = new ResponseDTO();
 
@@ -69,13 +73,36 @@ namespace MilkApplication.BLL.Service
                     }
                 }
 
+                Vouchers voucher = null;
+                if (!string.IsNullOrEmpty(voucherCode))
+                {
+                    voucher = await _unitOfWork.VouchersRepository.GetByCodeAsync(voucherCode);
+                    if (voucher == null || voucher.vouchersStatus == VouchersStatus.Expired || voucher.quantity < 1)
+                    {
+                        response.Message = "Invalid or expired voucher.";
+                        return response;
+                    }
+
+                    foreach (var item in orderItems)
+                    {
+                        item.Price = item.Price * (1 - (decimal)(voucher.discountPercent / 100));
+                    }
+
+                    voucher.quantity -= 1;
+                    voucher.vouchersStatus = (voucher.quantity > 0) ? voucher.vouchersStatus : VouchersStatus.Expired;
+                }
+
                 decimal totalPrice = orderItems.Sum(oi => oi.Quantity * oi.Price);
 
                 var order = new Order
                 {
                     orderDate = DateTime.UtcNow,
                     Id = userId,
+                    UserName = user.UserName,
                     User = user,
+                    OrderItems = orderItems,
+                    totalPrice = totalPrice,
+                    voucherId = voucher.voucherId
                     OrderItems = orderItems, // Assign order items
                     totalPrice = totalPrice,
                     Status = DAL.enums.OrderStatus.Unpaid
@@ -92,6 +119,11 @@ namespace MilkApplication.BLL.Service
                         product.Quantity -= item.Quantity;
                         await _unitOfWork.ProductRepository.UpdateAsync(product);
                     }
+                }
+
+                if (voucher != null)
+                {
+                    await _unitOfWork.VouchersRepository.UpdateAsync(voucher);
                 }
 
                 await _unitOfWork.SaveChangeAsync();
@@ -152,10 +184,29 @@ namespace MilkApplication.BLL.Service
             var orders = await _unitOfWork.OrderRepository.GetAllOrdersAsync();
             return _mapper.Map<IEnumerable<OrderDTO>>(orders);
         }
+
         public async Task<Order> GetOrderEntityByIdAsync(int orderId)
         {
             var order = await _unitOfWork.OrderRepository.GetOrderByIdAsync(orderId);
             return order;
+        }
+
+        public async Task<Pagination<OrderDTO>> GetOrderByFilterAsync(PaginationParameter paginationParameter, OrderFilterDTO orderFilterDTO)
+        {
+            try
+            {
+                var orders = await _unitOfWork.OrderRepository.GetOrderByFilterAsync(paginationParameter, orderFilterDTO);
+                if (orders != null)
+                {
+                    var mapperResult = _mapper.Map<List<OrderDTO>>(orders);
+                    return new Pagination<OrderDTO>(mapperResult, orders.TotalCount, orders.CurrentPage, orders.PageSize);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public async Task<ResponseDTO> GetOrdersByCompletedPaymentsAsync()

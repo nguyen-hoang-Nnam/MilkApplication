@@ -11,10 +11,9 @@ namespace MilkApplication.DAL.Models.DTO
     {
         public int voucherId { get; set; }
         public string Code { get; set; }
-        public int discountPercent { get; set; }
+        public double? discountPercent { get; set; }
         public int quantity { get; set; }
         public DateTime date { get; set; }
         public VouchersStatus vouchersStatus { get; set; }
-        public string Id { get; set; }
     }
 }
