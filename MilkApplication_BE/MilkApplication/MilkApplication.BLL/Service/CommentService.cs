@@ -48,7 +48,6 @@ namespace MilkApplication.BLL.Service
 
             var commentObj = _mapper.Map<Comment>(commentDTO);
 
-            commentObj.UserName = user.UserName;
             commentObj.Product = product;
 
             await _unitOfWork.CommentRepository.AddAsync(commentObj);
