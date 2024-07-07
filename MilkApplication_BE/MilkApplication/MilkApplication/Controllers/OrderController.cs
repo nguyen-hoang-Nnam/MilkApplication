@@ -58,7 +58,7 @@ namespace MilkApplication.Controllers
             return Ok(response);
         }
 
-        [HttpGet("filter")]
+        [HttpGet]
         public async Task<IActionResult> GetOrderByFilter([FromQuery] PaginationParameter paginationParameter, [FromQuery] OrderFilterDTO orderFilterDTO)
         {
             try

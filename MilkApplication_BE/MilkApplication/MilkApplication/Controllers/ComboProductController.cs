@@ -110,7 +110,7 @@ namespace MilkApplication.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet("filter")]
+        [HttpGet]
         public async Task<IActionResult> GetComboProductByFilter([FromQuery] PaginationParameter paginationParameter, [FromQuery] ComboProductFilterDTO comboProductFilterDTO)
         {
             try

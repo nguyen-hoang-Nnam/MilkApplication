@@ -145,7 +145,7 @@ namespace MilkApplication.Controllers
                 return BadRequest(result);
             }
         }
-        [HttpGet("filter")]
+        [HttpGet]
         public async Task<IActionResult> GetAccountByFilter([FromQuery] PaginationParameter paginationParameter, [FromQuery] AccountFilterDTO accountFilterDTO)
         {
             try
