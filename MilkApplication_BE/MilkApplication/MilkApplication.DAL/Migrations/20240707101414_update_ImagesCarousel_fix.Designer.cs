@@ -12,8 +12,8 @@ using MilkApplication.DAL.Data;
 namespace MilkApplication.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240706143338_voucher_Id")]
-    partial class voucher_Id
+    [Migration("20240707101414_update_ImagesCarousel_fix")]
+    partial class update_ImagesCarousel_fix
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

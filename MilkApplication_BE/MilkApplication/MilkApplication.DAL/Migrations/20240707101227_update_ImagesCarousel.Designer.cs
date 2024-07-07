@@ -12,8 +12,8 @@ using MilkApplication.DAL.Data;
 namespace MilkApplication.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240706082002_update")]
-    partial class update
+    [Migration("20240707101227_update_ImagesCarousel")]
+    partial class update_ImagesCarousel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -392,6 +392,9 @@ namespace MilkApplication.DAL.Migrations
                     b.Property<decimal>("totalPrice")
                         .HasColumnType("decimal(18, 2)");
 
+                    b.Property<int>("voucherId")
+                        .HasColumnType("int");
+
                     b.HasKey("orderId");
 
                     b.HasIndex("Id");
@@ -517,6 +520,10 @@ namespace MilkApplication.DAL.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("productId"));
 
                     b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImagesCarousel")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
