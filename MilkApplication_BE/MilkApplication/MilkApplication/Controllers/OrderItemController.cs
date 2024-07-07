@@ -19,7 +19,7 @@ namespace MilkApplication.Controllers
         {
             _orderItemService = orderItemService;
         }
-        [HttpGet("filter")]
+        [HttpGet]
         public async Task<IActionResult> GetOrderItemByFilter([FromQuery] PaginationParameter paginationParameter, [FromQuery] OrderItemFilterDTO orderItemFilterDTO)
         {
             try

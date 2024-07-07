@@ -6,7 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MilkApplication.DAL.Migrations
 {
     /// <inheritdoc />
+<<<<<<<< HEAD:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240707083421_fix.cs
     public partial class fix : Migration
+========
+    public partial class update_ImagesCarousel : Migration
+>>>>>>>> main:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240707102110_update_ImagesCarousel.cs
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -232,6 +236,32 @@ namespace MilkApplication.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+<<<<<<<< HEAD:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240707083421_fix.cs
+========
+                name: "Orders",
+                columns: table => new
+                {
+                    orderId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    orderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    totalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    voucherId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.orderId);
+                    table.ForeignKey(
+                        name: "FK_Orders_AspNetUsers_Id",
+                        column: x => x.Id,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+>>>>>>>> main:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240707102110_update_ImagesCarousel.cs
                 name: "Vouchers",
                 columns: table => new
                 {

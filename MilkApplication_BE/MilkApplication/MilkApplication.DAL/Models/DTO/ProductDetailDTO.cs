@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MilkApplication.DAL.Models.DTO
 {
-    public class ProductDTO
+    public class ProductDetailDTO
     {
         public int productId { get; set; }
         public string productName { get; set; }
@@ -19,8 +19,9 @@ namespace MilkApplication.DAL.Models.DTO
         public string ImagesCarousel { get; set; }
         public int Quantity { get; set; }
         public ProductStatus Status { get; set; }
-        public int categoryId { get; set; }
-        public int originId { get; set; }
-        public int locationId { get; set; }
+        public CommentDetailDTO Comment { get; set; }
+        public CategoryDTO Category { get; set; }
+        public OriginDTO Origin { get; set; }
+        public LocationDTO Location { get; set; }
     }
 }

@@ -110,7 +110,7 @@ namespace MilkApplication.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet("filter")]
+        [HttpGet]
         public async Task<IActionResult> GetLocationByFilter([FromQuery] PaginationParameter paginationParameter, [FromQuery] LocationFilterDTO locationFilterDTO)
         {
             try

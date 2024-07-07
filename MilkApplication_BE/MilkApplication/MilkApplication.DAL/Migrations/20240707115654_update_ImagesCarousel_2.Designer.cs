@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MilkApplication.DAL.Data;
 
@@ -11,9 +12,11 @@ using MilkApplication.DAL.Data;
 namespace MilkApplication.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240707115654_update_ImagesCarousel_2")]
+    partial class update_ImagesCarousel_2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -324,6 +327,10 @@ namespace MilkApplication.DAL.Migrations
                     b.Property<int>("Rating")
                         .HasColumnType("int");
 
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("commentDetail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -391,8 +398,6 @@ namespace MilkApplication.DAL.Migrations
                     b.HasKey("orderId");
 
                     b.HasIndex("Id");
-
-                    b.HasIndex("voucherId");
 
                     b.ToTable("Orders");
                 });
@@ -577,6 +582,10 @@ namespace MilkApplication.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Id")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime>("date")
                         .HasColumnType("datetime2");
 
@@ -590,6 +599,8 @@ namespace MilkApplication.DAL.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("voucherId");
+
+                    b.HasIndex("Id");
 
                     b.ToTable("Vouchers");
                 });
@@ -687,15 +698,7 @@ namespace MilkApplication.DAL.Migrations
                         .WithMany()
                         .HasForeignKey("Id");
 
-                    b.HasOne("MilkApplication.DAL.Models.Vouchers", "Voucher")
-                        .WithMany("Orders")
-                        .HasForeignKey("voucherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("User");
-
-                    b.Navigation("Voucher");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.OrderItem", b =>
@@ -760,9 +763,22 @@ namespace MilkApplication.DAL.Migrations
                     b.Navigation("Origin");
                 });
 
+            modelBuilder.Entity("MilkApplication.DAL.Models.Vouchers", b =>
+                {
+                    b.HasOne("MilkApplication.DAL.Models.ApplicationUser", "User")
+                        .WithMany("Vouchers")
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MilkApplication.DAL.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Comments");
+
+                    b.Navigation("Vouchers");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Category", b =>
@@ -795,11 +811,6 @@ namespace MilkApplication.DAL.Migrations
                     b.Navigation("ComboProducts");
 
                     b.Navigation("Comments");
-                });
-
-            modelBuilder.Entity("MilkApplication.DAL.Models.Vouchers", b =>
-                {
-                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

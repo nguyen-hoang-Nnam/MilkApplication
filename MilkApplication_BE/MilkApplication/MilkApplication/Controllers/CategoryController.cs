@@ -110,7 +110,7 @@ namespace MilkApplication.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet("filter")]
+        [HttpGet]
         public async Task<IActionResult> GetCategoryByFilter([FromQuery] PaginationParameter paginationParameter, [FromQuery] CategoryFilterDTO categoryFilterDTO)
         {
             try

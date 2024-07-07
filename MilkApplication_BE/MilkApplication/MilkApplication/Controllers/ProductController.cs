@@ -122,7 +122,7 @@ namespace MilkApplication.Controllers
             }
             return Ok(products);
         }
-        [HttpGet("filter")]
+        [HttpGet]
         public async Task<IActionResult> GetProductByFilter([FromQuery] PaginationParameter paginationParameter, [FromQuery] ProductFilterDTO productFilterDTO)
         {
             try

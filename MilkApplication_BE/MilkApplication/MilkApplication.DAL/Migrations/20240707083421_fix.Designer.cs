@@ -12,8 +12,13 @@ using MilkApplication.DAL.Data;
 namespace MilkApplication.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
+<<<<<<<< HEAD:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240707083421_fix.Designer.cs
     [Migration("20240707083421_fix")]
     partial class fix
+========
+    [Migration("20240707102110_update_ImagesCarousel")]
+    partial class update_ImagesCarousel
+>>>>>>>> main:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240707102110_update_ImagesCarousel.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

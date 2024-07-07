@@ -110,7 +110,7 @@ namespace MilkApplication.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet("filter")]
+        [HttpGet]
         public async Task<IActionResult> GetOriginByFilter([FromQuery] PaginationParameter paginationParameter, [FromQuery] OriginFilterDTO originFilterDTO)
         {
             try

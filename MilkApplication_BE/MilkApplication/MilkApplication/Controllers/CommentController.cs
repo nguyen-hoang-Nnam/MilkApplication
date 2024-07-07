@@ -76,7 +76,7 @@ namespace MilkApplication.Controllers
                 return BadRequest(ex.Message);
             }   
         }
-        [HttpGet("filter")]
+        [HttpGet]
         public async Task<IActionResult> GetCommentByFilter([FromQuery] PaginationParameter paginationParameter, [FromQuery] CommentFilterDTO commentFilterDTO)
         {
             try
