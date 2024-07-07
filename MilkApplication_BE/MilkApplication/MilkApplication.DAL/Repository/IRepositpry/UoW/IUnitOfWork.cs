@@ -23,6 +23,7 @@ namespace MilkApplication.DAL.Repository.IRepositpry.UoW
         IOrderItemRepository OrderItemRepository { get; }
         IComboRepository ComboRepository { get; }
         IComboProductRepository ComboProductRepository { get; }
+        IPaymentRepository PaymentRepository { get; }
         AppDbContext dbContext { get; }
 
 

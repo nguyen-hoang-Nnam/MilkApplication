@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace MilkApplication.DAL.Models.DTO
 {
-    public class OrderItemDTO
+    /*public class ItemData
     {
-        public int orderItemId { get; set; }
+        public string Name { get; set; }
         public int Quantity { get; set; }
-        public int? productId { get; set; }
-        public string productName { get; set; }
-    }
+        public int Price { get; set; }
+    }*/
 }

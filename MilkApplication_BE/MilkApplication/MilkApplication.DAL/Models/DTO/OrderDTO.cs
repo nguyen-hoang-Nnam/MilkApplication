@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MilkApplication.DAL.enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +17,9 @@ namespace MilkApplication.DAL.Models.DTO
         public decimal totalPrice { get; set; }
         public int voucherId { get; set; }
         public string Id { get; set; }
+        public string? PaymentUrl { get; set; }
+        public List<OrderItemDTO> OrderItems { get; set; }
+        public string FullName { get; set; }
+
     }
 }

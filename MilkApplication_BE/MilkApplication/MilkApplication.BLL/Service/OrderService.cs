@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using MilkApplication.BLL.Service.IService;
 using MilkApplication.DAL.Commons;
 using MilkApplication.DAL.enums;
 using MilkApplication.DAL.Helper;
+using MilkApplication.DAL.enums;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Models.DTO;
 using MilkApplication.DAL.Models.PaginationDTO;
@@ -19,11 +21,13 @@ namespace MilkApplication.BLL.Service
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly IPaymentService _paymentService;
 
-        public OrderService(IUnitOfWork unitOfWork, IMapper mapper)
+        public OrderService(IUnitOfWork unitOfWork, IMapper mapper, IPaymentService paymentService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _paymentService = paymentService;
         }
 
         public async Task<ResponseDTO> CreateOrderAsync(string userId, List<OrderItemDTO> orderItemsDto, string? voucherCode = null)
@@ -99,6 +103,10 @@ namespace MilkApplication.BLL.Service
                     OrderItems = orderItems,
                     totalPrice = totalPrice,
                     voucherId = voucher.voucherId
+                    OrderItems = orderItems, // Assign order items
+                    totalPrice = totalPrice,
+                    Status = DAL.enums.OrderStatus.Unpaid
+                    
                 };
 
                 await _unitOfWork.OrderRepository.CreateOrderAsync(order, orderItems);
@@ -120,11 +128,28 @@ namespace MilkApplication.BLL.Service
 
                 await _unitOfWork.SaveChangeAsync();
 
+                var cancelUrl = "https://fap.fpt.edu.vn/";
+                var returnUrl = "https://www.facebook.com/FPTU.HCM"; 
+                var paymentResult = await _paymentService.CreatePaymentLink(order, cancelUrl, returnUrl);
+
+                if (!paymentResult.Success)
+                {
+                    response.Message = $"Failed to create payment link: {paymentResult.ErrorMessage}";
+                    return response;
+                }
+
                 var orderDto = _mapper.Map<OrderDTO>(order);
+
+                orderDto.PaymentUrl = paymentResult.PaymentUrl;
 
                 response.IsSucceed = true;
                 response.Message = "Order created successfully.";
                 response.Data = orderDto;
+            }
+            catch (DbUpdateException dbEx)
+            {
+                // Log the inner exception for detailed error
+                response.Message = $"Failed to create order: {dbEx.InnerException?.Message ?? dbEx.Message}";
             }
             catch (Exception ex)
             {
@@ -183,5 +208,40 @@ namespace MilkApplication.BLL.Service
                 throw new Exception(ex.Message);
             }
         }
+
+        public async Task<ResponseDTO> GetOrdersByCompletedPaymentsAsync()
+        {
+            var response = new ResponseDTO();
+
+            try
+            {
+                // Fetch payments with completed status
+                var completedPayments = await _unitOfWork.PaymentRepository.GetPaymentsByStatusAsync(PaymentStatus.Completed);
+
+                if (!completedPayments.Any())
+                {
+                    response.Message = "No completed payments found.";
+                    return response;
+                }
+
+                // Retrieve distinct order IDs from completed payments
+                var orderIds = completedPayments.Select(p => p.orderId).Distinct();
+                var orders = await _unitOfWork.OrderRepository.GetOrdersByIdsAsync(orderIds);
+
+                // Map orders to DTOs
+                var orderDtos = _mapper.Map<List<OrderDTO>>(orders);
+
+                response.IsSucceed = true;
+                response.Message = "Orders retrieved successfully.";
+                response.Data = orderDtos;
+            }
+            catch (Exception ex)
+            {
+                response.Message = $"Failed to retrieve orders: {ex.Message}";
+            }
+
+            return response;
+        }
+
     }
 }

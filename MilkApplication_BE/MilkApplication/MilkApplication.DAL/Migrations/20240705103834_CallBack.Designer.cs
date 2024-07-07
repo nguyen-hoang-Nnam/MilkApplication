@@ -12,8 +12,13 @@ using MilkApplication.DAL.Data;
 namespace MilkApplication.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240707142439_update_images")]
-    partial class update_images
+<<<<<<<< HEAD:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240705103834_CallBack.Designer.cs
+    [Migration("20240705103834_CallBack")]
+    partial class CallBack
+========
+    [Migration("20240707142731_update_1")]
+    partial class update_1
+>>>>>>>> main:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240707142731_update_1.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -375,11 +380,15 @@ namespace MilkApplication.DAL.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+<<<<<<<< HEAD:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240705103834_CallBack.Designer.cs
+                    b.Property<string>("PaymentUrl")
+========
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.Property<string>("UserName")
                         .IsRequired()
+>>>>>>>> main:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240707142731_update_1.Designer.cs
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("orderDate")
@@ -484,6 +493,42 @@ namespace MilkApplication.DAL.Migrations
                     b.HasIndex("paymentMethodId");
 
                     b.ToTable("Payments");
+                });
+
+            modelBuilder.Entity("MilkApplication.DAL.Models.PaymentCallBack", b =>
+                {
+                    b.Property<int>("PaymentCallbackId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PaymentCallbackId"));
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("CallbackDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PaymentMethod")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TransactionId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("orderId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PaymentCallbackId");
+
+                    b.HasIndex("orderId");
+
+                    b.ToTable("PaymentCallBacks");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.PaymentMethod", b =>
@@ -734,6 +779,17 @@ namespace MilkApplication.DAL.Migrations
                     b.Navigation("Order");
 
                     b.Navigation("PaymentMethod");
+                });
+
+            modelBuilder.Entity("MilkApplication.DAL.Models.PaymentCallBack", b =>
+                {
+                    b.HasOne("MilkApplication.DAL.Models.Order", "Order")
+                        .WithMany()
+                        .HasForeignKey("orderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Product", b =>

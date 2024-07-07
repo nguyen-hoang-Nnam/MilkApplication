@@ -18,5 +18,7 @@ namespace MilkApplication.BLL.Service.IService
         Task<IEnumerable<OrderDTO>> GetAllOrdersAsync();
         Task<Order> GetOrderEntityByIdAsync(int orderId);
         public Task<Pagination<OrderDTO>> GetOrderByFilterAsync(PaginationParameter paginationParameter, OrderFilterDTO orderFilterDTO);
+
+        Task<ResponseDTO> GetOrdersByCompletedPaymentsAsync();
     }
 }

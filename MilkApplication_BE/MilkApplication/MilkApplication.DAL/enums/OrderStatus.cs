@@ -8,6 +8,8 @@ namespace MilkApplication.DAL.enums
 {
         public enum OrderStatus
         {
+        Unpaid,
+        Paid
         Delivered,
         Processing,
         Delivering,

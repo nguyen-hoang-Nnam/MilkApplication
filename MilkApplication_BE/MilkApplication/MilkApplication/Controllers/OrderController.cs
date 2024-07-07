@@ -82,5 +82,26 @@ namespace MilkApplication.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet("completed-payments")]
+        public async Task<IActionResult> GetOrdersByCompletedPaymentsAsync()
+        {
+            try
+            {
+                var result = await _orderService.GetOrdersByCompletedPaymentsAsync();
+                if (result.IsSucceed)
+                {
+                    return Ok(result.Data);
+                }
+                else
+                {
+                    return NotFound(result.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
+            }
+        }
     }
 }
