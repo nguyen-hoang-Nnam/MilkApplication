@@ -14,5 +14,7 @@ namespace MilkApplication.BLL.Service.IService
         Task<ResponseDTO> DeleteOrderAsync(int orderId);
         Task<IEnumerable<OrderDTO>> GetAllOrdersAsync();
         Task<Order> GetOrderEntityByIdAsync(int orderId);
+
+        Task<ResponseDTO> GetOrdersByCompletedPaymentsAsync();
     }
 }

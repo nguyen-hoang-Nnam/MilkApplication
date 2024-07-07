@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MilkApplication.BLL.Service;
@@ -63,14 +64,15 @@ builder.Services.AddSingleton(sp =>
     return new Net.payOS.PayOS(clientId, apiKey, checksumKey);
 });
 // Register PaymentService
-builder.Services.AddScoped<IPaymentService>(sp =>
+/*builder.Services.AddScoped<IPaymentService>(sp =>
 {
     var context = sp.GetRequiredService<AppDbContext>();
     var payOS = sp.GetRequiredService<Net.payOS.PayOS>();
     var configuration = sp.GetRequiredService<IConfiguration>();
+    var unitOfWork = sp.GetRequiredService<IUnitOfWork>();
 
-    return new PaymentService(configuration, context, payOS);
-});
+    return new PaymentService(configuration, context, payOS, unitOfWork);
+});*/
 
 // Add Identity
 builder.Services
@@ -128,6 +130,7 @@ builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderItemRepository, OrderItemRepository>();
 builder.Services.AddScoped<IComboRepository, ComboRepository>();
 builder.Services.AddScoped<IComboProductRepository, ComboProductRepository>();
+builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
@@ -147,6 +150,7 @@ builder.Services.AddScoped<IComboService, ComboService>();
 builder.Services.AddScoped<IComboProductService, ComboProductService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 
+builder.Services.AddSingleton(new SignatureVerifier("b1a72692f3c48ca15815fccb3dbbdc06b63ed9bc072327a3f453de2150a6e615"));
 // Add JwtHelper
 builder.Services.AddScoped<JwtHelper>();
 

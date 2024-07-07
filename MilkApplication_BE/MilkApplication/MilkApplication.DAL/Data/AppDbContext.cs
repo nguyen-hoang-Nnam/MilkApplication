@@ -24,6 +24,7 @@ namespace MilkApplication.DAL.Data
         public DbSet<ComboProduct> ComboProducts { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<PaymentMethod> PaymentMethods { get; set; }
+        public DbSet<PaymentCallBack> PaymentCallBacks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -14,5 +14,7 @@ namespace MilkApplication.DAL.Repository.IRepositpry
         Task<Order> GetOrderByIdWithItemAsync(int orderId);
         Task<IEnumerable<Order>> GetAllOrdersAsync();
         Task<Order> GetOrderByIdAsync(int orderId);
+        Task UpdateOrderAsync(Order order);
+        Task<IEnumerable<Order>> GetOrdersByIdsAsync(IEnumerable<int> orderIds);
     }
 }
