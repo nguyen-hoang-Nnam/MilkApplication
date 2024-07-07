@@ -28,7 +28,12 @@ namespace MilkApplication.DAL.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
+            //Configure Voucher - Order relationship
+            modelBuilder.Entity<Order>()
+                .HasOne(o => o.Voucher)
+                .WithMany(v => v.Orders)
+                .HasForeignKey(o => o.voucherId)
+                .OnDelete(DeleteBehavior.Cascade);
             // Configure Category - Product relationship
             modelBuilder.Entity<Product>()
                 .HasOne(p => p.Category)
@@ -52,12 +57,6 @@ namespace MilkApplication.DAL.Data
             modelBuilder.Entity<Comment>()
                 .HasOne(c => c.User)
                 .WithMany(u => u.Comments)
-                .HasForeignKey(c => c.Id)
-                .OnDelete(DeleteBehavior.Cascade);
-            // Configure Vouchers - User relationship
-            modelBuilder.Entity<Vouchers>()
-                .HasOne(c => c.User)
-                .WithMany(u => u.Vouchers)
                 .HasForeignKey(c => c.Id)
                 .OnDelete(DeleteBehavior.Cascade);
             // Configure Product - Location relationship

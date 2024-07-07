@@ -5,7 +5,7 @@
 namespace MilkApplication.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class update_ImagesCarousel_2 : Migration
+    public partial class update_images : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

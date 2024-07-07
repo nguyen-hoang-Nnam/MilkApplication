@@ -25,7 +25,7 @@ namespace MilkApplication.BLL.Service
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<ResponseDTO> AddCommentAsync(string userId, CommentDTO commentDTO)
+        public async Task<ResponseDTO> AddCommentAsync(CommentDTO commentDTO)
         {
             var product = await _unitOfWork.ProductRepository.GetByIdAsync(commentDTO.productId);
             if (product == null)
@@ -36,16 +36,6 @@ namespace MilkApplication.BLL.Service
                     Message = "Product not found",
                 };
             }
-            var user = await _unitOfWork.UserRepository.GetById(userId);
-            if (user == null)
-            {
-                return new ResponseDTO
-                {
-                    IsSucceed = false,
-                    Message = "User not found",
-                };
-            }
-
             var commentObj = _mapper.Map<Comment>(commentDTO);
 
             commentObj.Product = product;

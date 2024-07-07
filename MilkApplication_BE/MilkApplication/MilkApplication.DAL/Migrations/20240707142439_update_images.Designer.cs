@@ -12,8 +12,8 @@ using MilkApplication.DAL.Data;
 namespace MilkApplication.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240707123618_update_information")]
-    partial class update_information
+    [Migration("20240707142439_update_images")]
+    partial class update_images
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -395,6 +395,8 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasIndex("Id");
 
+                    b.HasIndex("voucherId");
+
                     b.ToTable("Orders");
                 });
 
@@ -578,15 +580,11 @@ namespace MilkApplication.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime>("date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("discountPercent")
-                        .HasColumnType("int");
+                    b.Property<double?>("discountPercent")
+                        .HasColumnType("float");
 
                     b.Property<int>("quantity")
                         .HasColumnType("int");
@@ -595,8 +593,6 @@ namespace MilkApplication.DAL.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("voucherId");
-
-                    b.HasIndex("Id");
 
                     b.ToTable("Vouchers");
                 });
@@ -694,7 +690,15 @@ namespace MilkApplication.DAL.Migrations
                         .WithMany()
                         .HasForeignKey("Id");
 
+                    b.HasOne("MilkApplication.DAL.Models.Vouchers", "Voucher")
+                        .WithMany("Orders")
+                        .HasForeignKey("voucherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("User");
+
+                    b.Navigation("Voucher");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.OrderItem", b =>
@@ -759,22 +763,9 @@ namespace MilkApplication.DAL.Migrations
                     b.Navigation("Origin");
                 });
 
-            modelBuilder.Entity("MilkApplication.DAL.Models.Vouchers", b =>
-                {
-                    b.HasOne("MilkApplication.DAL.Models.ApplicationUser", "User")
-                        .WithMany("Vouchers")
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("MilkApplication.DAL.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Comments");
-
-                    b.Navigation("Vouchers");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Category", b =>
@@ -807,6 +798,11 @@ namespace MilkApplication.DAL.Migrations
                     b.Navigation("ComboProducts");
 
                     b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("MilkApplication.DAL.Models.Vouchers", b =>
+                {
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }
