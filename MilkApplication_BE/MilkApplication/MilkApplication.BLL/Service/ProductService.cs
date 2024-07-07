@@ -34,16 +34,38 @@ namespace MilkApplication.BLL.Service
             return productMapper;
         }
 
-        public async Task<ProductDTO> GetProductByIdAsync(int id)
+        public async Task<ProductDetailDTO> GetProductByIdAsync(int id)
         {
             var productFound = await _unitOfWork.ProductRepository.GetByIdAsync(id);
             if (productFound == null)
             {
                 return null;
             }
-            var productMapper = _mapper.Map<ProductDTO>(productFound);
-            return productMapper;
-            
+            var category = await _unitOfWork.CategoryRepository.GetCategoryByIdAsync(productFound.categoryId);
+            var origin = await _unitOfWork.OriginRepository.GetOriginByIdAsync(productFound.originId);
+            var location = await _unitOfWork.LocationRepository.GetLocationByIdAsync(productFound.locationId);
+            var comment = await _unitOfWork.CommentRepository.GetCommentByProductIdAsync(productFound.productId);
+
+            var productDetail = new ProductDetailDTO
+            {
+                productId = productFound.productId,
+                productName = productFound.productName,
+                Price = productFound.Price,
+                discountPrice = productFound.discountPrice,
+                discountPercent = productFound.discountPercent,
+                productDescription = productFound.productDescription,
+                Image = productFound.Image,
+                ImagesCarousel = productFound.ImagesCarousel,
+                Quantity = productFound.Quantity,
+                Status = productFound.Status,
+                Category = _mapper.Map<CategoryDTO>(category),
+                Origin = _mapper.Map<OriginDTO>(origin),
+                Location = _mapper.Map<LocationDTO>(location),
+                Comment = _mapper.Map<CommentDetailDTO>(comment)
+            };
+
+            return productDetail;
+
         }
 
         public async Task<ResponseDTO> AddProductAsync(ProductDTO productDTO)

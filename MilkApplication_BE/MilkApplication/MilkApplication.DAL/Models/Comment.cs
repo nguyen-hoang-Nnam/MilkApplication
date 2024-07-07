@@ -13,7 +13,6 @@ namespace MilkApplication.DAL.Models
     {
         [Key]
         public int commentId { get; set; }
-        public string UserName { get; set; }
         public string commentDetail { get; set; }
         public int Rating { get; set; }
         public DateOnly Date { get; set; }
