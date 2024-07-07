@@ -29,7 +29,7 @@ namespace MilkApplication.Controllers
         [Route("CreateComment")]
         public async Task<IActionResult> CreateComment([FromBody] CommentDTO commentDTO)
         {
-            var result = await _commentService.AddCommentAsync(commentDTO.Id, commentDTO);
+            var result = await _commentService.AddCommentAsync(commentDTO);
             if (result.IsSucceed)
             {
                 return Ok(result);

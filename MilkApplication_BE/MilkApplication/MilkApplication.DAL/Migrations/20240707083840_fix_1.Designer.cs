@@ -12,8 +12,8 @@ using MilkApplication.DAL.Data;
 namespace MilkApplication.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240706143338_voucher_Id")]
-    partial class voucher_Id
+    [Migration("20240707083840_fix_1")]
+    partial class fix_1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -327,10 +327,6 @@ namespace MilkApplication.DAL.Migrations
                     b.Property<int>("Rating")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("commentDetail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -398,6 +394,8 @@ namespace MilkApplication.DAL.Migrations
                     b.HasKey("orderId");
 
                     b.HasIndex("Id");
+
+                    b.HasIndex("voucherId");
 
                     b.ToTable("Orders");
                 });
@@ -574,13 +572,12 @@ namespace MilkApplication.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("voucherId"));
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("date")
                         .HasColumnType("datetime2");
@@ -596,7 +593,7 @@ namespace MilkApplication.DAL.Migrations
 
                     b.HasKey("voucherId");
 
-                    b.HasIndex("Id");
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Vouchers");
                 });
@@ -694,7 +691,15 @@ namespace MilkApplication.DAL.Migrations
                         .WithMany()
                         .HasForeignKey("Id");
 
+                    b.HasOne("MilkApplication.DAL.Models.Vouchers", "Voucher")
+                        .WithMany("Orders")
+                        .HasForeignKey("voucherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("User");
+
+                    b.Navigation("Voucher");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.OrderItem", b =>
@@ -761,13 +766,9 @@ namespace MilkApplication.DAL.Migrations
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Vouchers", b =>
                 {
-                    b.HasOne("MilkApplication.DAL.Models.ApplicationUser", "User")
+                    b.HasOne("MilkApplication.DAL.Models.ApplicationUser", null)
                         .WithMany("Vouchers")
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
+                        .HasForeignKey("ApplicationUserId");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.ApplicationUser", b =>
@@ -807,6 +808,11 @@ namespace MilkApplication.DAL.Migrations
                     b.Navigation("ComboProducts");
 
                     b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("MilkApplication.DAL.Models.Vouchers", b =>
+                {
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

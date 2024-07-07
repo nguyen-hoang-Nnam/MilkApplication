@@ -15,6 +15,5 @@ namespace MilkApplication.DAL.Models.DTO
         public int quantity { get; set; }
         public DateTime date { get; set; }
         public VouchersStatus vouchersStatus { get; set; }
-        public string Id { get; set; }
     }
 }

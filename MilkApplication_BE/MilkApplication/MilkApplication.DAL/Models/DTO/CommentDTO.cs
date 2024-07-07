@@ -8,7 +8,6 @@ namespace MilkApplication.DAL.Models.DTO
 {
     public class CommentDTO
     {
-        public string UserName { get; set; }
         public int commentId { get; set; }
         public string commentDetail { get; set; }
         public int Rating { get; set; }

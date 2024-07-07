@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MilkApplication.DAL.Data;
 
@@ -11,9 +12,11 @@ using MilkApplication.DAL.Data;
 namespace MilkApplication.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240707083421_fix")]
+    partial class fix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -569,6 +572,9 @@ namespace MilkApplication.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("voucherId"));
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -586,6 +592,8 @@ namespace MilkApplication.DAL.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("voucherId");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Vouchers");
                 });
@@ -756,9 +764,18 @@ namespace MilkApplication.DAL.Migrations
                     b.Navigation("Origin");
                 });
 
+            modelBuilder.Entity("MilkApplication.DAL.Models.Vouchers", b =>
+                {
+                    b.HasOne("MilkApplication.DAL.Models.ApplicationUser", null)
+                        .WithMany("Vouchers")
+                        .HasForeignKey("ApplicationUserId");
+                });
+
             modelBuilder.Entity("MilkApplication.DAL.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Comments");
+
+                    b.Navigation("Vouchers");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Category", b =>

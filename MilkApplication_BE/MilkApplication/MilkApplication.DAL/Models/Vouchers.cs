@@ -18,8 +18,6 @@ namespace MilkApplication.DAL.Models
         public int quantity { get; set; }
         public DateTime date { get; set; }
         public VouchersStatus vouchersStatus { get; set; }
-        public string? Id { get; set; }
-        [ForeignKey("Id")]
-        public ApplicationUser? User { get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }
