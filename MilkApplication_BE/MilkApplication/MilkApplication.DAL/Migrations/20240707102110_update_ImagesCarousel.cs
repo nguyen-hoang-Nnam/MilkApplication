@@ -290,7 +290,6 @@ namespace MilkApplication.DAL.Migrations
                     discountPercent = table.Column<double>(type: "float", nullable: true),
                     productDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ImagesCarousel = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     categoryId = table.Column<int>(type: "int", nullable: false),

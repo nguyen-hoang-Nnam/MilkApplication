@@ -12,7 +12,7 @@ using MilkApplication.DAL.Data;
 namespace MilkApplication.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240707101227_update_ImagesCarousel")]
+    [Migration("20240707102110_update_ImagesCarousel")]
     partial class update_ImagesCarousel
     {
         /// <inheritdoc />
@@ -520,10 +520,6 @@ namespace MilkApplication.DAL.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("productId"));
 
                     b.Property<string>("Image")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImagesCarousel")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
