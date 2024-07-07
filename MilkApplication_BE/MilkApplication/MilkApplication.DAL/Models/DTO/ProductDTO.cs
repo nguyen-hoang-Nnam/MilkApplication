@@ -16,6 +16,7 @@ namespace MilkApplication.DAL.Models.DTO
         public double? discountPercent { get; set; }
         public string productDescription { get; set; }
         public string Image { get; set; }
+        public string ImagesCarousel { get; set; }
         public int Quantity { get; set; }
         public ProductStatus Status { get; set; }
         public int categoryId { get; set; }
