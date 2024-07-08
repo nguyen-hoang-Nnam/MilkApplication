@@ -73,7 +73,10 @@ namespace MilkApplication.BLL.Service
                     }
                 }
 
-                    var voucher = await _unitOfWork.VouchersRepository.GetByIdAsync(voucherId.Value);
+                Vouchers voucher = null;
+                if (voucherId.HasValue && voucherId.Value != 0)
+                {
+                    voucher = await _unitOfWork.VouchersRepository.GetByIdAsync(voucherId.Value);
                     if (voucher == null || voucher.quantity < 1)
                     {
                         response.Message = "Invalid or expired voucher.";
@@ -87,6 +90,7 @@ namespace MilkApplication.BLL.Service
 
                     voucher.quantity -= 1;
                     voucher.vouchersStatus = (voucher.quantity > 0) ? voucher.vouchersStatus : VouchersStatus.Expired;
+                }
 
                 decimal totalPrice = orderItems.Sum(oi => oi.Quantity * oi.Price);
 
@@ -98,7 +102,7 @@ namespace MilkApplication.BLL.Service
                     User = user,
                     OrderItems = orderItems,
                     totalPrice = totalPrice,
-                    voucherId = voucher.voucherId,
+                    voucherId = voucher?.voucherId,
                     Status = DAL.enums.OrderStatus.Unpaid
                     
                 };

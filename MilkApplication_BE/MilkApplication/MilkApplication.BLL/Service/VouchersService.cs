@@ -92,14 +92,14 @@ namespace MilkApplication.BLL.Service
                 {
                     return new ResponseDTO
                     {
-                        IsSucceed = true,
-                        Message = "Vouchers update successfully!"
+                        IsSucceed = false,
+                        Message = "Vouchers update failed!"
                     };
                 }
                 return new ResponseDTO
                 {
-                    IsSucceed = false,
-                    Message = "Vouchers update failed!"
+                    IsSucceed = true,
+                    Message = "Vouchers update successfully!"
                 };
             }
             return new ResponseDTO
