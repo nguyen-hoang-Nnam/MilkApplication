@@ -315,8 +315,8 @@ namespace MilkApplication.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("commentId"));
 
-                    b.Property<DateOnly>("Date")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -374,9 +374,6 @@ namespace MilkApplication.DAL.Migrations
 
                     b.Property<string>("PaymentUrl")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");

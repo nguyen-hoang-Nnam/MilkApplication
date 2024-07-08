@@ -6,11 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MilkApplication.DAL.Migrations
 {
     /// <inheritdoc />
-<<<<<<<< HEAD:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240705100005_db.cs
-    public partial class db : Migration
-========
-    public partial class update : Migration
->>>>>>>> main:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240707134041_update.cs
+    public partial class fix : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -136,7 +132,7 @@ namespace MilkApplication.DAL.Migrations
                     voucherId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    discountPercent = table.Column<int>(type: "int", nullable: false),
+                    discountPercent = table.Column<double>(type: "float", nullable: true),
                     quantity = table.Column<int>(type: "int", nullable: false),
                     date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     vouchersStatus = table.Column<int>(type: "int", nullable: false)
@@ -253,54 +249,6 @@ namespace MilkApplication.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-<<<<<<<< HEAD:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240705100005_db.cs
-                name: "Orders",
-                columns: table => new
-                {
-                    orderId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    orderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    totalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    PaymentUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Orders", x => x.orderId);
-                    table.ForeignKey(
-                        name: "FK_Orders_AspNetUsers_Id",
-                        column: x => x.Id,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Vouchers",
-                columns: table => new
-                {
-                    voucherId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    discountPercent = table.Column<int>(type: "int", nullable: false),
-                    quantity = table.Column<int>(type: "int", nullable: false),
-                    date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    vouchersStatus = table.Column<int>(type: "int", nullable: false),
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Vouchers", x => x.voucherId);
-                    table.ForeignKey(
-                        name: "FK_Vouchers_AspNetUsers_Id",
-                        column: x => x.Id,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-========
->>>>>>>> main:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240707134041_update.cs
                 name: "Products",
                 columns: table => new
                 {
@@ -353,7 +301,8 @@ namespace MilkApplication.DAL.Migrations
                     totalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     voucherId = table.Column<int>(type: "int", nullable: false),
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    PaymentUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -406,7 +355,7 @@ namespace MilkApplication.DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     commentDetail = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Rating = table.Column<int>(type: "int", nullable: false),
-                    Date = table.Column<DateOnly>(type: "date", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     productId = table.Column<int>(type: "int", nullable: true),
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
@@ -452,6 +401,30 @@ namespace MilkApplication.DAL.Migrations
                         column: x => x.productId,
                         principalTable: "Products",
                         principalColumn: "productId");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PaymentCallBacks",
+                columns: table => new
+                {
+                    PaymentCallbackId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    orderId = table.Column<int>(type: "int", nullable: false),
+                    TransactionId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PaymentMethod = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CallbackDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PaymentCallBacks", x => x.PaymentCallbackId);
+                    table.ForeignKey(
+                        name: "FK_PaymentCallBacks_Orders_orderId",
+                        column: x => x.orderId,
+                        principalTable: "Orders",
+                        principalColumn: "orderId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -565,6 +538,11 @@ namespace MilkApplication.DAL.Migrations
                 column: "voucherId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_PaymentCallBacks_orderId",
+                table: "PaymentCallBacks",
+                column: "orderId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Payments_orderId",
                 table: "Payments",
                 column: "orderId");
@@ -616,6 +594,9 @@ namespace MilkApplication.DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "OrderItems");
+
+            migrationBuilder.DropTable(
+                name: "PaymentCallBacks");
 
             migrationBuilder.DropTable(
                 name: "Payments");

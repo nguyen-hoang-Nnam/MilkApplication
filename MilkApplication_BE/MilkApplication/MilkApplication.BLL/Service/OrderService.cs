@@ -30,7 +30,7 @@ namespace MilkApplication.BLL.Service
             _paymentService = paymentService;
         }
 
-        public async Task<ResponseDTO> CreateOrderAsync(string userId, List<OrderItemDTO> orderItemsDto, string? voucherCode = null)
+        public async Task<ResponseDTO> CreateOrderAsync(string userId, List<OrderItemDTO> orderItemsDto, int? voucherId)
         {
             var response = new ResponseDTO();
 
@@ -73,11 +73,8 @@ namespace MilkApplication.BLL.Service
                     }
                 }
 
-                Vouchers voucher = null;
-                if (!string.IsNullOrEmpty(voucherCode))
-                {
-                    voucher = await _unitOfWork.VouchersRepository.GetByCodeAsync(voucherCode);
-                    if (voucher == null || voucher.vouchersStatus == VouchersStatus.Expired || voucher.quantity < 1)
+                    var voucher = await _unitOfWork.VouchersRepository.GetByIdAsync(voucherId.Value);
+                    if (voucher == null || voucher.quantity < 1)
                     {
                         response.Message = "Invalid or expired voucher.";
                         return response;
@@ -90,26 +87,23 @@ namespace MilkApplication.BLL.Service
 
                     voucher.quantity -= 1;
                     voucher.vouchersStatus = (voucher.quantity > 0) ? voucher.vouchersStatus : VouchersStatus.Expired;
-                }
 
                 decimal totalPrice = orderItems.Sum(oi => oi.Quantity * oi.Price);
 
                 var order = new Order
                 {
-                    orderDate = DateTime.UtcNow,
+                    orderDate = DateTime.UtcNow.AddHours(7),
                     Id = userId,
                     UserName = user.UserName,
                     User = user,
                     OrderItems = orderItems,
                     totalPrice = totalPrice,
-                    voucherId = voucher.voucherId
-                    OrderItems = orderItems, // Assign order items
-                    totalPrice = totalPrice,
+                    voucherId = voucher.voucherId,
                     Status = DAL.enums.OrderStatus.Unpaid
                     
                 };
 
-                await _unitOfWork.OrderRepository.CreateOrderAsync(order, orderItems);
+                await _unitOfWork.OrderRepository.CreateOrderAsync(order, orderItems, voucherId);
 
                 foreach (var item in orderItems)
                 {

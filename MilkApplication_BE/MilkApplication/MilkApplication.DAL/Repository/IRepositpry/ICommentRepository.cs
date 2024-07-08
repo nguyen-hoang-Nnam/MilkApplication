@@ -12,7 +12,7 @@ namespace MilkApplication.DAL.Repository.IRepositpry
 {
     public interface ICommentRepository : IGenericRepository<Comment>
     {
-        Task<Comment> GetCommentByProductIdAsync(int commentId);
+        Task<List<Comment>> GetCommentsByProductIdAsync(int productId);
         public Task<Pagination<Comment>> GetCommentByFilterAsync(PaginationParameter paginationParameter, CommentFilterDTO commentFilterDTO);
     }
 }

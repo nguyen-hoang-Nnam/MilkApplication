@@ -12,13 +12,8 @@ using MilkApplication.DAL.Data;
 namespace MilkApplication.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-<<<<<<<< HEAD:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240706033327_OrderStatus.Designer.cs
-    [Migration("20240706033327_OrderStatus")]
-    partial class OrderStatus
-========
-    [Migration("20240707142439_update_images")]
-    partial class update_images
->>>>>>>> main:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240707142439_update_images.Designer.cs
+    [Migration("20240708125241_fix_1")]
+    partial class fix_1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -323,8 +318,8 @@ namespace MilkApplication.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("commentId"));
 
-                    b.Property<DateOnly>("Date")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -380,14 +375,9 @@ namespace MilkApplication.DAL.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-<<<<<<<< HEAD:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240706033327_OrderStatus.Designer.cs
                     b.Property<string>("PaymentUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-========
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -395,7 +385,6 @@ namespace MilkApplication.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
->>>>>>>> main:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240707142439_update_images.Designer.cs
                     b.Property<DateTime>("orderDate")
                         .HasColumnType("datetime2");
 

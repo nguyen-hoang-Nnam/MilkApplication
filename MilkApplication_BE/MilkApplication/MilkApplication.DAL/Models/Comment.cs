@@ -15,7 +15,7 @@ namespace MilkApplication.DAL.Models
         public int commentId { get; set; }
         public string commentDetail { get; set; }
         public int Rating { get; set; }
-        public DateOnly Date { get; set; }
+        public DateTime Date { get; set; } = DateTime.UtcNow.AddHours(7);
         public int? productId { get; set; }
         [ForeignKey("productId")]
         public Product? Product { get; set; }

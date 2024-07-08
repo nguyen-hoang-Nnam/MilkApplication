@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace MilkApplication.DAL.Models.DTO
 {
-    public class OrderRequestDTO
+    public class CommentUserDetailDTO
     {
+        public string UserName { get; set; }
         public string Id { get; set; }
-        public List<OrderItemDTO> OrderItemDTOs { get; set; }
-        public int? voucherId { get; set; }
+        public string Image { get; set; }   
     }
 }
