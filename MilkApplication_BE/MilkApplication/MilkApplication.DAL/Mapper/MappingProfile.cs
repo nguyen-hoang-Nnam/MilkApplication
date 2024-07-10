@@ -26,7 +26,7 @@ namespace MilkApplication.DAL.Mapper
             {
                 new CommentUserDetailDTO
                 {
-                    UserName = src.User.UserName,
+                    FullName = src.User.FullName,
                     Id = src.User.Id
                 }
             }))
