@@ -315,8 +315,8 @@ namespace MilkApplication.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("commentId"));
 
-                    b.Property<DateOnly>("Date")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -388,7 +388,7 @@ namespace MilkApplication.DAL.Migrations
                     b.Property<decimal>("totalPrice")
                         .HasColumnType("decimal(18, 2)");
 
-                    b.Property<int>("voucherId")
+                    b.Property<int?>("voucherId")
                         .HasColumnType("int");
 
                     b.HasKey("orderId");
@@ -729,8 +729,7 @@ namespace MilkApplication.DAL.Migrations
                     b.HasOne("MilkApplication.DAL.Models.Vouchers", "Voucher")
                         .WithMany("Orders")
                         .HasForeignKey("voucherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("User");
 

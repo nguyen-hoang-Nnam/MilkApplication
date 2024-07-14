@@ -80,26 +80,26 @@ namespace MilkApplication.BLL.Service
             return vouchersMapper;
         }
 
-        public async Task<ResponseDTO> UpdateVouchersAsync(int id, VouchersDTO voucherDTO)
+        public async Task<ResponseDTO> UpdateVouchersAsync(int id, VouchersDTO vouchersDTO)
         {
             var voucherUpdate = await _unitOfWork.VouchersRepository.GetByIdAsync(id);
             if (voucherUpdate != null)
             {
-                voucherUpdate = _mapper.Map(voucherDTO, voucherUpdate);
+                voucherUpdate = _mapper.Map(vouchersDTO, voucherUpdate);
                 await _unitOfWork.VouchersRepository.UpdateAsync(voucherUpdate);
                 var result = await _unitOfWork.SaveChangeAsync();
                 if (result > 0)
                 {
                     return new ResponseDTO
                     {
-                        IsSucceed = true,
-                        Message = "Vouchers update successfully!"
+                        IsSucceed = false,
+                        Message = "Vouchers update failed!"
                     };
                 }
                 return new ResponseDTO
                 {
-                    IsSucceed = false,
-                    Message = "Vouchers update failed!"
+                    IsSucceed = true,
+                    Message = "Vouchers update successfully!"
                 };
             }
             return new ResponseDTO

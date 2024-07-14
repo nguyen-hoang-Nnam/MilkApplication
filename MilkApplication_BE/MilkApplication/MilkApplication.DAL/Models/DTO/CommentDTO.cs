@@ -11,7 +11,7 @@ namespace MilkApplication.DAL.Models.DTO
         public int commentId { get; set; }
         public string commentDetail { get; set; }
         public int Rating { get; set; }
-        public DateOnly Date { get; set; }
+        public DateTime Date { get; set; } = DateTime.UtcNow.AddHours(7);
         public int productId { get; set; }
         public string Id { get; set; }
     }

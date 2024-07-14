@@ -6,7 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MilkApplication.DAL.Migrations
 {
     /// <inheritdoc />
+<<<<<<<< HEAD:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240707153612_db.cs
     public partial class db : Migration
+========
+    public partial class fix : Migration
+>>>>>>>> a3389700266b2947a56e45642de8475fac48aedc:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240708124941_fix.cs
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -355,7 +359,7 @@ namespace MilkApplication.DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     commentDetail = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Rating = table.Column<int>(type: "int", nullable: false),
-                    Date = table.Column<DateOnly>(type: "date", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     productId = table.Column<int>(type: "int", nullable: true),
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },

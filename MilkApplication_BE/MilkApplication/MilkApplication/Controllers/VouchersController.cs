@@ -73,7 +73,7 @@ namespace MilkApplication.Controllers
 
         [HttpPut]
         [Route("UpdateVouchers/{id:int}")]
-        public async Task<ActionResult> UpdateCategory(int id, [FromBody] VouchersDTO vouchersDTO)
+        public async Task<ActionResult> UpdateVoucher(int id, [FromBody] VouchersDTO vouchersDTO)
         {
             var response = await _voucherService.UpdateVouchersAsync(id, vouchersDTO);
 

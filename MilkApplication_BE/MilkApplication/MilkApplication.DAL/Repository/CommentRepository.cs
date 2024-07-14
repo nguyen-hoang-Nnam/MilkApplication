@@ -20,9 +20,12 @@ namespace MilkApplication.DAL.Repository
         {
             _context = context;
         }
-        public async Task<Comment> GetCommentByProductIdAsync(int commentId)
+        public async Task<List<Comment>> GetCommentsByProductIdAsync(int productId)
         {
-            return await _context.Comments.FindAsync(commentId);
+            return await _context.Comments
+                .Include(c => c.User)
+                .Where(c => c.productId == productId)
+                .ToListAsync();
         }
         public async Task<Pagination<Comment>> GetCommentByFilterAsync(PaginationParameter paginationParameter, CommentFilterDTO commentFilterDTO)
         {

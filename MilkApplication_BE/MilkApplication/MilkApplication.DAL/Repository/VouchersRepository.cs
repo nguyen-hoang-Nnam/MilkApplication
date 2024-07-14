@@ -21,10 +21,5 @@ namespace MilkApplication.DAL.Repository
         {
             return await _context.Vouchers.FirstOrDefaultAsync(v => v.Code == code);
         }
-        public async Task UpdateAsync(Vouchers voucher)
-        {
-            _context.Vouchers.Update(voucher);
-            await _context.SaveChangesAsync();
-        }
     }
 }

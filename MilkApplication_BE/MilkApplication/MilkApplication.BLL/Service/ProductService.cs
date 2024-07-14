@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace MilkApplication.BLL.Service
 {
@@ -44,7 +45,7 @@ namespace MilkApplication.BLL.Service
             var category = await _unitOfWork.CategoryRepository.GetCategoryByIdAsync(productFound.categoryId);
             var origin = await _unitOfWork.OriginRepository.GetOriginByIdAsync(productFound.originId);
             var location = await _unitOfWork.LocationRepository.GetLocationByIdAsync(productFound.locationId);
-            var comment = await _unitOfWork.CommentRepository.GetCommentByProductIdAsync(productFound.productId);
+            var comment = await _unitOfWork.CommentRepository.GetCommentsByProductIdAsync(productFound.productId);
 
             var productDetail = new ProductDetailDTO
             {
@@ -61,7 +62,7 @@ namespace MilkApplication.BLL.Service
                 Category = _mapper.Map<CategoryDTO>(category),
                 Origin = _mapper.Map<OriginDTO>(origin),
                 Location = _mapper.Map<LocationDTO>(location),
-                Comment = _mapper.Map<CommentDetailDTO>(comment)
+                Comment = _mapper.Map<List<CommentDetailDTO>>(comment)
             };
 
             return productDetail;

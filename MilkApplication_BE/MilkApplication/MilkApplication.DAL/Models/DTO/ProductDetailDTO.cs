@@ -19,9 +19,10 @@ namespace MilkApplication.DAL.Models.DTO
         public List<string> ImagesCarousel { get; set; } = new List<string>();
         public int Quantity { get; set; }
         public ProductStatus Status { get; set; }
-        public CommentDetailDTO Comment { get; set; }
+        public List<CommentDetailDTO> Comment { get; set; } = new List<CommentDetailDTO>();
         public CategoryDTO Category { get; set; }
         public OriginDTO Origin { get; set; }
         public LocationDTO Location { get; set; }
+        public bool IsInventory => Status == ProductStatus.Valiable;
     }
 }

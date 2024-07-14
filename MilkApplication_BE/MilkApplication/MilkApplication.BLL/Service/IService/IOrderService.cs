@@ -13,7 +13,7 @@ namespace MilkApplication.BLL.Service.IService
 {
     public interface IOrderService
     {
-        Task<ResponseDTO> CreateOrderAsync(string userId, List<OrderItemDTO> orderItemDTO, string? voucherCode = null);
+        Task<ResponseDTO> CreateOrderAsync(string userId, List<OrderItemDTO> orderItemDTO, int? voucherId);
         Task<ResponseDTO> DeleteOrderAsync(int orderId);
         Task<IEnumerable<OrderDTO>> GetAllOrdersAsync();
         Task<Order> GetOrderEntityByIdAsync(int orderId);

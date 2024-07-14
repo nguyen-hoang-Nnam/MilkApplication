@@ -1,4 +1,5 @@
-﻿using MilkApplication.DAL.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using MilkApplication.DAL.Data;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Repository.IRepositpry;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MilkApplication.DAL.Repository.IRepositpry.UoW
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
         // Each repository should be a property in the unit of work
         IProductRepository ProductRepository { get; }
