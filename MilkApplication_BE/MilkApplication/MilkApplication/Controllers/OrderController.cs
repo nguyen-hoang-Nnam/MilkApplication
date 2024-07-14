@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.Models.PaginationDTO;
+using MilkApplication.DAL.Data;
+using Microsoft.EntityFrameworkCore;
+using MilkApplication.DAL.enums;
 
 namespace MilkApplication.Controllers
 {
@@ -14,10 +17,12 @@ namespace MilkApplication.Controllers
     public class OrderController : ControllerBase
     {
         private readonly IOrderService _orderService;
+        private readonly AppDbContext _context;
 
-        public OrderController(IOrderService orderService)
+        public OrderController(IOrderService orderService, AppDbContext context)
         {
             _orderService = orderService;
+            _context = context;
         }
 
         [HttpGet("GetAllOrder")]
@@ -102,6 +107,38 @@ namespace MilkApplication.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
             }
+        }
+
+        [HttpGet("confirm")]
+        public async Task<IActionResult> ConfirmPayment(string id, string status, bool cancel)
+        {
+            if (cancel)
+            {
+                return BadRequest("Payment was canceled.");
+            }
+
+            if (status == "PAID")
+            {
+                var payment = await _context.Payments.FirstOrDefaultAsync(p => p.TransactionId == id);
+                if (payment != null)
+                {
+                    payment.Status = PaymentStatus.PAID; // Update the payment status to paid
+                    await _context.SaveChangesAsync();
+
+                    var order = await _context.Orders.FirstOrDefaultAsync(o => o.orderId == payment.orderId);
+                    if (order != null)
+                    {
+                        order.Status = DAL.enums.OrderStatus.Paid; // Update the order status to paid
+                        await _context.SaveChangesAsync();
+                    }
+
+                    return Ok("Payment successful.");
+                }
+
+                return NotFound("Payment not found.");
+            }
+
+            return BadRequest("Payment failed.");
         }
     }
 }

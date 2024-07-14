@@ -47,5 +47,12 @@ namespace MilkApplication.DAL.Repository
             .ToListAsync();
         }
 
+        public async Task<List<Payment>> GetPendingPaymentsAsync()
+        {
+            return await _context.Payments
+                .Where(p => p.Status == PaymentStatus.Pending)
+                .ToListAsync();
+        }
+
     }
 }

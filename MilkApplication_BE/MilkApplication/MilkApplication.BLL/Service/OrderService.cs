@@ -127,7 +127,7 @@ namespace MilkApplication.BLL.Service
                 await _unitOfWork.SaveChangeAsync();
 
                 var cancelUrl = "https://fap.fpt.edu.vn/";
-                var returnUrl = "https://www.facebook.com/FPTU.HCM"; 
+                var returnUrl = "https://www.facebook.com/"; 
                 var paymentResult = await _paymentService.CreatePaymentLink(order, cancelUrl, returnUrl);
 
                 if (!paymentResult.Success)
@@ -214,7 +214,7 @@ namespace MilkApplication.BLL.Service
             try
             {
                 // Fetch payments with completed status
-                var completedPayments = await _unitOfWork.PaymentRepository.GetPaymentsByStatusAsync(PaymentStatus.Completed);
+                var completedPayments = await _unitOfWork.PaymentRepository.GetPaymentsByStatusAsync(PaymentStatus.PAID);
 
                 if (!completedPayments.Any())
                 {

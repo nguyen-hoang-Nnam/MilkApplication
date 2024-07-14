@@ -128,7 +128,7 @@ namespace MilkApplication.BLL.Service
             }
 
             // Update the payment status to completed
-            payment.Status = PaymentStatus.Completed;
+            payment.Status = PaymentStatus.PAID;
             payment.PaymentDate = DateTime.UtcNow;
             await _context.SaveChangesAsync();
 
@@ -149,90 +149,6 @@ namespace MilkApplication.BLL.Service
                 var dataToSign = $"{webhookData.orderCode}{webhookData.amount}{webhookData.description}{webhookData.paymentLinkId}";
                 var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(dataToSign));
                 return BitConverter.ToString(hash).Replace("-", "").ToLower();
-            }
-        }
-
-        public async Task ProcessPayOSWebhookAsync(PayOSWebhookPayload payload, IHeaderDictionary headers)
-        {
-            if (!VerifyWebhook(payload, headers))
-            {
-                throw new UnauthorizedAccessException("Invalid webhook payload.");
-            }
-
-            var payment = await _context.Payments.FirstOrDefaultAsync(p => p.TransactionId == payload.TransactionId);
-
-            if (payment == null)
-            {
-                throw new KeyNotFoundException("Payment not found.");
-            }
-
-            // Update payment status and date
-            if (payload.Status == PaymentStatus.Completed)
-            {
-                payment.Status = PaymentStatus.Completed;
-            }
-            else
-            {
-                payment.Status = PaymentStatus.Failed;
-            }
-            payment.PaymentDate = DateTime.UtcNow;
-
-            // Fetch additional details
-            var order = await _context.Orders
-                                      .Include(o => o.OrderItems)
-                                      .ThenInclude(oi => oi.Product)
-                                      .Include(o => o.User)
-                                      .FirstOrDefaultAsync(o => o.orderId == payment.orderId);
-
-            if (order == null)
-            {
-                throw new KeyNotFoundException("Order not found.");
-            }
-
-            // Update order status based on payment status
-            if (payment.Status == PaymentStatus.Completed)
-            {
-                order.Status = OrderStatus.Paid;
-            }
-            else
-            {
-                order.Status = OrderStatus.Unpaid;
-            }
-
-            // Save changes to the database
-            await _context.SaveChangesAsync();
-        }
-
-        private bool VerifyWebhook(PayOSWebhookPayload payload, IHeaderDictionary headers)
-        {
-            // Get the signature from the headers
-            if (!headers.TryGetValue("X-PayOS-Signature", out var signatureHeader))
-            {
-                return false;
-            }
-            var signature = signatureHeader.ToString();
-
-            // Get the shared secret key from configuration
-            var secretKey = _configuration["PayOS:ChecksumKey"];
-            if (string.IsNullOrEmpty(secretKey))
-            {
-                return false;
-            }
-
-            // Recreate the signature using the payload and secret key
-            var payloadJson = JsonConvert.SerializeObject(payload);
-            var generatedSignature = GenerateSignature(payloadJson, secretKey);
-
-            // Compare the recreated signature with the signature from the headers
-            return signature == generatedSignature;
-        }
-
-        private string GenerateSignature(string payload, string secretKey)
-        {
-            using (var hmac = new HMACSHA256(Encoding.UTF8.GetBytes(secretKey)))
-            {
-                var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(payload));
-                return Convert.ToBase64String(hash);
             }
         }
 
@@ -277,7 +193,7 @@ namespace MilkApplication.BLL.Service
                 }
 
                 // Update payment status
-                payment.Status = isSuccess ? PaymentStatus.Completed : PaymentStatus.Failed;
+                payment.Status = isSuccess ? PaymentStatus.PAID : PaymentStatus.Failed;
 
                 // Check if PaymentRepository is null
                 if (_unitOfWork.PaymentRepository == null)
