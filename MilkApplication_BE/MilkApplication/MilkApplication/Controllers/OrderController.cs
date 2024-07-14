@@ -40,7 +40,7 @@ namespace MilkApplication.Controllers
                 return BadRequest(ModelState);
             }
 
-            var response = await _orderService.CreateOrderAsync(request.Id, request.OrderItemDTOs, request.voucherId);
+            var response = await _orderService.CreateOrderAsync(request.Id, request.OrderDetailDTOs, request.voucherId);
 
             if (!response.IsSucceed)
             {
