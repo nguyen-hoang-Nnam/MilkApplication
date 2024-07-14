@@ -19,7 +19,7 @@ namespace MilkApplication.DAL.Data
         public DbSet<Vouchers> Vouchers { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<OrderDetails> OrderItems { get; set; }
         public DbSet<Combo> Combos { get; set; }
         public DbSet<ComboProduct> ComboProducts { get; set; }
         public DbSet<Payment> Payments { get; set; }
@@ -73,7 +73,7 @@ namespace MilkApplication.DAL.Data
                     .HasColumnType("decimal(18, 2)");
             });
 
-            modelBuilder.Entity<OrderItem>(entity =>
+            modelBuilder.Entity<OrderDetails>(entity =>
             {
                 entity.Property(e => e.Price)
                     .HasColumnType("decimal(18, 2)");

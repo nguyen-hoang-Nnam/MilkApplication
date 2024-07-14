@@ -16,7 +16,7 @@ namespace MilkApplication.Controllers
     {
         private readonly ICategoryService _categoryService;
 
-        public CategoryController(ICategoryService categoryService)
+        public CategoryController(ICategoryService categoryService, IProductService productService)
         {
             _categoryService = categoryService;
         }
@@ -61,6 +61,16 @@ namespace MilkApplication.Controllers
 
                 return BadRequest(ex.Message);
             }
+        }
+        [HttpGet("{categoryId}")]
+        public async Task<IActionResult> GetCategoryDetails(int categoryId)
+        {
+            var categoryDetail = await _categoryService.GetProductsByCategoryIdAsync(categoryId);
+            if (categoryDetail == null)
+            {
+                return NotFound();
+            }
+            return Ok(categoryDetail);
         }
 
         [HttpPost]

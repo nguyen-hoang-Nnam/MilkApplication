@@ -12,7 +12,7 @@ namespace MilkApplication.DAL.Repository.IRepositpry
 {
     public interface IOrderRepository : IGenericRepository<Order>
     {
-        Task CreateOrderAsync(Order order, List<OrderItem> orderItems, int? voucherId);
+        Task CreateOrderAsync(Order order, List<OrderDetails> orderItems, int? voucherId);
         Task DeleteOrderAsync(int orderId);
         Task<Order> GetOrderByIdWithItemAsync(int orderId);
         Task<IEnumerable<Order>> GetAllOrdersAsync();

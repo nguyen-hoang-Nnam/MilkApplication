@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace MilkApplication.DAL.Repository.IRepositpry
 {
-    public interface IOrderItemRepository : IGenericRepository<OrderItem>
+    public interface IOrderItemRepository : IGenericRepository<OrderDetails>
     {
-        Task<OrderItem> CreateOrderItemAsync(OrderItem orderItem);
-        public Task<Pagination<OrderItem>> GetOrderItemByFilterAsync(PaginationParameter paginationParameter, OrderItemFilterDTO orderItemFilterDTO);
+        Task<OrderDetails> CreateOrderItemAsync(OrderDetails orderItem);
+        public Task<Pagination<OrderDetails>> GetOrderItemByFilterAsync(PaginationParameter paginationParameter, OrderItemFilterDTO orderItemFilterDTO);
     }
 }

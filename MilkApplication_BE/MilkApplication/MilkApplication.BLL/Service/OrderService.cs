@@ -43,7 +43,7 @@ namespace MilkApplication.BLL.Service
                     return response;
                 }
 
-                var orderItems = _mapper.Map<List<OrderItem>>(orderItemsDto);
+                var orderItems = _mapper.Map<List<OrderDetails>>(orderItemsDto);
                 foreach (var item in orderItems)
                 {
                     var product = await _unitOfWork.ProductRepository.GetByIdAsync(item.productId.Value);

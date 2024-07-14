@@ -22,7 +22,7 @@ namespace MilkApplication.DAL.Repository
             _context = context;
         }
 
-        public async Task CreateOrderAsync(Order order, List<OrderItem> orderItems, int? voucherId)
+        public async Task CreateOrderAsync(Order order, List<OrderDetails> orderItems, int? voucherId)
         {
             order.OrderItems = orderItems;
             await _context.Orders.AddAsync(order);
