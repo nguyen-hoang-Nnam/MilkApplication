@@ -10,5 +10,6 @@ namespace MilkApplication.DAL.Models.DTO
     {
         public string TransactionId { get; set; }
         public bool IsSuccess { get; set; }
+        public string Status { get; set; }
     }
 }

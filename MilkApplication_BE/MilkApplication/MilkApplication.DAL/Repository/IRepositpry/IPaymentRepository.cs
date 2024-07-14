@@ -13,5 +13,9 @@ namespace MilkApplication.DAL.Repository.IRepositpry
         Task<Payment> GetByTransactionIdAsync(string transactionId);
         Task UpdatePaymentAsync(Payment payment);
         Task<IEnumerable<Payment>> GetPaymentsByStatusAsync(PaymentStatus status);
+
+        Task<List<Payment>> GetPendingPaymentsAsync();
+
+
     }
 }

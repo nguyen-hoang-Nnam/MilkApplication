@@ -9,7 +9,7 @@ namespace MilkApplication.DAL.enums
     public enum PaymentStatus
     {
         Pending,
-        Completed,
+        PAID,
         Failed,
         Cancelled
     }

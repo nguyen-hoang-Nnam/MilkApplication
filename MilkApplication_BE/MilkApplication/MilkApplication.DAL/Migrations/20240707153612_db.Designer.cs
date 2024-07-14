@@ -12,13 +12,8 @@ using MilkApplication.DAL.Data;
 namespace MilkApplication.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-<<<<<<<< HEAD:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240705103834_CallBack.Designer.cs
-    [Migration("20240705103834_CallBack")]
-    partial class CallBack
-========
-    [Migration("20240707142731_update_1")]
-    partial class update_1
->>>>>>>> main:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240707142731_update_1.Designer.cs
+    [Migration("20240707153612_db")]
+    partial class db
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -380,15 +375,14 @@ namespace MilkApplication.DAL.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-<<<<<<<< HEAD:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240705103834_CallBack.Designer.cs
                     b.Property<string>("PaymentUrl")
-========
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.Property<string>("UserName")
                         .IsRequired()
->>>>>>>> main:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240707142731_update_1.Designer.cs
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("orderDate")
@@ -504,7 +498,7 @@ namespace MilkApplication.DAL.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PaymentCallbackId"));
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<DateTime>("CallbackDate")
                         .HasColumnType("datetime2");

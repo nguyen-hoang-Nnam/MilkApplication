@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MilkApplication.BLL.Service;
 using MilkApplication.BLL.Service.IService;
+using MilkApplication.DAL.Data;
+using MilkApplication.DAL.enums;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Models.DTO;
 using Net.payOS.Types;
@@ -15,12 +18,14 @@ namespace MilkApplication.Controllers
         private readonly IPaymentService _paymentService;
         private readonly IOrderService _orderService;
         private readonly SignatureVerifier _signatureVerifier;
+        private readonly AppDbContext _context;
 
-        public PaymentController(IPaymentService paymentService, IOrderService orderService, SignatureVerifier signatureVerifier)
+        public PaymentController(IPaymentService paymentService, IOrderService orderService, SignatureVerifier signatureVerifier, AppDbContext context)
         {
             _paymentService = paymentService;
             _orderService = orderService;
             _signatureVerifier = signatureVerifier;
+            _context = context;
         }
         [HttpPost("Create-Payment-Link")]
         public async Task<IActionResult> CreatePaymentLink([FromBody] CreatePaymentLinkRequest request)
@@ -46,56 +51,6 @@ namespace MilkApplication.Controllers
             return BadRequest(result.ErrorMessage);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> ReceiveWebhook([FromBody] WebhookData webhookData)
-        {
-            // Extract the signature from headers or request body if necessary
-            var receivedSignature = Request.Headers["X-PayOS-Signature"].FirstOrDefault();
-
-            if (receivedSignature == null)
-            {
-                return BadRequest("Signature missing");
-            }
-
-            try
-            {
-                var result = await _paymentService.HandlePaymentSuccess(webhookData);
-
-                if (result)
-                {
-                    return Ok("Payment processed successfully");
-                }
-                else
-                {
-                    return BadRequest("Failed to process payment or invalid signature");
-                }
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
-            }
-        }
-        [HttpPost("payos")]
-        public async Task<IActionResult> PayOSWebhook([FromBody] PayOSWebhookPayload payload)
-        {
-            try
-            {
-                await _paymentService.ProcessPayOSWebhookAsync(payload, Request.Headers);
-                return Ok();
-            }
-            catch (UnauthorizedAccessException)
-            {
-                return Unauthorized(new { message = "Invalid webhook payload." });
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = ex.Message });
-            }
-        }
 
         [HttpPost("confirm-payment")]
         public async Task<IActionResult> ConfirmPayment([FromBody] PaymentConfirmationRequest request)
