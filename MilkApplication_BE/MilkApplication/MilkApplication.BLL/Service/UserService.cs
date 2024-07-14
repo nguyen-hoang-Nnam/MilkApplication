@@ -41,6 +41,7 @@ namespace MilkApplication.BLL.Service
         public async Task<ResponseDTO> CreateUserAsync(UserDTO userDto, UserRole role)
         {
             var user = _mapper.Map<ApplicationUser>(userDto);
+            user.Id = Guid.NewGuid().ToString();
             user.RefreshToken = _jwtHelper.GenerateRefreshToken();
             user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
 
