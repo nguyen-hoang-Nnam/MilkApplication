@@ -30,7 +30,7 @@ namespace MilkApplication.BLL.Service
             _paymentService = paymentService;
         }
 
-        public async Task<ResponseDTO> CreateOrderAsync(string userId, List<OrderItemDTO> orderItemsDto, int? voucherId)
+        public async Task<ResponseDTO> CreateOrderAsync(string userId, List<OrderDetailDTO> orderItemsDto, int? voucherId)
         {
             var response = new ResponseDTO();
 
@@ -43,7 +43,7 @@ namespace MilkApplication.BLL.Service
                     return response;
                 }
 
-                var orderItems = _mapper.Map<List<OrderDetails>>(orderItemsDto);
+                var orderItems = _mapper.Map<List<OrderDetail>>(orderItemsDto);
                 foreach (var item in orderItems)
                 {
                     var product = await _unitOfWork.ProductRepository.GetByIdAsync(item.productId.Value);
@@ -100,7 +100,7 @@ namespace MilkApplication.BLL.Service
                     Id = userId,
                     UserName = user.UserName,
                     User = user,
-                    OrderItems = orderItems,
+                    OrderDeatils = orderItems,
                     totalPrice = totalPrice,
                     voucherId = voucher?.voucherId,
                     Status = DAL.enums.OrderStatus.Unpaid
