@@ -13,6 +13,6 @@ namespace MilkApplication.BLL.Service.IService
 {
     public interface IOrderItemService
     {
-        public Task<Pagination<OrderItemDTO>> GetOrderItemByFilterAsync(PaginationParameter paginationParameter, OrderItemFilterDTO orderItemFilterDTO);
+        public Task<Pagination<OrderDetailDTO>> GetOrderItemByFilterAsync(PaginationParameter paginationParameter, OrderItemFilterDTO orderItemFilterDTO);
     }
 }

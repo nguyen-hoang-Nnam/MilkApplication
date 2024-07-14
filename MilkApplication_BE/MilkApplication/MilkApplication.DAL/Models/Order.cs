@@ -24,7 +24,7 @@ namespace MilkApplication.DAL.Models
         public ApplicationUser? User { get; set; }
         [ForeignKey("voucherId")]
         public Vouchers? Voucher { get; set; }
-        public ICollection<OrderDetails> OrderItems { get; set; }
+        public ICollection<OrderDetail> OrderDeatils { get; set; }
         public string? PaymentUrl { get; set; }
     }
 }
