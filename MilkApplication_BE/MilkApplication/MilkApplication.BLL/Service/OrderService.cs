@@ -103,8 +103,6 @@ namespace MilkApplication.BLL.Service
                     OrderItems = orderItems,
                     totalPrice = totalPrice,
                     voucherId = voucher?.voucherId,
-                    OrderItems = orderItems, // Assign order items
-                    totalPrice = totalPrice,
                     Status = DAL.enums.OrderStatus.Unpaid
                     
                 };

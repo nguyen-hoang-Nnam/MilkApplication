@@ -6,11 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MilkApplication.DAL.Migrations
 {
     /// <inheritdoc />
-<<<<<<<< HEAD:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240707153612_db.cs
-    public partial class db : Migration
-========
-    public partial class fix : Migration
->>>>>>>> a3389700266b2947a56e45642de8475fac48aedc:MilkApplication_BE/MilkApplication/MilkApplication.DAL/Migrations/20240708124941_fix.cs
+    public partial class update : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -304,7 +300,7 @@ namespace MilkApplication.DAL.Migrations
                     orderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     totalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
-                    voucherId = table.Column<int>(type: "int", nullable: false),
+                    voucherId = table.Column<int>(type: "int", nullable: true),
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     PaymentUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
