@@ -14,5 +14,6 @@ namespace MilkApplication.BLL.Service.IService
         public Task<ResponseDTO> AddVouchersAsync(VouchersDTO vouchersDTO);
         public Task<ResponseDTO> UpdateVouchersAsync(int id, VouchersDTO vouchersDTO);
         public Task<ResponseDTO> DeleteVouchersAsync(int id);
+        Task<IEnumerable<VouchersDTO>> GetActiveVouchersAsync();
     }
 }

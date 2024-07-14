@@ -16,7 +16,8 @@ namespace MilkApplication.DAL.Models
         public string Code { get; set; }
         public double? discountPercent { get; set; }
         public int quantity { get; set; }
-        public DateTime date { get; set; }
+        public DateTime dateFrom { get; set; }
+        public DateTime dateTo { get; set; }
         public VouchersStatus vouchersStatus { get; set; }
         public ICollection<Order> Orders { get; set; }
     }

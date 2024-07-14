@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MilkApplication.DAL.Data;
+using MilkApplication.DAL.enums;
 using MilkApplication.DAL.Models;
 using MilkApplication.DAL.Repository.IRepositpry;
 using System;
@@ -20,6 +21,18 @@ namespace MilkApplication.DAL.Repository
         public async Task<Vouchers> GetByCodeAsync(string code)
         {
             return await _context.Vouchers.FirstOrDefaultAsync(v => v.Code == code);
+        }
+
+        public async Task<IEnumerable<Vouchers>> GetVouchersByStatusAsync(VouchersStatus status)
+        {
+            return await _context.Vouchers
+                .Where(v => v.vouchersStatus == status)
+                .ToListAsync();
+        }
+
+        public void UpdateRange(IEnumerable<Vouchers> vouchers)
+        {
+            _context.Vouchers.UpdateRange(vouchers);
         }
     }
 }
