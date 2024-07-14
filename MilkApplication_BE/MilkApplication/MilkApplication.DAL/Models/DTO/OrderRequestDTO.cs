@@ -9,7 +9,7 @@ namespace MilkApplication.DAL.Models.DTO
     public class OrderRequestDTO
     {
         public string Id { get; set; }
-        public List<OrderDetailDTO> OrderDetailDTOs { get; set; }
+        public List<OrderDetailDTO> OrderDetail { get; set; }
         public int? voucherId { get; set; }
     }
 }

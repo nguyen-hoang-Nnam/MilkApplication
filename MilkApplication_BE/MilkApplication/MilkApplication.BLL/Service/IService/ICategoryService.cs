@@ -15,7 +15,7 @@ namespace MilkApplication.BLL.Service.IService
     {
         public Task<List<CategoryDTO>> GetAllCategorysAsync();
         public Task<CategoryDTO> GetCategoryByIdAsync(int id);
-        public Task<CategoryDetailDTO> GetProductsByCategoryIdAsync(int id);
+        Task<List<CategoryDetailDTO>> GetAllCategoriesWithProductsAsync();
         public Task<ResponseDTO> AddCategoryAsync(CategoryDTO categoryDTO);
         public Task<ResponseDTO> UpdateCategoryAsync(int id, CategoryDTO categoryDTO);
         public Task<ResponseDTO> DeleteCategoryAsync(int id);

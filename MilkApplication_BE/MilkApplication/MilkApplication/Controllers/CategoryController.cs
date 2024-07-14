@@ -43,7 +43,7 @@ namespace MilkApplication.Controllers
         }
 
         [HttpGet]
-        [Route("GetCategorysById/{id:int}")]
+        [Route("GetCategorysById")]
         public async Task<ActionResult<Category>> GetCategoryById(int id)
         {
 
@@ -62,10 +62,10 @@ namespace MilkApplication.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet("{categoryId}")]
-        public async Task<IActionResult> GetCategoryDetails(int categoryId)
+        [HttpGet("GetProductInCategory")]
+        public async Task<IActionResult> GetAllCategoriesWithProducts()
         {
-            var categoryDetail = await _categoryService.GetProductsByCategoryIdAsync(categoryId);
+            var categoryDetail = await _categoryService.GetAllCategoriesWithProductsAsync();
             if (categoryDetail == null)
             {
                 return NotFound();
