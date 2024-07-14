@@ -26,6 +26,8 @@ namespace MilkApplication.BLL.Service
         public async Task<ResponseDTO> AddVouchersAsync(VouchersDTO vouchersDTO)
         {
             var vouchersObj = _mapper.Map<Vouchers>(vouchersDTO);
+            vouchersObj.dateFrom = DateTime.Now;
+            vouchersObj.dateTo = vouchersDTO.dateTo;
             vouchersObj.vouchersStatus = VouchersStatus.Active;
             await _unitOfWork.VouchersRepository.AddAsync(vouchersObj);
             await _unitOfWork.SaveChangeAsync();
@@ -64,7 +66,32 @@ namespace MilkApplication.BLL.Service
 
         public async Task<List<VouchersDTO>> GetAllVouchersAsync()
         {
+            var now = DateTime.Now;
+
+            // Fetch all vouchers
             var vouchersGetAll = await _unitOfWork.VouchersRepository.GetAllAsync();
+
+            // List to hold vouchers that need their status updated
+            var vouchersToUpdate = new List<Vouchers>();
+
+            foreach (var voucher in vouchersGetAll)
+            {
+                if (voucher.dateTo < now && voucher.vouchersStatus != VouchersStatus.Expired)
+                {
+                    // Voucher is expired and needs status update
+                    voucher.vouchersStatus = VouchersStatus.Expired;
+                    vouchersToUpdate.Add(voucher);
+                }
+            }
+
+            // Update the status of expired vouchers
+            if (vouchersToUpdate.Any())
+            {
+                _unitOfWork.VouchersRepository.UpdateRange(vouchersToUpdate);
+                await _unitOfWork.SaveChangeAsync();
+            }
+
+            // Map the vouchers to VouchersDTO and return
             var vouchersMapper = _mapper.Map<List<VouchersDTO>>(vouchersGetAll);
             return vouchersMapper;
         }
@@ -107,6 +134,13 @@ namespace MilkApplication.BLL.Service
                 IsSucceed = false,
                 Message = "Vouchers not found!"
             };
+        }
+
+        public async Task<IEnumerable<VouchersDTO>> GetActiveVouchersAsync()
+        {
+            var now = DateTime.UtcNow;
+            var vouchers = await _unitOfWork.VouchersRepository.GetVouchersByStatusAsync(VouchersStatus.Active);
+            return _mapper.Map<IEnumerable<VouchersDTO>>(vouchers);
         }
     }
 }
