@@ -58,7 +58,7 @@ namespace MilkApplication.BLL.Service
             }
             var items = new List<ItemData>();
 
-            foreach (var orderItem in order.OrderDeatils)
+            foreach (var orderItem in order.OrderDetails)
             {
                 var item = new ItemData(orderItem.Product?.productName ?? "Unknown Product", orderItem.Quantity, (int)orderItem.Price);
                 items.Add(item);

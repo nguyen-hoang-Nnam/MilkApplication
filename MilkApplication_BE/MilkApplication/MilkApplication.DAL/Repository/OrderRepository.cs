@@ -24,7 +24,7 @@ namespace MilkApplication.DAL.Repository
 
         public async Task CreateOrderAsync(Order order, List<OrderDetail> orderItems, int? voucherId)
         {
-            order.OrderDeatils = orderItems;
+            order.OrderDetails = orderItems;
             await _context.Orders.AddAsync(order);
             await _context.SaveChangesAsync();
         }
@@ -50,13 +50,13 @@ namespace MilkApplication.DAL.Repository
         public async Task<Order> GetOrderByIdWithItemAsync(int orderId)
         {
             return await _context.Orders
-                .Include(o => o.OrderDeatils)
+                .Include(o => o.OrderDetails)
                 .FirstOrDefaultAsync(o => o.orderId == orderId);
         }
         public async Task<IEnumerable<Order>> GetAllOrdersAsync()
         {
             return await _context.Orders
-                .Include(o => o.OrderDeatils)
+                .Include(o => o.OrderDetails)
                 .ThenInclude(oi => oi.Product)
                 .ToListAsync();
         }
@@ -64,7 +64,7 @@ namespace MilkApplication.DAL.Repository
         {
             return await _context.Orders
                 .Include(o => o.User)
-                .Include(o => o.OrderDeatils)
+                .Include(o => o.OrderDetails)
                     .ThenInclude(oi => oi.Product)
                 .FirstOrDefaultAsync(o => o.orderId == orderId);
         }
@@ -78,7 +78,7 @@ namespace MilkApplication.DAL.Repository
         {
             return await _context.Orders
                 .Where(o => orderIds.Contains(o.orderId))
-                .Include(o => o.OrderDeatils)
+                .Include(o => o.OrderDetails)
                     .ThenInclude(oi => oi.Product)
                 .Include(o => o.User)
                 .ToListAsync();

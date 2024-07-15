@@ -1,19 +1,16 @@
 {
   "dependencies": {
-    "apis1": {
-      "type": "apis"
-    },
-    "mssql1": {
-      "type": "mssql",
-      "connectionId": "ConnectionStrings:DefaultConnection"
-    },
     "mssql2": {
       "type": "mssql",
       "connectionId": "ConnectionStrings:ConnectionDefault"
     },
     "mssql3": {
       "type": "mssql",
-      "connectionId": "ConnectionStringsConnectingDefault"
+      "connectionId": "ConnectionStrings:ConnectingDefault"
+    },
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:DefaultConnection"
     }
   }
 }

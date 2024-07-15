@@ -86,7 +86,7 @@ namespace MilkApplication.DAL.Data
             });
 
             modelBuilder.Entity<Order>()
-                .HasMany(o => o.OrderDeatils)
+                .HasMany(o => o.OrderDetails)
                 .WithOne(oi => oi.Order)
                 .HasForeignKey(oi => oi.orderId)
                 .OnDelete(DeleteBehavior.Cascade);
