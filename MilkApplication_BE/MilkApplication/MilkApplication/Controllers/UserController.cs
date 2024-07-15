@@ -27,9 +27,9 @@ namespace MilkApplication.Controllers
         }
 
         [HttpPost("CreateStaff")]
-        public async Task<IActionResult> CreateStaff([FromBody] UserDTO userDto)
+        public async Task<IActionResult> CreateStaff([FromBody] StaffDTO staffDto)
         {
-            var response = await _userService.CreateUserAsync(userDto, UserRole.Staff);
+            var response = await _userService.CreateStaffAsync(staffDto, UserRole.Staff);
             if (response.IsSucceed)
             {
                 return Ok(response);
@@ -41,9 +41,9 @@ namespace MilkApplication.Controllers
         }
 
         [HttpPost("CreateAdmin")]
-        public async Task<IActionResult> CreateAdmin([FromBody] UserDTO userDto)
+        public async Task<IActionResult> CreateAdmin([FromBody] AdminDTO adminDto)
         {
-            var response = await _userService.CreateUserAsync(userDto, UserRole.Admin);
+            var response = await _userService.CreateAdminAsync(adminDto, UserRole.Admin);
             if (response.IsSucceed)
             {
                 return Ok(response);

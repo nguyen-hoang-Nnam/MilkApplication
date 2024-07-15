@@ -70,6 +70,70 @@ namespace MilkApplication.BLL.Service
 
             return new ResponseDTO { IsSucceed = true, Message = "User registered successfully" };
         }
+        public async Task<ResponseDTO> CreateStaffAsync(StaffDTO staffDto, UserRole role)
+        {
+            var user = _mapper.Map<ApplicationUser>(staffDto);
+            user.Id = Guid.NewGuid().ToString();
+            user.RefreshToken = _jwtHelper.GenerateRefreshToken();
+            user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
+
+            user.Status = UserStatus.IsActive;
+            var createUserResult = await _unitOfWork.UserRepository.CreateStaffAsync(user, staffDto.Password);
+            if (!createUserResult.IsSucceed)
+            {
+                return createUserResult;
+            }
+
+            var roleName = role.ToString();
+            if (!await _roleManager.RoleExistsAsync(roleName))
+            {
+                var createRoleResult = await _roleManager.CreateAsync(new IdentityRole(roleName));
+                if (!createRoleResult.Succeeded)
+                {
+                    return new ResponseDTO { IsSucceed = false, Message = "Failed to create role: " + string.Join(", ", createRoleResult.Errors.Select(e => e.Description)) };
+                }
+            }
+
+            var addToRoleResult = await _userManager.AddToRoleAsync(user, roleName);
+            if (!addToRoleResult.Succeeded)
+            {
+                return new ResponseDTO { IsSucceed = false, Message = "Failed to add staff to role: " + string.Join(", ", addToRoleResult.Errors.Select(e => e.Description)) };
+            }
+
+            return new ResponseDTO { IsSucceed = true, Message = "Staff registered successfully" };
+        }
+        public async Task<ResponseDTO> CreateAdminAsync(AdminDTO adminDto, UserRole role)
+        {
+            var user = _mapper.Map<ApplicationUser>(adminDto);
+            user.Id = Guid.NewGuid().ToString();
+            user.RefreshToken = _jwtHelper.GenerateRefreshToken();
+            user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
+
+            user.Status = UserStatus.IsActive;
+            var createUserResult = await _unitOfWork.UserRepository.CreateAdminAsync(user, adminDto.Password);
+            if (!createUserResult.IsSucceed)
+            {
+                return createUserResult;
+            }
+
+            var roleName = role.ToString();
+            if (!await _roleManager.RoleExistsAsync(roleName))
+            {
+                var createRoleResult = await _roleManager.CreateAsync(new IdentityRole(roleName));
+                if (!createRoleResult.Succeeded)
+                {
+                    return new ResponseDTO { IsSucceed = false, Message = "Failed to create role: " + string.Join(", ", createRoleResult.Errors.Select(e => e.Description)) };
+                }
+            }
+
+            var addToRoleResult = await _userManager.AddToRoleAsync(user, roleName);
+            if (!addToRoleResult.Succeeded)
+            {
+                return new ResponseDTO { IsSucceed = false, Message = "Failed to add admin to role: " + string.Join(", ", addToRoleResult.Errors.Select(e => e.Description)) };
+            }
+
+            return new ResponseDTO { IsSucceed = true, Message = "Admin registered successfully" };
+        }
 
         public async Task<ResponseDTO> GetUserByIdAsync(string userId)
         {
@@ -99,7 +163,6 @@ namespace MilkApplication.BLL.Service
             var userDtos = _mapper.Map<List<UserDTO>>(usersResponse);
             return new ResponseDTO { IsSucceed = true, Message = "Users retrieved successfully", Data = userDtos };
         }
-
         public async Task<ResponseDTO> UpdateUserAsync(string userId, UserDTO userDto)
         {
             var existingUser = await _unitOfWork.UserRepository.GetById(userId);

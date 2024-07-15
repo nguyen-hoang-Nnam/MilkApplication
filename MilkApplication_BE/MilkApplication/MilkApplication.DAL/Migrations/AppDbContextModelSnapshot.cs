@@ -155,6 +155,40 @@ namespace MilkApplication.DAL.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("MilkApplication.DAL.Models.Address", b =>
+                {
+                    b.Property<int>("addressId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("addressId"));
+
+                    b.Property<string>("AddressName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Street")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("addressId");
+
+                    b.HasIndex("Id");
+
+                    b.ToTable("Addresses");
+                });
+
             modelBuilder.Entity("MilkApplication.DAL.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -687,6 +721,15 @@ namespace MilkApplication.DAL.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MilkApplication.DAL.Models.Address", b =>
+                {
+                    b.HasOne("MilkApplication.DAL.Models.ApplicationUser", "User")
+                        .WithMany("Addresses")
+                        .HasForeignKey("Id");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MilkApplication.DAL.Models.ComboProduct", b =>
                 {
                     b.HasOne("MilkApplication.DAL.Models.Combo", "Combo")
@@ -814,6 +857,8 @@ namespace MilkApplication.DAL.Migrations
 
             modelBuilder.Entity("MilkApplication.DAL.Models.ApplicationUser", b =>
                 {
+                    b.Navigation("Addresses");
+
                     b.Navigation("Comments");
                 });
 

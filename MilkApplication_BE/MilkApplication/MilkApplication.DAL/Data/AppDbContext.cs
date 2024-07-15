@@ -25,6 +25,7 @@ namespace MilkApplication.DAL.Data
         public DbSet<Payment> Payments { get; set; }
         public DbSet<PaymentMethod> PaymentMethods { get; set; }
         public DbSet<PaymentCallBack> PaymentCallBacks { get; set; }
+        public DbSet<Address> Addresses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -66,6 +67,11 @@ namespace MilkApplication.DAL.Data
                 .WithMany(p => p.Products)
                 .HasForeignKey(l => l.locationId)
                 .OnDelete(DeleteBehavior.Cascade);
+            // Configure User - Address relationship
+            modelBuilder.Entity<Address>()
+                .HasOne(c => c.User)
+                .WithMany(u => u.Addresses)
+                .HasForeignKey(c => c.Id);
 
             modelBuilder.Entity<Order>(entity =>
             {

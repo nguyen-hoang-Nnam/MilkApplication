@@ -16,6 +16,8 @@ namespace MilkApplication.DAL.Repository.IRepositpry
     {
         Task<ApplicationUser> GetByEmailAsync(string email);
         Task<ResponseDTO> CreateUserAsync(ApplicationUser user, string password);
+        Task<ResponseDTO> CreateStaffAsync(ApplicationUser user, string password);
+        Task<ResponseDTO> CreateAdminAsync(ApplicationUser user, string password);
         Task<ResponseDTO> DeleteUserAsync(string userId, UserStatus status);
         Task<List<ApplicationUser>> GetUsersByStaffRoleAsync();
         Task<List<ApplicationUser>> GetUsersByAdminRoleAsync();
