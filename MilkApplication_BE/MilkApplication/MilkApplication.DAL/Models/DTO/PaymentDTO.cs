@@ -15,6 +15,9 @@ namespace MilkApplication.DAL.Models.DTO
         public PaymentStatus Status { get; set; }
         public string PaymentUrl { get; set; }
         public string orderId { get; set; }
-        public string Id { get; set; }
+        /*public string Id { get; set; }
+        public string FullName { get; set; }*/
+        /*public string Email { get; set; }*/
+        public OrderDTO Order { get; set; }
     }
 }

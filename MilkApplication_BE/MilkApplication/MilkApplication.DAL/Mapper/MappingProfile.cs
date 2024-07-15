@@ -74,6 +74,13 @@ namespace MilkApplication.DAL.Mapper
             .ForMember(dest => dest.ComboDiscountPercent, opt => opt.MapFrom(src => src.Combo.discountPercent))
             .ForMember(dest => dest.ComboDescription, opt => opt.MapFrom(src => src.Combo.comboDescription))
             .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.productName));
+
+            CreateMap<Payment, PaymentDTO>().ReverseMap();
+            CreateMap<Payment, PaymentDTO>()
+            /*.ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Order.User.Id))
+            .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.Order.User.FullName))*/
+            /*.ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Order.User.Email))*/
+            .ForMember(dest => dest.Order, opt => opt.MapFrom(src => src.Order));
         }
     }
 }

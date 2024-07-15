@@ -96,5 +96,23 @@ namespace MilkApplication.Controllers
             var totalAmounts = await _paymentService.GetTotalAmountsForLast12MonthsAsync();
             return Ok(totalAmounts);
         }
+
+        [HttpGet("Payment/{userId}")]
+        public async Task<IActionResult> GetPaymentsByUserId(string userId)
+        {
+            try
+            {
+                var response = await _orderService.GetPaymentsByUserIdAsync(userId);
+
+                if (response.IsSucceed)
+                    return Ok(response.Data);
+
+                return NotFound(response.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
     }
 }
