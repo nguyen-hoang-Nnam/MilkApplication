@@ -100,7 +100,7 @@ namespace MilkApplication.BLL.Service
                     Id = createOrderDto.Id,
                     UserName = user.UserName,
                     User = user,
-                    OrderDeatils = orderItems,
+                    OrderDetails = orderItems,
                     totalPrice = totalPrice,
                     voucherId = voucher?.voucherId,
                     Status = DAL.enums.OrderStatus.Unpaid

@@ -4,7 +4,7 @@
   "parameters": {
     "resourceGroupName": {
       "type": "string",
-      "defaultValue": "MilkApplication20240611234037ResourceGroup",
+      "defaultValue": "MilkApplication20240705013352ResourceGroup",
       "metadata": {
         "_parameterType": "resourceGroup",
         "description": "Name of the resource group for the resource. It is recommended to put resources under same resource group for better tracking."
@@ -51,23 +51,24 @@
             {
               "kind": "v12.0",
               "location": "[parameters('resourceLocation')]",
-              "name": "milkapplicationdbserver",
+              "name": "milkapplicationserver",
               "type": "Microsoft.Sql/servers",
               "apiVersion": "2017-10-01-preview"
             },
             {
               "sku": {
-                "name": "Standard",
-                "tier": "Standard",
-                "capacity": 10
+                "name": "GP_S_Gen5",
+                "tier": "GeneralPurpose",
+                "family": "Gen5",
+                "capacity": 2
               },
-              "kind": "v12.0,user",
+              "kind": "v12.0,user,vcore,serverless,freelimit",
               "location": "[parameters('resourceLocation')]",
-              "name": "milkapplicationdbserver/MilkApplication_db",
+              "name": "milkapplicationserver/MilkApplication_db",
               "type": "Microsoft.Sql/servers/databases",
               "apiVersion": "2017-10-01-preview",
               "dependsOn": [
-                "milkapplicationdbserver"
+                "milkapplicationserver"
               ]
             }
           ]
