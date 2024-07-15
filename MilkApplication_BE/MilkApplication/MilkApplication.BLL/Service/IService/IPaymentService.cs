@@ -19,5 +19,8 @@ namespace MilkApplication.BLL.Service.IService
         Task<bool> HandlePaymentSuccess(WebhookData webhookData);
         bool VerifyWebhookSignature(WebhookData webhookData, string receivedSignature);
         Task<ResponseDTO> ConfirmPaymentAsync(string transactionId);
+        Task<decimal> GetTotalAmountByDayAsync(DateTime date);
+        Task<decimal> GetTotalAmountByMonthAsync(int year, int month);
+        Task<Dictionary<string, decimal>> GetTotalAmountsForLast12MonthsAsync();
     }
 }

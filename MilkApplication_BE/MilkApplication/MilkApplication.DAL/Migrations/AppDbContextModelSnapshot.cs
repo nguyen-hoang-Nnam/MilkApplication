@@ -400,13 +400,13 @@ namespace MilkApplication.DAL.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("MilkApplication.DAL.Models.OrderItem", b =>
+            modelBuilder.Entity("MilkApplication.DAL.Models.OrderDetail", b =>
                 {
-                    b.Property<int>("orderItemId")
+                    b.Property<int>("orderDetailId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("orderItemId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("orderDetailId"));
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18, 2)");
@@ -420,7 +420,7 @@ namespace MilkApplication.DAL.Migrations
                     b.Property<int?>("productId")
                         .HasColumnType("int");
 
-                    b.HasKey("orderItemId");
+                    b.HasKey("orderDetailId");
 
                     b.HasIndex("orderId");
 
@@ -739,10 +739,10 @@ namespace MilkApplication.DAL.Migrations
                     b.Navigation("Voucher");
                 });
 
-            modelBuilder.Entity("MilkApplication.DAL.Models.OrderItem", b =>
+            modelBuilder.Entity("MilkApplication.DAL.Models.OrderDetail", b =>
                 {
                     b.HasOne("MilkApplication.DAL.Models.Order", "Order")
-                        .WithMany("OrderItems")
+                        .WithMany("OrderDeatils")
                         .HasForeignKey("orderId")
                         .OnDelete(DeleteBehavior.Cascade);
 
@@ -834,7 +834,7 @@ namespace MilkApplication.DAL.Migrations
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Order", b =>
                 {
-                    b.Navigation("OrderItems");
+                    b.Navigation("OrderDeatils");
                 });
 
             modelBuilder.Entity("MilkApplication.DAL.Models.Origin", b =>

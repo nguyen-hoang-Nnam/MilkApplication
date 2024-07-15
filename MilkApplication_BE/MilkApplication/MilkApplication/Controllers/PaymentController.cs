@@ -75,5 +75,26 @@ namespace MilkApplication.Controllers
                 return StatusCode(500, "Internal server error.");
             }
         }
+
+        [HttpGet("totalAmountByDay")]
+        public async Task<IActionResult> GetTotalAmountByDay(DateTime date)
+        {
+            var totalAmount = await _paymentService.GetTotalAmountByDayAsync(date);
+            return Ok(totalAmount);
+        }
+
+        [HttpGet("totalAmountByMonth")]
+        public async Task<IActionResult> GetTotalAmountByMonth(int year, int month)
+        {
+            var totalAmount = await _paymentService.GetTotalAmountByMonthAsync(year, month);
+            return Ok(totalAmount);
+        }
+
+        [HttpGet("totalAmountsForLast12Months")]
+        public async Task<IActionResult> GetTotalAmountsForLast12Months()
+        {
+            var totalAmounts = await _paymentService.GetTotalAmountsForLast12MonthsAsync();
+            return Ok(totalAmounts);
+        }
     }
 }

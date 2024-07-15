@@ -46,15 +46,15 @@ namespace MilkApplication.DAL.Mapper
             CreateMap<Order, OrderDTO>()
             .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.User.FullName))
             .ForMember(dest => dest.Email, opt => opt.MapFrom(src =>src.User.Email))
-            .ForMember(dest => dest.OrderItems, opt => opt.MapFrom(src => src.OrderItems));
-            CreateMap<OrderItem, OrderItemDTO>().ReverseMap();
+            .ForMember(dest => dest.OrderDetails, opt => opt.MapFrom(src => src.OrderDeatils));
+            CreateMap<OrderDetail, OrderDetailDTO>().ReverseMap();
             /*CreateMap<OrderItem, OrderItemDTO>()
             .ForMember(dest => dest.productName, opt => opt.MapFrom(src => src.Product.productName));*/
             CreateMap<Order, OrderRequestDTO>().ReverseMap();
             CreateMap<OrderRequestDTO, Order>()
-                .ForMember(dest => dest.OrderItems, opt => opt.MapFrom(src => src.OrderItemDTOs));
+                .ForMember(dest => dest.OrderDeatils, opt => opt.MapFrom(src => src.OrderDetail));
             CreateMap<CreateOrderDTO, Order>();
-            CreateMap<CreateOrderDetailDTO, OrderItem>();
+            CreateMap<CreateOrderDetailDTO, OrderDetail>();
             CreateMap<Combo, ComboDTO>().ReverseMap();
             CreateMap<ComboProduct, ComboProductDTO>().ReverseMap();
 
