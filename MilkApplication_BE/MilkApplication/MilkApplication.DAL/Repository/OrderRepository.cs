@@ -79,7 +79,8 @@ namespace MilkApplication.DAL.Repository
             return await _context.Orders
                 .Where(o => orderIds.Contains(o.orderId))
                 .Include(o => o.OrderDeatils)
-                .Include(o => o.OrderDeatils)
+                    .ThenInclude(oi => oi.Product)
+                .Include(o => o.User)
                 .ToListAsync();
         }
         public async Task<Pagination<Order>>GetOrderByFilterAsync(PaginationParameter paginationParameter, OrderFilterDTO orderFilterDTO)

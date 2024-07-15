@@ -6,6 +6,7 @@ using MilkApplication.DAL.Repository.IRepositpry;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -52,6 +53,28 @@ namespace MilkApplication.DAL.Repository
             return await _context.Payments
                 .Where(p => p.Status == PaymentStatus.Pending)
                 .ToListAsync();
+        }
+
+        public async Task<decimal> SumAsync(Expression<Func<Payment, bool>> predicate, Expression<Func<Payment, decimal>> selector)
+        {
+            return await _context.Payments.Where(predicate).SumAsync(selector);
+        }
+
+        public async Task<Dictionary<string, decimal>> GetMonthlyTotalsAsync(int months)
+        {
+            var result = new Dictionary<string, decimal>();
+            var currentDate = DateTime.Now;
+
+            for (int i = 0; i < months; i++)
+            {
+                var date = currentDate.AddMonths(-i);
+                var totalAmount = await _context.Payments
+                    .Where(p => p.PaymentDate.Year == date.Year && p.PaymentDate.Month == date.Month)
+                    .SumAsync(p => p.Amount);
+                result.Add(date.ToString("yyyy-MM"), totalAmount);
+            }
+
+            return result;
         }
 
     }

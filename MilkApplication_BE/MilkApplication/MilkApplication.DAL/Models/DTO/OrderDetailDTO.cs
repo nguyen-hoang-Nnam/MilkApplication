@@ -11,6 +11,7 @@ namespace MilkApplication.DAL.Models.DTO
         public int orderDetailId { get; set; }
         public int Quantity { get; set; }
         public int? productId { get; set; }
-        public string productName { get; set; }
+        /*public string productName { get; set; }*/
+        public ProductDTO Product { get; set; }
     }
 }
