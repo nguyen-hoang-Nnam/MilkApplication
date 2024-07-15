@@ -15,7 +15,10 @@ namespace MilkApplication.DAL.Mapper
         public MappingProfile()
         {
             CreateMap<ProductDTO, Product>().ReverseMap();
-            CreateMap<Product,ProductDetailDTO>().ReverseMap();
+            CreateMap<Product, ProductDetailDTO>().ReverseMap();
+            CreateMap<Product, ProductDetailCategoryDTO>().ReverseMap();
+            CreateMap<Category, CategoryDetailDTO>()
+                .ForMember(dest => dest.Product, opt => opt.Ignore());
             CreateMap<Category, CategoryDTO>().ReverseMap();
             CreateMap<Origin, OriginDTO>().ReverseMap();
             CreateMap<OriginDTO, Origin>()

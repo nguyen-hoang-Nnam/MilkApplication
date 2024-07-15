@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace MilkApplication.DAL.Models
 {
-    public class OrderItem
+    public class OrderDetail
     {
         [Key]
-        public int orderItemId { get; set; }
+        public int orderDetailId { get; set; }
         public int Quantity { get; set; }
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Price { get; set; }

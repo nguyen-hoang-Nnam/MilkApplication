@@ -22,9 +22,9 @@ namespace MilkApplication.DAL.Repository
             _context = context;
         }
 
-        public async Task CreateOrderAsync(Order order, List<OrderItem> orderItems, int? voucherId)
+        public async Task CreateOrderAsync(Order order, List<OrderDetail> orderItems, int? voucherId)
         {
-            order.OrderItems = orderItems;
+            order.OrderDeatils = orderItems;
             await _context.Orders.AddAsync(order);
             await _context.SaveChangesAsync();
         }
@@ -50,13 +50,13 @@ namespace MilkApplication.DAL.Repository
         public async Task<Order> GetOrderByIdWithItemAsync(int orderId)
         {
             return await _context.Orders
-                .Include(o => o.OrderItems)
+                .Include(o => o.OrderDeatils)
                 .FirstOrDefaultAsync(o => o.orderId == orderId);
         }
         public async Task<IEnumerable<Order>> GetAllOrdersAsync()
         {
             return await _context.Orders
-                .Include(o => o.OrderItems)
+                .Include(o => o.OrderDeatils)
                 .ThenInclude(oi => oi.Product)
                 .ToListAsync();
         }
@@ -64,7 +64,7 @@ namespace MilkApplication.DAL.Repository
         {
             return await _context.Orders
                 .Include(o => o.User)
-                .Include(o => o.OrderItems)
+                .Include(o => o.OrderDeatils)
                     .ThenInclude(oi => oi.Product)
                 .FirstOrDefaultAsync(o => o.orderId == orderId);
         }

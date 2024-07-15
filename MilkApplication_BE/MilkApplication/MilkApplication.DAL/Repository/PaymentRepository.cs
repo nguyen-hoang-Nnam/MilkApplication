@@ -42,7 +42,7 @@ namespace MilkApplication.DAL.Repository
             .Include(p => p.Order)
                 .ThenInclude(o => o.User)
             .Include(p => p.Order)
-                .ThenInclude(o => o.OrderItems)
+                .ThenInclude(o => o.OrderDeatils)
                     .ThenInclude(oi => oi.Product)
             .ToListAsync();
         }

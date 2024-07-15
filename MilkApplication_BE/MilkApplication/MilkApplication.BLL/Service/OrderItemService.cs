@@ -24,15 +24,15 @@ namespace MilkApplication.BLL.Service
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<Pagination<OrderItemDTO>> GetOrderItemByFilterAsync(PaginationParameter paginationParameter, OrderItemFilterDTO orderItemFilterDTO)
+        public async Task<Pagination<OrderDetailDTO>> GetOrderItemByFilterAsync(PaginationParameter paginationParameter, OrderItemFilterDTO orderItemFilterDTO)
         {
             try
             {
                 var orderitems = await _unitOfWork.OrderItemRepository.GetOrderItemByFilterAsync(paginationParameter, orderItemFilterDTO);
                 if (orderitems != null)
                 {
-                    var mapperResult = _mapper.Map<List<OrderItemDTO>>(orderitems);
-                    return new Pagination<OrderItemDTO>(mapperResult, orderitems.TotalCount, orderitems.CurrentPage, orderitems.PageSize);
+                    var mapperResult = _mapper.Map<List<OrderDetailDTO>>(orderitems);
+                    return new Pagination<OrderDetailDTO>(mapperResult, orderitems.TotalCount, orderitems.CurrentPage, orderitems.PageSize);
                 }
                 return null;
             }

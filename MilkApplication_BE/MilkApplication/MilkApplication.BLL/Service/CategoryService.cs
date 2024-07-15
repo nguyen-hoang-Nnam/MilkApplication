@@ -79,6 +79,28 @@ namespace MilkApplication.BLL.Service
             var categoryMapper = _mapper.Map<CategoryDTO>(categoryFound);
             return categoryMapper;
         }
+        public async Task<List<CategoryDetailDTO>> GetAllCategoriesWithProductsAsync()
+        {
+            var categories = await _unitOfWork.CategoryRepository.GetAllAsync();
+            var categoryDtos = new List<CategoryDetailDTO>();
+
+            foreach (var category in categories)
+            {
+                var productsByCategory = await _unitOfWork.ProductRepository.GetProductsByCategoryIdAsync(category.categoryId);
+                var productDtos = _mapper.Map<List<ProductDetailCategoryDTO>>(productsByCategory);
+
+                var categoryDetail = new CategoryDetailDTO
+                {
+                    categoryId = category.categoryId,
+                    categoryName = category.categoryName,
+                    Product = productDtos
+                };
+
+                categoryDtos.Add(categoryDetail);
+            }
+
+            return categoryDtos;
+        }
 
         public async Task<ResponseDTO> UpdateCategoryAsync(int id, CategoryDTO categoryDTO)
         {
