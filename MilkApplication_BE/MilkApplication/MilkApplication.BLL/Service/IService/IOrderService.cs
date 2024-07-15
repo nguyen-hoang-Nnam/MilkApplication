@@ -21,5 +21,7 @@ namespace MilkApplication.BLL.Service.IService
         public Task<Pagination<OrderDTO>> GetOrderByFilterAsync(PaginationParameter paginationParameter, OrderFilterDTO orderFilterDTO);
 
         Task<ResponseDTO> GetOrdersByCompletedPaymentsAsync();
+        Task<ResponseDTO> GetOrdersByCompletedPaymentsAsync(string userId);
+        Task<ResponseDTO> GetPaymentsByUserIdAsync(string userId);
     }
 }

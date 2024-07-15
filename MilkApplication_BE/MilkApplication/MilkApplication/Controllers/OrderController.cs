@@ -140,5 +140,23 @@ namespace MilkApplication.Controllers
 
             return BadRequest("Payment failed.");
         }
+
+        [HttpGet("CompletedOrderByUserId")]
+        public async Task<IActionResult> GetOrdersByCompletedPaymentsAsync(string userId)
+        {
+            try
+            {
+                var response = await _orderService.GetOrdersByCompletedPaymentsAsync(userId);
+
+                if (response.IsSucceed)
+                    return Ok(response.Data);
+
+                return NotFound(response.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
     }
 }

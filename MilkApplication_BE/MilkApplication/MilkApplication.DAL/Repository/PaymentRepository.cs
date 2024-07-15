@@ -77,5 +77,23 @@ namespace MilkApplication.DAL.Repository
             return result;
         }
 
+        public async Task<List<Payment>> GetPaymentsByStatusAndUserIdAsync(PaymentStatus status, string userId)
+        {
+            return await _context.Payments
+                .Where(p => p.Status == status && p.Order.User.Id == userId)
+                .ToListAsync();
+        }
+
+        public async Task<List<Payment>> GetPaymentsByUserIdAsync(string userId)
+        {
+            return await _context.Payments
+                .Include(p => p.Order)
+                    .ThenInclude(o => o.User)
+                 .Include(p => p.Order)
+                    .ThenInclude(o => o.OrderDeatils)
+                        .ThenInclude(od => od.Product)
+                .Where(p => p.Order.User.Id == userId)
+                .ToListAsync();
+        }
     }
 }

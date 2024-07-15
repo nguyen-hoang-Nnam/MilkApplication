@@ -132,5 +132,12 @@ namespace MilkApplication.DAL.Repository
             }
             return query;
         }
+
+        public async Task<List<Order>> GetOrderByIdsAsync(IEnumerable<int> orderIds)
+        {
+            return await _context.Orders
+                .Where(o => orderIds.Contains(o.orderId))
+                .ToListAsync();
+        }
     }
 }

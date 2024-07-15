@@ -20,5 +20,6 @@ namespace MilkApplication.DAL.Repository.IRepositpry
         public Task<Pagination<Order>> GetOrderByFilterAsync(PaginationParameter paginationParameter, OrderFilterDTO orderFilterDTO);
         Task UpdateOrderAsync(Order order);
         Task<IEnumerable<Order>> GetOrdersByIdsAsync(IEnumerable<int> orderIds);
+        Task<List<Order>> GetOrderByIdsAsync(IEnumerable<int> orderIds);
     }
 }

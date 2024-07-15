@@ -241,5 +241,70 @@ namespace MilkApplication.BLL.Service
             return response;
         }
 
+        public async Task<ResponseDTO> GetOrdersByCompletedPaymentsAsync(string userId)
+        {
+            var response = new ResponseDTO();
+
+            try
+            {
+                // Fetch payments with completed status for the given userId
+                var completedPayments = await _unitOfWork.PaymentRepository
+                    .GetPaymentsByStatusAndUserIdAsync(PaymentStatus.PAID, userId);
+
+                if (!completedPayments.Any())
+                {
+                    response.Message = "No completed payments found for the user.";
+                    return response;
+                }
+
+                // Retrieve distinct order IDs from completed payments
+                var orderIds = completedPayments.Select(p => p.orderId).Distinct();
+                var orders = await _unitOfWork.OrderRepository.GetOrdersByIdsAsync(orderIds);
+
+                // Map orders to DTOs
+                var orderDtos = _mapper.Map<List<OrderDTO>>(orders);
+
+                response.IsSucceed = true;
+                response.Message = "Orders retrieved successfully.";
+                response.Data = orderDtos;
+            }
+            catch (Exception ex)
+            {
+                response.Message = $"Failed to retrieve orders: {ex.Message}";
+            }
+
+            return response;
+        }
+
+        public async Task<ResponseDTO> GetPaymentsByUserIdAsync(string userId)
+        {
+            var response = new ResponseDTO();
+
+            try
+            {
+                // Fetch payments for the given userId
+                var payments = await _unitOfWork.PaymentRepository.GetPaymentsByUserIdAsync(userId);
+
+                if (!payments.Any())
+                {
+                    response.Message = "No payments found for the user.";
+                    return response;
+                }
+
+                // Map payments to DTOs
+                var paymentDtos = _mapper.Map<List<PaymentDTO>>(payments);
+
+                response.IsSucceed = true;
+                response.Message = "Payments retrieved successfully.";
+                response.Data = paymentDtos;
+            }
+            catch (Exception ex)
+            {
+                response.Message = $"Failed to retrieve payments: {ex.Message}";
+            }
+
+            return response;
+        }
+
     }
 }
