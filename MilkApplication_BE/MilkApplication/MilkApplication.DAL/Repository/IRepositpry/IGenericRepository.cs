@@ -19,5 +19,6 @@ namespace MilkApplication.DAL.Repository.IRepositpry
         Task DeleteAsync(int id);
         Task<T> GetById(string id);
         Task<Pagination<T>> ToPagination(PaginationParameter paginationParameter);
+        
     }
 }

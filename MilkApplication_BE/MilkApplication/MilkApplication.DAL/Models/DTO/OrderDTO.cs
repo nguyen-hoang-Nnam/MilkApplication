@@ -20,6 +20,7 @@ namespace MilkApplication.DAL.Models.DTO
         public string? PaymentUrl { get; set; }
         public List<OrderDetailDTO> OrderDetails { get; set; }
         public string FullName { get; set; }
+        public string Email { get; set; }
 
     }
 }

@@ -152,7 +152,7 @@ namespace MilkApplication.BLL.Service
             }
         }
 
-        public async Task<ResponseDTO> ConfirmPaymentAsync(string transactionId, bool isSuccess)
+        public async Task<ResponseDTO> ConfirmPaymentAsync(string transactionId)
         {
             var response = new ResponseDTO();
 
@@ -185,12 +185,7 @@ namespace MilkApplication.BLL.Service
                     return response;
                 }
 
-                // Check if payment is null
-                if (payment == null)
-                {
-                    response.Message = "Payment is null.";
-                    return response;
-                }
+                bool isSuccess = true;
 
                 // Update payment status
                 payment.Status = isSuccess ? PaymentStatus.PAID : PaymentStatus.Failed;
@@ -231,6 +226,27 @@ namespace MilkApplication.BLL.Service
             }
 
             return response;
+        }
+
+        public async Task<decimal> GetTotalAmountByDayAsync(DateTime date)
+        {
+            return await _unitOfWork.PaymentRepository.SumAsync(
+                p => p.PaymentDate.Date == date.Date,
+                p => p.Amount
+            );
+        }
+
+        public async Task<decimal> GetTotalAmountByMonthAsync(int year, int month)
+        {
+            return await _unitOfWork.PaymentRepository.SumAsync(
+                p => p.PaymentDate.Year == year && p.PaymentDate.Month == month,
+                p => p.Amount
+            );
+        }
+
+        public async Task<Dictionary<string, decimal>> GetTotalAmountsForLast12MonthsAsync()
+        {
+            return await _unitOfWork.PaymentRepository.GetMonthlyTotalsAsync(12);
         }
 
     }

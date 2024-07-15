@@ -30,20 +30,20 @@ namespace MilkApplication.BLL.Service
             _paymentService = paymentService;
         }
 
-        public async Task<ResponseDTO> CreateOrderAsync(string userId, List<OrderDetailDTO> orderItemsDto, int? voucherId)
+        public async Task<ResponseDTO> CreateOrderAsync(CreateOrderDTO createOrderDto)
         {
             var response = new ResponseDTO();
 
             try
             {
-                var user = await _unitOfWork.UserRepository.GetById(userId);
+                var user = await _unitOfWork.UserRepository.GetById(createOrderDto.Id);
                 if (user == null)
                 {
                     response.Message = "User not found.";
                     return response;
                 }
 
-                var orderItems = _mapper.Map<List<OrderDetail>>(orderItemsDto);
+                var orderItems = _mapper.Map<List<OrderDetail>>(createOrderDto.OrderItems);
                 foreach (var item in orderItems)
                 {
                     var product = await _unitOfWork.ProductRepository.GetByIdAsync(item.productId.Value);
@@ -74,9 +74,9 @@ namespace MilkApplication.BLL.Service
                 }
 
                 Vouchers voucher = null;
-                if (voucherId.HasValue && voucherId.Value != 0)
+                if (createOrderDto.voucherId.HasValue && createOrderDto.voucherId.Value != 0)
                 {
-                    voucher = await _unitOfWork.VouchersRepository.GetByIdAsync(voucherId.Value);
+                    voucher = await _unitOfWork.VouchersRepository.GetByIdAsync(createOrderDto.voucherId.Value);
                     if (voucher == null || voucher.quantity < 1)
                     {
                         response.Message = "Invalid or expired voucher.";
@@ -96,8 +96,8 @@ namespace MilkApplication.BLL.Service
 
                 var order = new Order
                 {
-                    orderDate = DateTime.UtcNow.AddHours(7),
-                    Id = userId,
+                    orderDate = DateTime.Now.AddHours(7),
+                    Id = createOrderDto.Id,
                     UserName = user.UserName,
                     User = user,
                     OrderDeatils = orderItems,
@@ -107,7 +107,7 @@ namespace MilkApplication.BLL.Service
                     
                 };
 
-                await _unitOfWork.OrderRepository.CreateOrderAsync(order, orderItems, voucherId);
+                await _unitOfWork.OrderRepository.CreateOrderAsync(order, orderItems, createOrderDto.voucherId);
 
                 foreach (var item in orderItems)
                 {

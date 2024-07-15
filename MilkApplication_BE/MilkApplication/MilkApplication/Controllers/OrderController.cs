@@ -33,14 +33,14 @@ namespace MilkApplication.Controllers
         }
 
         [HttpPost("CreateOrder")]
-        public async Task<IActionResult> CreateOrder([FromBody] OrderRequestDTO request)
+        public async Task<IActionResult> CreateOrder([FromBody] CreateOrderDTO request)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var response = await _orderService.CreateOrderAsync(request.Id, request.OrderDetail, request.voucherId);
+            var response = await _orderService.CreateOrderAsync(request);
 
             if (!response.IsSucceed)
             {
