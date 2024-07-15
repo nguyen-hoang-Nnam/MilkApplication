@@ -27,7 +27,7 @@ namespace MilkApplication.DAL.Mapper
                 new CommentUserDetailDTO
                 {
                     FullName = src.User.FullName,
-                    Id = src.User.Id
+                    Id = src.User.Id 
                 }
             }))
             .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date));
