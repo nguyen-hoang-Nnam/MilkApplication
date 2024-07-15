@@ -62,7 +62,7 @@ namespace MilkApplication.Controllers
 
             try
             {
-                var result = await _paymentService.ConfirmPaymentAsync(request.TransactionId, request.IsSuccess);
+                var result = await _paymentService.ConfirmPaymentAsync(request.TransactionId);
                 if (result.IsSucceed)
                 {
                     return Ok(result.Message);

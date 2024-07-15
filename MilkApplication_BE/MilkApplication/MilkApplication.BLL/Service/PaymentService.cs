@@ -152,7 +152,7 @@ namespace MilkApplication.BLL.Service
             }
         }
 
-        public async Task<ResponseDTO> ConfirmPaymentAsync(string transactionId, bool isSuccess)
+        public async Task<ResponseDTO> ConfirmPaymentAsync(string transactionId)
         {
             var response = new ResponseDTO();
 
@@ -185,12 +185,7 @@ namespace MilkApplication.BLL.Service
                     return response;
                 }
 
-                // Check if payment is null
-                if (payment == null)
-                {
-                    response.Message = "Payment is null.";
-                    return response;
-                }
+                bool isSuccess = true;
 
                 // Update payment status
                 payment.Status = isSuccess ? PaymentStatus.PAID : PaymentStatus.Failed;

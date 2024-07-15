@@ -18,6 +18,6 @@ namespace MilkApplication.BLL.Service.IService
         WebhookData VerifyWebhookData(WebhookType webhookType);
         Task<bool> HandlePaymentSuccess(WebhookData webhookData);
         bool VerifyWebhookSignature(WebhookData webhookData, string receivedSignature);
-        Task<ResponseDTO> ConfirmPaymentAsync(string transactionId, bool isSuccess);
+        Task<ResponseDTO> ConfirmPaymentAsync(string transactionId);
     }
 }
