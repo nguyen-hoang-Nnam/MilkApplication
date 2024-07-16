@@ -126,8 +126,8 @@ namespace MilkApplication.BLL.Service
 
                 await _unitOfWork.SaveChangeAsync();
 
-                var cancelUrl = "https://fap.fpt.edu.vn/";
-                var returnUrl = "https://www.facebook.com/";
+                var cancelUrl = "http://localhost:3000/";
+                var returnUrl = "http://localhost:3000/";
                 var paymentResult = await _paymentService.CreatePaymentLink(order, cancelUrl, returnUrl);
 
                 if (!paymentResult.Success)
