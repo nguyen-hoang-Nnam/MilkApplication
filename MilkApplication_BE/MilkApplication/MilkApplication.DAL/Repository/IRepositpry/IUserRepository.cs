@@ -15,6 +15,8 @@ namespace MilkApplication.DAL.Repository.IRepositpry
     public interface IUserRepository : IGenericRepository<ApplicationUser>
     {
         Task<ApplicationUser> GetByEmailAsync(string email);
+        Task<ApplicationUser> GetByIdAsync(string id);
+        Task<IEnumerable<ApplicationUser>> GetAllAsync();
         Task<ResponseDTO> CreateUserAsync(ApplicationUser user, string password);
         Task<ResponseDTO> CreateStaffAsync(ApplicationUser user, string password);
         Task<ResponseDTO> CreateAdminAsync(ApplicationUser user, string password);

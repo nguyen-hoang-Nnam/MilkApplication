@@ -36,7 +36,8 @@ namespace MilkApplication.DAL.Mapper
                 .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date));
             CreateMap<Comment, CommentUserDetailDTO>().ReverseMap();
             CreateMap<UserDTO, ApplicationUser>()
-                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email));
+                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email))
+                .ForMember(dest => dest.Addresses, opt => opt.MapFrom(src => src.Addresses));
             CreateMap<ApplicationUser, UserDTO>()
                 .ForMember(dest => dest.Addresses, opt => opt.MapFrom(src => src.Addresses)); // Map addresses
             CreateMap<ApplicationUser, StaffDTO>();
@@ -85,6 +86,7 @@ namespace MilkApplication.DAL.Mapper
                 /*.ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Order.User.Email))*/
                 .ForMember(dest => dest.Order, opt => opt.MapFrom(src => src.Order));
             CreateMap<Address, AddressDTO>().ReverseMap();
+            CreateMap<AddressDTO, Address>();
         }
     }
 

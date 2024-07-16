@@ -152,6 +152,7 @@ namespace MilkApplication.BLL.Service
             if (userResponse != null)
             {
                 var userDto = _mapper.Map<UserDTO>(userResponse);
+                userDto.Addresses = _mapper.Map<List<AddressDTO>>(userResponse.Addresses);
                 return new ResponseDTO { IsSucceed = true, Message = "User retrieved successfully", Data = userDto };
             }
             return new ResponseDTO { IsSucceed = false, Message = "User not found" };
@@ -161,6 +162,11 @@ namespace MilkApplication.BLL.Service
         {
             var usersResponse = await _unitOfWork.UserRepository.GetAllAsync();
             var userDtos = _mapper.Map<List<UserDTO>>(usersResponse);
+            foreach (var userDto in userDtos)
+            {
+                var user = usersResponse.FirstOrDefault(u => u.Id == userDto.Id);
+                userDto.Addresses = _mapper.Map<List<AddressDTO>>(user.Addresses);
+            }
             return new ResponseDTO { IsSucceed = true, Message = "Users retrieved successfully", Data = userDtos };
         }
         public async Task<ResponseDTO> UpdateUserAsync(string userId, UserDTO userDto)

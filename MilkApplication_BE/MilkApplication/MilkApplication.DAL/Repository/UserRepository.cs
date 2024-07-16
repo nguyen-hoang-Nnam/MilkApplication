@@ -58,10 +58,25 @@ namespace MilkApplication.DAL.Repository
             }
             return new ResponseDTO { IsSucceed = false, Message = "User creation failed", Data = result.Errors };
         }
+        public async Task<ApplicationUser> GetByIdAsync(string userId)
+        {
+            return await _context.Users.Include(u => u.Addresses).FirstOrDefaultAsync(u => u.Id == userId);
+        }
 
         public async Task<ApplicationUser> GetByEmailAsync(string email)
         {
-            return await _userManager.FindByEmailAsync(email);
+            return await _context.Users.Include(u => u.Addresses).FirstOrDefaultAsync(u => u.Email == email);
+        }
+
+        public async Task<IEnumerable<ApplicationUser>> GetAllAsync()
+        {
+            return await _context.Users.Include(u => u.Addresses).ToListAsync();
+        }
+
+        public async Task<bool> UpdateAsync(ApplicationUser user)
+        {
+            _context.Users.Update(user);
+            return await _context.SaveChangesAsync() > 0;
         }
         public async Task<ResponseDTO> DeleteUserAsync(string userId, UserStatus status)
         {
@@ -112,13 +127,6 @@ namespace MilkApplication.DAL.Repository
 
             return filteredUsers;
         }
-        public async Task<List<ApplicationUser>> GetAllAsync()
-        {
-            return await _context.Users
-                                 .Include(u => u.Addresses) // Include related addresses
-                                 .ToListAsync();
-        }
-
         public async Task<Pagination<ApplicationUser>> GetAccountByFilterAsync(PaginationParameter paginationParameter, AccountFilterDTO accountFilterDTO)
         {
             try
