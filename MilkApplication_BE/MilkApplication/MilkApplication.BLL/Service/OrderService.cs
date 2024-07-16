@@ -104,7 +104,7 @@ namespace MilkApplication.BLL.Service
                     totalPrice = totalPrice,
                     voucherId = voucher?.voucherId,
                     Status = DAL.enums.OrderStatus.Unpaid
-                    
+
                 };
 
                 await _unitOfWork.OrderRepository.CreateOrderAsync(order, orderItems, createOrderDto.voucherId);
@@ -127,7 +127,7 @@ namespace MilkApplication.BLL.Service
                 await _unitOfWork.SaveChangeAsync();
 
                 var cancelUrl = "https://fap.fpt.edu.vn/";
-                var returnUrl = "https://www.facebook.com/"; 
+                var returnUrl = "https://www.facebook.com/";
                 var paymentResult = await _paymentService.CreatePaymentLink(order, cancelUrl, returnUrl);
 
                 if (!paymentResult.Success)
@@ -156,6 +156,64 @@ namespace MilkApplication.BLL.Service
 
             return response;
         }
+        public async Task<ResponseDTO> UpdateOrderAsync(int orderId, OrderStatus status)
+        {
+            try
+            {
+                if (_unitOfWork == null)
+                {
+                    throw new NullReferenceException("_unitOfWork is null.");
+                }
+
+                var order = await _unitOfWork.OrderRepository.GetOrderByIdAsync(orderId);
+                if (order == null)
+                {
+                    return new ResponseDTO
+                    {
+                        IsSucceed = false,
+                        Message = "Order not found."
+                    };
+                }
+
+                order.Status = status;
+                await _unitOfWork.OrderRepository.UpdateOrderAsync(order);
+                await _unitOfWork.SaveChangeAsync();
+
+                if (_mapper == null)
+                {
+                    throw new NullReferenceException("_mapper is null.");
+                }
+
+                var updatedOrderDTO = _mapper.Map<OrderDTO>(order);
+
+                return new ResponseDTO
+                {
+                    IsSucceed = true,
+                    Message = "Order status updated successfully.",
+                    Data = updatedOrderDTO
+                };
+            }
+            catch (NullReferenceException nullEx)
+            {
+                Console.WriteLine($"Null reference exception: {nullEx.Message}");
+                return new ResponseDTO
+                {
+                    IsSucceed = false,
+                    Message = "A null reference error occurred while updating the order."
+                };
+            }
+            catch (Exception ex)
+            {
+                // Log the exception details
+                Console.WriteLine($"Exception occurred: {ex.Message}");
+                return new ResponseDTO
+                {
+                    IsSucceed = false,
+                    Message = "An error occurred while updating the order."
+                };
+            }
+        }
+
 
         public async Task<ResponseDTO> DeleteOrderAsync(int orderId)
         {

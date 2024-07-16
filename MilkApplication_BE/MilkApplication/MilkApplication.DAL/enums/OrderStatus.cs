@@ -10,10 +10,9 @@ namespace MilkApplication.DAL.enums
         {
         Unpaid,
         Paid,
-        Delivered,
         Processing,
         Delivering,
-        Refunded,
+        Delivered,
         Cancelled
         }
 }

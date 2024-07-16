@@ -53,6 +53,7 @@ namespace MilkApplication.DAL.Mapper
             .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.User.FullName))
             .ForMember(dest => dest.Email, opt => opt.MapFrom(src =>src.User.Email))
             .ForMember(dest => dest.OrderDetails, opt => opt.MapFrom(src => src.OrderDetails))
+            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status))
             .ForMember(dest => dest.Voucher, opt => opt.MapFrom(src => new VouchersDTO
             {
                 voucherId = src.Voucher.voucherId,

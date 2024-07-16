@@ -33,7 +33,7 @@ namespace MilkApplication.BLL.Service
                 return new ResponseDTO
                 {
                     IsSucceed = false,
-                    Message = "Product not found",
+                    Message = "User not found",
                 };
             }
             var addressObj = _mapper.Map<Address>(addressDTO);
@@ -46,7 +46,7 @@ namespace MilkApplication.BLL.Service
             var response = new ResponseDTO
             {
                 IsSucceed = true,
-                Message = "Comment added successfully",
+                Message = "Address added successfully",
             };
             return response;
         }

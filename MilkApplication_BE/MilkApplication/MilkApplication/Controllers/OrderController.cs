@@ -9,6 +9,7 @@ using MilkApplication.DAL.Models.PaginationDTO;
 using MilkApplication.DAL.Data;
 using Microsoft.EntityFrameworkCore;
 using MilkApplication.DAL.enums;
+using MilkApplication.BLL.Service;
 
 namespace MilkApplication.Controllers
 {
@@ -48,6 +49,17 @@ namespace MilkApplication.Controllers
             }
 
             return Ok(response);
+        }
+        [HttpPut("UpdateOrder")]
+        public async Task<IActionResult> UpdateOrder(int orderId, OrderStatus status)
+        {
+            var response = await _orderService.UpdateOrderAsync(orderId, status);
+            if (response.IsSucceed)
+            {
+                return Ok(response);
+            }
+
+            return BadRequest(response);
         }
 
         [HttpDelete("DeleteOrder/{orderId}")]
