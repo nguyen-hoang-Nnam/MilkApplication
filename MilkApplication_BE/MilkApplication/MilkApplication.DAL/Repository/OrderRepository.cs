@@ -58,6 +58,8 @@ namespace MilkApplication.DAL.Repository
             return await _context.Orders
                 .Include(o => o.OrderDetails)
                 .ThenInclude(oi => oi.Product)
+                .Include(o => o.User)
+                .Include(o => o.Voucher)
                 .ToListAsync();
         }
         public async Task<Order> GetOrderByIdAsync(int orderId)

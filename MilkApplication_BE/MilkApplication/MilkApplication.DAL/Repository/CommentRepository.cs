@@ -20,6 +20,14 @@ namespace MilkApplication.DAL.Repository
         {
             _context = context;
         }
+        public async Task<IEnumerable<Comment>> GetAllAsync()
+        {
+            return await _context.Comments
+                .Include(c => c.Product) // Assuming Product is the navigation property
+                .Include(c => c.User) // Assuming User is the navigation property
+                .ToListAsync();
+        }
+
         public async Task<List<Comment>> GetCommentsByProductIdAsync(int productId)
         {
             return await _context.Comments
