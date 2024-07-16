@@ -28,7 +28,7 @@ namespace MilkApplication.DAL.Repository
         {
             _userManager = userManager;
             _roleManager = roleManager;
-            _context = context; 
+            _context = context;
         }
 
         public async Task<ResponseDTO> CreateUserAsync(ApplicationUser user, string password)
@@ -40,10 +40,43 @@ namespace MilkApplication.DAL.Repository
             }
             return new ResponseDTO { IsSucceed = false, Message = "User creation failed", Data = result.Errors };
         }
+        public async Task<ResponseDTO> CreateStaffAsync(ApplicationUser user, string password)
+        {
+            var result = await _userManager.CreateAsync(user, password);
+            if (result.Succeeded)
+            {
+                return new ResponseDTO { IsSucceed = true, Message = "User created successfully", Data = user };
+            }
+            return new ResponseDTO { IsSucceed = false, Message = "User creation failed", Data = result.Errors };
+        }
+        public async Task<ResponseDTO> CreateAdminAsync(ApplicationUser user, string password)
+        {
+            var result = await _userManager.CreateAsync(user, password);
+            if (result.Succeeded)
+            {
+                return new ResponseDTO { IsSucceed = true, Message = "User created successfully", Data = user };
+            }
+            return new ResponseDTO { IsSucceed = false, Message = "User creation failed", Data = result.Errors };
+        }
+        public async Task<ApplicationUser> GetByIdAsync(string userId)
+        {
+            return await _context.Users.Include(u => u.Addresses).FirstOrDefaultAsync(u => u.Id == userId);
+        }
 
         public async Task<ApplicationUser> GetByEmailAsync(string email)
         {
-            return await _userManager.FindByEmailAsync(email);
+            return await _context.Users.Include(u => u.Addresses).FirstOrDefaultAsync(u => u.Email == email);
+        }
+
+        public async Task<IEnumerable<ApplicationUser>> GetAllAsync()
+        {
+            return await _context.Users.Include(u => u.Addresses).ToListAsync();
+        }
+
+        public async Task<bool> UpdateAsync(ApplicationUser user)
+        {
+            _context.Users.Update(user);
+            return await _context.SaveChangesAsync() > 0;
         }
         public async Task<ResponseDTO> DeleteUserAsync(string userId, UserStatus status)
         {
@@ -76,6 +109,23 @@ namespace MilkApplication.DAL.Repository
             var roleName = UserRole.Admin.ToString();
             var usersInRole = await _userManager.GetUsersInRoleAsync(roleName);
             return usersInRole.ToList();
+        }
+        public async Task<List<ApplicationUser>> GetUsersExcludingStaffAndAdminAsync()
+        {
+            var users = await _context.Users.ToListAsync();
+            var filteredUsers = new List<ApplicationUser>();
+
+            foreach (var user in users)
+            {
+                var roles = await _userManager.GetRolesAsync(user);
+
+                if (!roles.Contains(UserRole.Staff.ToString()) && !roles.Contains(UserRole.Admin.ToString()))
+                {
+                    filteredUsers.Add(user);
+                }
+            }
+
+            return filteredUsers;
         }
         public async Task<Pagination<ApplicationUser>> GetAccountByFilterAsync(PaginationParameter paginationParameter, AccountFilterDTO accountFilterDTO)
         {

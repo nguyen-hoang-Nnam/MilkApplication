@@ -131,6 +131,7 @@ builder.Services.AddScoped<IOrderItemRepository, OrderItemRepository>();
 builder.Services.AddScoped<IComboRepository, ComboRepository>();
 builder.Services.AddScoped<IComboProductRepository, ComboProductRepository>();
 builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+builder.Services.AddScoped<IAddressRepository, AddressReposiory>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
@@ -148,6 +149,7 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IOrderItemService, OrderItemService>();
 builder.Services.AddScoped<IComboService, ComboService>();
 builder.Services.AddScoped<IComboProductService, ComboProductService>();
+builder.Services.AddScoped<IAddressService, AddressService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 
 builder.Services.AddSingleton(new SignatureVerifier("b1a72692f3c48ca15815fccb3dbbdc06b63ed9bc072327a3f453de2150a6e615"));
