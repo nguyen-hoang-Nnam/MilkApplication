@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using MilkApplication.BLL.Service.IService;
 using MilkApplication.DAL.Commons;
 using MilkApplication.DAL.enums;
@@ -19,13 +20,15 @@ namespace MilkApplication.BLL.Service
 {
     public class ProductService : IProductService
     {
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public ProductService(IUnitOfWork unitOfWork, IMapper mapper)
+        public ProductService(IUnitOfWork unitOfWork, IMapper mapper, UserManager<ApplicationUser> userManager)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _userManager = userManager;
         }
 
         public async Task<List<ProductDTO>> GetAllProductsAsync()
@@ -71,6 +74,24 @@ namespace MilkApplication.BLL.Service
 
         public async Task<ResponseDTO> AddProductAsync(ProductDTO productDTO)
         {
+            var user = await _unitOfWork.UserRepository.GetUserByIdAsync(productDTO.Id);
+            if (user == null)
+            {
+                return new ResponseDTO
+                {
+                    IsSucceed = false,
+                    Message = "User not found",
+                };
+            }
+            var roles = await _userManager.GetRolesAsync(user);
+            if (!roles.Contains(UserRole.Admin.ToString()) && !roles.Contains(UserRole.Staff.ToString()))
+            {
+                return new ResponseDTO
+                {
+                    IsSucceed = false,
+                    Message = "User does not have permission to add products",
+                };
+            }
             var category = await _unitOfWork.CategoryRepository.GetCategoryByIdAsync(productDTO.categoryId);
             if (category == null)
             {

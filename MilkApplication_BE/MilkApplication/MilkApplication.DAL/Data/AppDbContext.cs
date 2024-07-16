@@ -110,6 +110,11 @@ namespace MilkApplication.DAL.Data
                 .HasOne(cp => cp.Product)
                 .WithMany(p => p.ComboProducts)
                 .HasForeignKey(cp => cp.productId);
+
+            modelBuilder.Entity<Product>()
+                .HasOne(p => p.User)
+                .WithMany(u => u.Products)
+                .HasForeignKey(p => p.Id);
         }
     }
 }

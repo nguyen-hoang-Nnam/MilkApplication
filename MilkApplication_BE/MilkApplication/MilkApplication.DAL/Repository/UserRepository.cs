@@ -176,5 +176,9 @@ namespace MilkApplication.DAL.Repository
             }
             return query;
         }
+        public async Task<ApplicationUser> GetUserByIdAsync(string userId)
+        {
+            return await _context.Users.FindAsync(userId);
+        }
     }
 }

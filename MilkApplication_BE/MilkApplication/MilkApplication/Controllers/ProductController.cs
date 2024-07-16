@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MilkApplication.BLL.Service;
 using MilkApplication.BLL.Service.IService;
@@ -16,10 +17,12 @@ namespace MilkApplication.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, UserManager<ApplicationUser> userManager)
         {
             _productService = productService;
+            _userManager = userManager;
         }
 
         [HttpGet]
@@ -68,6 +71,7 @@ namespace MilkApplication.Controllers
         [Route("CreateProducts")]
         public async Task<IActionResult> CreateProduct([FromBody] ProductDTO productDTO)
         {
+            var userId = _userManager.GetUserId(User);
             var result = await _productService.AddProductAsync(productDTO);
             if (result.IsSucceed)
             {

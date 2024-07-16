@@ -24,5 +24,6 @@ namespace MilkApplication.DAL.Repository.IRepositpry
         Task<List<ApplicationUser>> GetUsersByStaffRoleAsync();
         Task<List<ApplicationUser>> GetUsersByAdminRoleAsync();
         public Task<Pagination<ApplicationUser>> GetAccountByFilterAsync(PaginationParameter paginationParameter, AccountFilterDTO accountFilterDTO);
+        Task<ApplicationUser> GetUserByIdAsync(string userId);
     }
 }
