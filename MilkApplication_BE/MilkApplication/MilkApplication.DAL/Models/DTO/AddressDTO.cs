@@ -9,6 +9,7 @@ namespace MilkApplication.DAL.Models.DTO
     public class AddressDTO
     {
         public int AddressId { get; set; }
+        public string Phone { get; set; }
         public string AddressName { get; set; }
         public string Street { get; set; }
         public string City { get; set; }

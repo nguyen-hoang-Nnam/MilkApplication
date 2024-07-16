@@ -12,6 +12,7 @@ namespace MilkApplication.DAL.Models
     {
         [Key]
         public int addressId { get; set; }
+        public string Phone { get; set;}
         public string AddressName { get; set; } 
         public string Street { get; set; }
         public string City { get; set; }
