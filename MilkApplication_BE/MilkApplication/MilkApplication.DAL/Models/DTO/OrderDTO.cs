@@ -21,6 +21,6 @@ namespace MilkApplication.DAL.Models.DTO
         public List<OrderDetailDTO> OrderDetails { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
-
+        public VouchersDTO Voucher { get; set; }
     }
 }

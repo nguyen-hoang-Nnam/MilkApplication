@@ -92,6 +92,8 @@ namespace MilkApplication.DAL.Repository
                  .Include(p => p.Order)
                     .ThenInclude(o => o.OrderDetails)
                         .ThenInclude(od => od.Product)
+                 .Include(p => p.Order)
+                        .ThenInclude(o => o.Voucher)
                 .Where(p => p.Order.User.Id == userId)
                 .ToListAsync();
         }
