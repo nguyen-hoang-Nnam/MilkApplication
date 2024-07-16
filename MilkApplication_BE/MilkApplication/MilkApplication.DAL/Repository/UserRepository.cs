@@ -58,7 +58,7 @@ namespace MilkApplication.DAL.Repository
             }
             return new ResponseDTO { IsSucceed = false, Message = "User creation failed", Data = result.Errors };
         }
-        public async Task<ApplicationUser> GetByIdAsync(string userId)
+        public async Task<ApplicationUser> GetById(string userId)
         {
             return await _context.Users.Include(u => u.Addresses).FirstOrDefaultAsync(u => u.Id == userId);
         }
