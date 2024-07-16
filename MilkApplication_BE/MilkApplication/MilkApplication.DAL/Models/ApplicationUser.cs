@@ -15,5 +15,6 @@ namespace MilkApplication.DAL.Models
         public string RefreshToken { get; set; }
         public DateTime RefreshTokenExpiryTime { get; set; }
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();
+        public ICollection<Address> Addresses { get; set; } = new List<Address>();
     }
 }

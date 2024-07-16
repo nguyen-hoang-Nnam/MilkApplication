@@ -57,12 +57,12 @@
             },
             {
               "sku": {
-                "name": "GP_S_Gen5",
+                "name": "GP_Gen5",
                 "tier": "GeneralPurpose",
                 "family": "Gen5",
                 "capacity": 2
               },
-              "kind": "v12.0,user,vcore,serverless,freelimit",
+              "kind": "v12.0,user,vcore",
               "location": "[parameters('resourceLocation')]",
               "name": "milkapplicationserver/MilkApplication_db",
               "type": "Microsoft.Sql/servers/databases",

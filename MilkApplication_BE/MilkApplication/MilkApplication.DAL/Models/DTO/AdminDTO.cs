@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MilkApplication.DAL.Models.DTO
 {
-    public class UserDTO
+    public class AdminDTO
     {
         public string Id { get; set; }
         public string FullName { get; set; }
@@ -15,6 +15,5 @@ namespace MilkApplication.DAL.Models.DTO
         public string Email { get; set; }
         public string Password { get; set; }
         public UserStatus Status { get; set; }
-        public List<AddressDTO> Addresses { get; set; }
     }
 }

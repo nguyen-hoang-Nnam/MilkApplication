@@ -22,34 +22,38 @@ namespace MilkApplication.DAL.Mapper
             CreateMap<Category, CategoryDTO>().ReverseMap();
             CreateMap<Origin, OriginDTO>().ReverseMap();
             CreateMap<OriginDTO, Origin>()
-            .ForMember(dest => dest.originId, opt => opt.Ignore());
+                .ForMember(dest => dest.originId, opt => opt.Ignore());
             CreateMap<Comment, CommentDTO>().ReverseMap();
             CreateMap<Comment, CommentDetailDTO>()
-            .ForMember(dest => dest.User, opt => opt.MapFrom(src => new List<CommentUserDetailDTO>
-            {
+                .ForMember(dest => dest.User, opt => opt.MapFrom(src => new List<CommentUserDetailDTO>
+                {
                 new CommentUserDetailDTO
                 {
                     FullName = src.User.FullName,
-                    Id = src.User.Id 
+                    Id = src.User.Id
                 }
-            }))
-            .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date));
-            CreateMap<Comment, CommentUserDetailDTO>().ReverseMap();    
+                }))
+                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date));
+            CreateMap<Comment, CommentUserDetailDTO>().ReverseMap();
             CreateMap<UserDTO, ApplicationUser>()
-                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email));
-            CreateMap<ApplicationUser, UserDTO>();
+                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email))
+                .ForMember(dest => dest.Addresses, opt => opt.MapFrom(src => src.Addresses));
+            CreateMap<ApplicationUser, UserDTO>()
+                .ForMember(dest => dest.Addresses, opt => opt.MapFrom(src => src.Addresses)); // Map addresses
+            CreateMap<ApplicationUser, StaffDTO>();
+            CreateMap<StaffDTO, ApplicationUser>();
+            CreateMap<ApplicationUser, AdminDTO>();
+            CreateMap<AdminDTO, ApplicationUser>();
             CreateMap<Vouchers, VouchersDTO>().ReverseMap();
             CreateMap<VouchersDTO, Vouchers>()
-            .ForMember(dest => dest.voucherId, opt => opt.Ignore());
+                .ForMember(dest => dest.voucherId, opt => opt.Ignore());
             CreateMap<Location, LocationDTO>().ReverseMap();
             CreateMap<Order, OrderDTO>().ReverseMap();
             CreateMap<Order, OrderDTO>()
-            .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.User.FullName))
-            .ForMember(dest => dest.Email, opt => opt.MapFrom(src =>src.User.Email))
-            .ForMember(dest => dest.OrderDetails, opt => opt.MapFrom(src => src.OrderDetails));
+                .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.User.FullName))
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.User.Email))
+                .ForMember(dest => dest.OrderDetails, opt => opt.MapFrom(src => src.OrderDetails));
             CreateMap<OrderDetail, OrderDetailDTO>().ReverseMap();
-            /*CreateMap<OrderItem, OrderItemDTO>()
-            .ForMember(dest => dest.productName, opt => opt.MapFrom(src => src.Product.productName));*/
             CreateMap<Order, OrderRequestDTO>().ReverseMap();
             CreateMap<OrderRequestDTO, Order>()
                 .ForMember(dest => dest.OrderDetails, opt => opt.MapFrom(src => src.OrderDetail));
@@ -59,28 +63,31 @@ namespace MilkApplication.DAL.Mapper
             CreateMap<ComboProduct, ComboProductDTO>().ReverseMap();
 
             CreateMap<ComboProduct, ComboProductDTO>()
-            .ForMember(dest => dest.ComboName, opt => opt.MapFrom(src => src.Combo.comboName))
-            .ForMember(dest => dest.ComboPrice, opt => opt.MapFrom(src => src.Combo.comboPrice))
-            .ForMember(dest => dest.ComboDiscountPrice, opt => opt.MapFrom(src => src.Combo.discountPrice))
-            .ForMember(dest => dest.ComboDiscountPercent, opt => opt.MapFrom(src => src.Combo.discountPercent))
-            .ForMember(dest => dest.ComboDescription, opt => opt.MapFrom(src => src.Combo.comboDescription))
-            .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.productName));
+                .ForMember(dest => dest.ComboName, opt => opt.MapFrom(src => src.Combo.comboName))
+                .ForMember(dest => dest.ComboPrice, opt => opt.MapFrom(src => src.Combo.comboPrice))
+                .ForMember(dest => dest.ComboDiscountPrice, opt => opt.MapFrom(src => src.Combo.discountPrice))
+                .ForMember(dest => dest.ComboDiscountPercent, opt => opt.MapFrom(src => src.Combo.discountPercent))
+                .ForMember(dest => dest.ComboDescription, opt => opt.MapFrom(src => src.Combo.comboDescription))
+                .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.productName));
 
             CreateMap<ComboProductCreateDTO, ComboProduct>().ReverseMap();
             CreateMap<ComboProduct, ComboProductCreateDTO>()
-            .ForMember(dest => dest.ComboName, opt => opt.MapFrom(src => src.Combo.comboName))
-            .ForMember(dest => dest.ComboPrice, opt => opt.MapFrom(src => src.Combo.comboPrice))
-            .ForMember(dest => dest.ComboDiscountPrice, opt => opt.MapFrom(src => src.Combo.discountPrice))
-            .ForMember(dest => dest.ComboDiscountPercent, opt => opt.MapFrom(src => src.Combo.discountPercent))
-            .ForMember(dest => dest.ComboDescription, opt => opt.MapFrom(src => src.Combo.comboDescription))
-            .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.productName));
+                .ForMember(dest => dest.ComboName, opt => opt.MapFrom(src => src.Combo.comboName))
+                .ForMember(dest => dest.ComboPrice, opt => opt.MapFrom(src => src.Combo.comboPrice))
+                .ForMember(dest => dest.ComboDiscountPrice, opt => opt.MapFrom(src => src.Combo.discountPrice))
+                .ForMember(dest => dest.ComboDiscountPercent, opt => opt.MapFrom(src => src.Combo.discountPercent))
+                .ForMember(dest => dest.ComboDescription, opt => opt.MapFrom(src => src.Combo.comboDescription))
+                .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.productName));
 
             CreateMap<Payment, PaymentDTO>().ReverseMap();
             CreateMap<Payment, PaymentDTO>()
-            /*.ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Order.User.Id))
-            .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.Order.User.FullName))*/
-            /*.ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Order.User.Email))*/
-            .ForMember(dest => dest.Order, opt => opt.MapFrom(src => src.Order));
+                /*.ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Order.User.Id))
+                .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.Order.User.FullName))*/
+                /*.ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Order.User.Email))*/
+                .ForMember(dest => dest.Order, opt => opt.MapFrom(src => src.Order));
+            CreateMap<Address, AddressDTO>().ReverseMap();
+            CreateMap<AddressDTO, Address>();
         }
     }
+
 }

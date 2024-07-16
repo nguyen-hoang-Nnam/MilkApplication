@@ -25,12 +25,13 @@ namespace MilkApplication.DAL.Repository
         private readonly IComboRepository _comboRepository;
         private readonly IComboProductRepository _comboProductRepository;
         private readonly IPaymentRepository _paymentRepository;
+        private readonly IAddressRepository _addressRepository;
         private readonly AppDbContext _dbContext;
 
 
         private bool disposed = false;
 
-        public UnitOfWork(AppDbContext milkDBContext, IProductRepository productRepository, AppDbContext dbContext, ICategoryRepository categoryRepository, IOriginRepository originRepository, ICommentRepository commentRepository, IUserRepository userRepository, IVouchersRepository vouchersRepository, ILocationRepository locationRepository, IOrderRepository orderRepository, IOrderItemRepository orderItemRepository, IComboRepository comboRepository, IComboProductRepository comboProductRepository, IPaymentRepository paymentRepository)
+        public UnitOfWork(AppDbContext milkDBContext, IProductRepository productRepository, AppDbContext dbContext, ICategoryRepository categoryRepository, IOriginRepository originRepository, ICommentRepository commentRepository, IUserRepository userRepository, IVouchersRepository vouchersRepository, ILocationRepository locationRepository, IOrderRepository orderRepository, IOrderItemRepository orderItemRepository, IComboRepository comboRepository, IComboProductRepository comboProductRepository, IPaymentRepository paymentRepository, IAddressRepository addressRepository)
         {
             this._milkDBContext = milkDBContext;
             this._productRepository = productRepository;
@@ -45,6 +46,8 @@ namespace MilkApplication.DAL.Repository
             this._orderItemRepository = orderItemRepository;
             this._comboRepository = comboRepository;
             this._comboProductRepository = comboProductRepository;
+            this._paymentRepository = paymentRepository;
+            this._addressRepository = addressRepository;
             _paymentRepository = paymentRepository;
         }
 
@@ -60,6 +63,7 @@ namespace MilkApplication.DAL.Repository
         public IComboRepository ComboRepository { get { return _comboRepository; } }
         public IComboProductRepository ComboProductRepository { get { return _comboProductRepository; } }
         public IPaymentRepository PaymentRepository { get { return _paymentRepository; } }
+        public IAddressRepository AddressRepository { get { return _addressRepository; } }  
         public AppDbContext dbContext { get { return _dbContext; } }
 
         public async Task<int> SaveChangeAsync()
