@@ -26,6 +26,9 @@ namespace MilkApplication.DAL.Mapper
             CreateMap<Comment, CommentDTO>()
                 .ForMember(dest => dest.productName, opt => opt.MapFrom(src => src.Product.productName))
                 .ForMember(dest => dest.userName, opt => opt.MapFrom(src => src.User.UserName));
+            CreateMap<CommentDTO, Comment>()
+                .ForMember(dest => dest.Product, opt => opt.Ignore()) // Product will be set separately
+                .ForMember(dest => dest.User, opt => opt.Ignore());
             CreateMap<Comment, CommentDetailDTO>()
                 .ForMember(dest => dest.User, opt => opt.MapFrom(src => new List<CommentUserDetailDTO>
                 {
