@@ -207,7 +207,7 @@ namespace MilkApplication.BLL.Service
                 var response = new ResponseDTO
                 {
                     IsSucceed = true,
-                    Message = $"Staff {staff.FullName} updated order status successfully.",
+                    Message = $"{staff.FullName} updated order status successfully.",
                     Data = updatedOrderDTO
                 };
 
