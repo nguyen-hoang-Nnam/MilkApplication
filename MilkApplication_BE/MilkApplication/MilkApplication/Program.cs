@@ -152,7 +152,7 @@ builder.Services.AddScoped<IComboProductService, ComboProductService>();
 builder.Services.AddScoped<IAddressService, AddressService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 
-builder.Services.AddSingleton(new SignatureVerifier("b1a72692f3c48ca15815fccb3dbbdc06b63ed9bc072327a3f453de2150a6e615"));
+builder.Services.AddSingleton(new SignatureVerifier("73c4f82d76d10dddc77c8753fde87cca6a724212263b17c479a4bb857f5c13b8"));
 // Add JwtHelper
 builder.Services.AddScoped<JwtHelper>();
 
