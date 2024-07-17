@@ -16,7 +16,7 @@ namespace MilkApplication.BLL.Service.IService
     {
         /*Task<ResponseDTO> CreateOrderAsync(string userId, List<OrderItemDTO> orderItemDTO, int? voucherId);*/
         Task<ResponseDTO> CreateOrderAsync(CreateOrderDTO createOrderDto);
-        Task<ResponseDTO> UpdateOrderAsync(int orderId, OrderStatus status);
+        Task<ResponseDTO> UpdateOrderAsync(int orderId, OrderStatus status, string staffId);
         Task<ResponseDTO> DeleteOrderAsync(int orderId);
         Task<IEnumerable<OrderDTO>> GetAllOrdersAsync();
         Task<Order> GetOrderEntityByIdAsync(int orderId);
