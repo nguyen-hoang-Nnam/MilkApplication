@@ -23,7 +23,9 @@ namespace MilkApplication.DAL.Mapper
             CreateMap<Origin, OriginDTO>().ReverseMap();
             CreateMap<OriginDTO, Origin>()
                 .ForMember(dest => dest.originId, opt => opt.Ignore());
-            CreateMap<Comment, CommentDTO>().ReverseMap();
+            CreateMap<Comment, CommentDTO>()
+                .ForMember(dest => dest.productName, opt => opt.MapFrom(src => src.Product.productName))
+                .ForMember(dest => dest.userName, opt => opt.MapFrom(src => src.User.UserName));
             CreateMap<Comment, CommentDetailDTO>()
                 .ForMember(dest => dest.User, opt => opt.MapFrom(src => new List<CommentUserDetailDTO>
                 {

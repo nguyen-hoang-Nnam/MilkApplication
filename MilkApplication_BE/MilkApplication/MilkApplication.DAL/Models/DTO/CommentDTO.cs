@@ -13,6 +13,8 @@ namespace MilkApplication.DAL.Models.DTO
         public int Rating { get; set; }
         public DateTime Date { get; set; } = DateTime.UtcNow.AddHours(7);
         public int productId { get; set; }
+        public string productName { get; set; }
         public string Id { get; set; }
+        public string userName { get; set; }
     }
 }
