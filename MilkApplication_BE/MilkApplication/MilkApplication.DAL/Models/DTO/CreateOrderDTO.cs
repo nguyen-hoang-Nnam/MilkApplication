@@ -11,6 +11,5 @@ namespace MilkApplication.DAL.Models.DTO
         public string Id { get; set; }
         public List<CreateOrderDetailDTO> OrderDetails { get; set; }
         public int? voucherId { get; set; }
-        public string voucherCode { get; set; }
     }
 }
