@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace MilkApplication.BLL.Service
 {
@@ -22,12 +23,14 @@ namespace MilkApplication.BLL.Service
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IPaymentService _paymentService;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public OrderService(IUnitOfWork unitOfWork, IMapper mapper, IPaymentService paymentService)
+        public OrderService(IUnitOfWork unitOfWork, IMapper mapper, IPaymentService paymentService, UserManager<ApplicationUser> userManager)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _paymentService = paymentService;
+            _userManager = userManager;
         }
 
         public async Task<ResponseDTO> CreateOrderAsync(CreateOrderDTO createOrderDto)
@@ -156,7 +159,7 @@ namespace MilkApplication.BLL.Service
 
             return response;
         }
-        public async Task<ResponseDTO> UpdateOrderAsync(int orderId, OrderStatus status)
+        public async Task<ResponseDTO> UpdateOrderAsync(int orderId, OrderStatus status, string staffId)
         {
             try
             {
@@ -175,6 +178,16 @@ namespace MilkApplication.BLL.Service
                     };
                 }
 
+                var staff = await _unitOfWork.UserRepository.GetUserByIdAsync(staffId);
+                if (staff == null || staff.Status != UserStatus.IsActive || !await _userManager.IsInRoleAsync(staff, UserRole.Staff.ToString()))
+                {
+                    return new ResponseDTO
+                    {
+                        IsSucceed = false,
+                        Message = "Invalid staff ID, staff is not active, or staff does not have the required role."
+                    };
+                }
+
                 order.Status = status;
                 await _unitOfWork.OrderRepository.UpdateOrderAsync(order);
                 await _unitOfWork.SaveChangeAsync();
@@ -184,12 +197,13 @@ namespace MilkApplication.BLL.Service
                     throw new NullReferenceException("_mapper is null.");
                 }
 
-                var updatedOrderDTO = _mapper.Map<OrderDTO>(order);
+                var updatedOrderDTO = _mapper.Map<StaffUpdateOrderDTO>(order);
+                updatedOrderDTO.StaffName = staff.FullName;
 
                 return new ResponseDTO
                 {
                     IsSucceed = true,
-                    Message = "Order status updated successfully.",
+                    Message = $"Staff {staff.FullName} updated the order successfully.",
                     Data = updatedOrderDTO
                 };
             }
