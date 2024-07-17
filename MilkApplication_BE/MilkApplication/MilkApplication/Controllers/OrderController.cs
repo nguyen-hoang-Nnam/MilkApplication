@@ -61,6 +61,17 @@ namespace MilkApplication.Controllers
 
             return BadRequest(response);
         }
+        [HttpPut("UpdateOrderWithStaffRole")]
+        public async Task<IActionResult> UpdateOrderWithStaffRole(int orderId, OrderStatus status, string staffId)
+        {
+            var response = await _orderService.UpdateOrderAsync(orderId, status, staffId);
+            if (response.IsSucceed)
+            {
+                return Ok(response);
+            }
+
+            return BadRequest(response);
+        }
 
         [HttpDelete("DeleteOrder/{orderId}")]
         public async Task<IActionResult> DeleteOrder(int orderId)

@@ -66,7 +66,8 @@ namespace MilkApplication.DAL.Mapper
                 dateFrom = src.Voucher.dateFrom,
                 dateTo = src.Voucher.dateTo,
                 vouchersStatus = src.Voucher.vouchersStatus
-            }));
+            }))
+            .ForMember(dest => dest.StaffName, opt => opt.MapFrom(src => src.User.FullName));
             CreateMap<Order, OrderDTO>()
             .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.User.FullName))
             .ForMember(dest => dest.Email, opt => opt.MapFrom(src =>src.User.Email))
