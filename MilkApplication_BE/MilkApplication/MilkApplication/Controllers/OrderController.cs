@@ -50,7 +50,8 @@ namespace MilkApplication.Controllers
 
             return Ok(response);
         }
-        [HttpPut("UpdateOrder")]
+        [HttpPut]
+        [Route("UpdateOrders/{id}")]
         public async Task<IActionResult> UpdateOrder(int orderId, OrderStatus status)
         {
             var response = await _orderService.UpdateOrderAsync(orderId, status);
