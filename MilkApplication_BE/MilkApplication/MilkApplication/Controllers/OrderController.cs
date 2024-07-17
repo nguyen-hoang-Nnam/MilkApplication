@@ -53,17 +53,6 @@ namespace MilkApplication.Controllers
 
             return Ok(response);
         }
-        [HttpPut("UpdateOrder")]
-        public async Task<IActionResult> UpdateOrder(int orderId, OrderStatus status, string staffId)
-        {
-            var response = await _orderService.UpdateOrderAsync(orderId, status, staffId);
-            if (response.IsSucceed)
-            {
-                return Ok(response);
-            }
-
-            return BadRequest(response);
-        }
         [HttpPut("UpdateOrderWithStaffRole")]
         public async Task<IActionResult> UpdateOrderWithStaffRole(int orderId, OrderStatus status, string staffId)
         {
