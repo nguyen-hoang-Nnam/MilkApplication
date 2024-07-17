@@ -1,6 +1,7 @@
 ﻿using MilkApplication.DAL.Commons;
 using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.Models;
+using MilkApplication.DAL.Models.DTO;
 using MilkApplication.DAL.Models.PaginationDTO;
 using System;
 using System.Collections.Generic;
@@ -21,5 +22,7 @@ namespace MilkApplication.DAL.Repository.IRepositpry
         Task UpdateOrderAsync(Order order);
         Task<IEnumerable<Order>> GetOrdersByIdsAsync(IEnumerable<int> orderIds);
         Task<List<Order>> GetOrderByIdsAsync(IEnumerable<int> orderIds);
+        void SaveResponse(int orderId, ResponseDTO response);
+        ResponseDTO GetResponse(int orderId);
     }
 }

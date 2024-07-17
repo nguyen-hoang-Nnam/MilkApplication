@@ -15,6 +15,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using Azure;
+using MilkApplication.DAL.Repository.IRepositpry;
 
 namespace MilkApplication.BLL.Service
 {
@@ -24,13 +26,15 @@ namespace MilkApplication.BLL.Service
         private readonly IMapper _mapper;
         private readonly IPaymentService _paymentService;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IOrderRepository _orderRepository;
 
-        public OrderService(IUnitOfWork unitOfWork, IMapper mapper, IPaymentService paymentService, UserManager<ApplicationUser> userManager)
+        public OrderService(IUnitOfWork unitOfWork, IMapper mapper, IPaymentService paymentService, UserManager<ApplicationUser> userManager, IOrderRepository orderRepository)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _paymentService = paymentService;
             _userManager = userManager;
+            _orderRepository = orderRepository;
         }
 
         public async Task<ResponseDTO> CreateOrderAsync(CreateOrderDTO createOrderDto)
@@ -200,12 +204,16 @@ namespace MilkApplication.BLL.Service
                 var updatedOrderDTO = _mapper.Map<StaffUpdateOrderDTO>(order);
                 updatedOrderDTO.StaffName = staff.FullName;
 
-                return new ResponseDTO
+                var response = new ResponseDTO
                 {
                     IsSucceed = true,
                     Message = $"Staff {staff.FullName} updated order status successfully.",
                     Data = updatedOrderDTO
                 };
+
+                _orderRepository.SaveResponse(orderId, response);
+
+                return response;
             }
             catch (NullReferenceException nullEx)
             {

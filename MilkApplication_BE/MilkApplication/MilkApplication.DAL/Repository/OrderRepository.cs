@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Azure;
+using Microsoft.EntityFrameworkCore;
 using MilkApplication.DAL.Commons;
 using MilkApplication.DAL.Data;
 using MilkApplication.DAL.Helper;
 using MilkApplication.DAL.Models;
+using MilkApplication.DAL.Models.DTO;
 using MilkApplication.DAL.Models.PaginationDTO;
 using MilkApplication.DAL.Repository.IRepositpry;
 using System;
@@ -16,6 +18,7 @@ namespace MilkApplication.DAL.Repository
     public class OrderRepository : GenericRepository<Order>, IOrderRepository
     {
         private readonly AppDbContext _context;
+        private static readonly Dictionary<int, ResponseDTO> _responses = new();
 
         public OrderRepository(AppDbContext context) : base(context)
         {
@@ -140,6 +143,25 @@ namespace MilkApplication.DAL.Repository
             return await _context.Orders
                 .Where(o => orderIds.Contains(o.orderId))
                 .ToListAsync();
+        }
+
+        public void SaveResponse(int orderId, ResponseDTO response)
+        {
+            lock (_responses)  // Ensure thread safety
+            {
+                _responses[orderId] = response;
+                Console.WriteLine($"Response saved for order {orderId}");
+            }
+        }
+
+        public ResponseDTO GetResponse(int orderId)
+        {
+            lock (_responses)  // Ensure thread safety
+            {
+                _responses.TryGetValue(orderId, out var response);
+                Console.WriteLine($"Response retrieved for order {orderId}: {(response != null ? "Found" : "Not found")}");
+                return response;
+            }
         }
     }
 }

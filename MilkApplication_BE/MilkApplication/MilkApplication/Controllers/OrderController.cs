@@ -10,6 +10,7 @@ using MilkApplication.DAL.Data;
 using Microsoft.EntityFrameworkCore;
 using MilkApplication.DAL.enums;
 using MilkApplication.BLL.Service;
+using MilkApplication.DAL.Repository.IRepositpry;
 
 namespace MilkApplication.Controllers
 {
@@ -19,11 +20,13 @@ namespace MilkApplication.Controllers
     {
         private readonly IOrderService _orderService;
         private readonly AppDbContext _context;
+        private readonly IOrderRepository _orderRepository;
 
-        public OrderController(IOrderService orderService, AppDbContext context)
+        public OrderController(IOrderService orderService, AppDbContext context, IOrderRepository orderRepository)
         {
             _orderService = orderService;
             _context = context;
+            _orderRepository = orderRepository;
         }
 
         [HttpGet("GetAllOrder")]
@@ -180,6 +183,21 @@ namespace MilkApplication.Controllers
             {
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
+        }
+        [HttpGet("{orderId}/response")]
+        public ActionResult<ResponseDTO> GetOrderResponse(int orderId)
+        {
+            var response = _orderRepository.GetResponse(orderId);
+            if (response == null)
+            {
+                return NotFound(new ResponseDTO
+                {
+                    IsSucceed = false,
+                    Message = "Order response not found."
+                });
+            }
+
+            return Ok(response);
         }
     }
 }
